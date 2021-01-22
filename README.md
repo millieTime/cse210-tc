@@ -7,3 +7,6 @@ Bio: I am currently a senior at BYU-Idaho and graduating with a WDD major and CS
 Name: Austin Potter
 I'm from washington state, and i'm a software engineering major. This is my third semester as a software major and i just started my second year.
 i don't have too much to say except that i am looking forward to the skills i'll learn in this class. thanks for reading.
+
+Name: Jared Stadman
+BIO: I am a transfer student from the LDS Business College. I am in the Applied Technology degree and should be done by next year. I am 24 and am getting married very soon. 
