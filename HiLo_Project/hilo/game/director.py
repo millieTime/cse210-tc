@@ -84,4 +84,4 @@ class Director:
             elif userplay == "no":
                 return False
             else:
-                Print('please choose yes or no.')
+                print('please choose yes or no.')
