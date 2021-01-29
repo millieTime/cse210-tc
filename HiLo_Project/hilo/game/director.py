@@ -26,9 +26,10 @@ class Director:
         """
         while self.keep_playing:
             # do logic
+            pass
 
     def getUserInput(self):
-        userInput = raw_input("Higher or Lower?: ")
+        userInput = input("Higher or Lower?: ")
         if (userInput == 'Higher' or userInput == 'higher'):
             return True
         elif (userInput == 'Lower' or userInput == 'lower'):
