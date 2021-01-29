@@ -39,13 +39,24 @@ class Director:
         Drawer.getCurrentCard
     
     def update_points(self):
-        if self.userInput == True:
+        if self.guess == True:
             if self.drawer.current > self.drawer.previous:
                 self.score += 100
             else:
                 self.score -= 75
-        if self.userInput == False:
+        if self.guess == False:
             if self.drawer.current < self.drawer.previous_card:
                 self.score += 100
             else:
                 self.score -= 75
+    
+    def user_play_again(self):
+        leave_loop = False
+        while not leave_loop:   
+            userplay = input('would you like to play again? (yes/no) > ').lower()
+            if userplay == "yes":
+                return True
+            elif userplay == "no":
+                return False
+            else:
+                Print('please choose yes or no.')
