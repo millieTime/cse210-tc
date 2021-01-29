@@ -37,3 +37,5 @@ root                    (project root folder)
 ---
 * TODO: Add your names and emails here
 austin potter pot19003@byui.edu
+
+HElp
