@@ -37,3 +37,15 @@ class Director:
 
     def getCurrentCard(self):
         Drawer.getCurrentCard
+    
+    def update_points(self):
+        if self.userInput == True:
+            if self.drawer.current > self.drawer.previous:
+                self.score += 100
+            else:
+                self.score -= 75
+        if self.userInput == False:
+            if self.drawer.current < self.drawer.previous_card:
+                self.score += 100
+            else:
+                self.score -= 75
