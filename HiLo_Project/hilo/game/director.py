@@ -50,8 +50,7 @@ class Director:
         """
         self.drawer.draw_new_card()
         print("Next card was:", self.getCurrentCard())
-        comparison = self.compare_inputs(self.guess)
-        self.update_points(comparison)
+        self.update_points()
         print("Your score is:", self.score)
 
     def getUserInput(self):
