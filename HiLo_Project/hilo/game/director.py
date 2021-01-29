@@ -60,6 +60,5 @@ class Director:
         elif (userInput == 'Lower' or userInput == 'lower'):
             return False
 
-# Would like this to have drawer draw a card and return current card
     def getCurrentCard(self):
-        Drawer.getCurrentCard
+        return self.drawer.current
