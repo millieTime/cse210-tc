@@ -36,3 +36,6 @@ root                    (project root folder)
 ## Authors
 ---
 * TODO: Add your names and emails here
+austin potter pot19003@byui.edu
+
+HElp
