@@ -35,7 +35,5 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Add your names and emails here
+* Preston Millward: mil18037@byui.edu
 austin potter pot19003@byui.edu
-
-HElp

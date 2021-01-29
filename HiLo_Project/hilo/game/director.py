@@ -16,17 +16,42 @@ class Director:
             self (Director): an instance of Director.
         """
         self.keep_playing = True
-        self.score = 0
+        self.score = 300
         self.drawer = Drawer()
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
+        
         Args:
             self (Director): an instance of Director.
         """
         while self.keep_playing:
-            # do logic
-            pass
+            self.acquire_guess()
+            self.evaluate_guess()
+            keep_playing = self.score > 0 and self.user_play_again()
+
+    def acquire_guess(self):
+        """Causes a new card to be drawn, displays it,
+        and gets the user's guess.
+
+        Args:
+            self (Director): an instance of Director.
+        """
+        self.drawer.draw_new_card()
+        print("The card is:", self.getCurrentCard())
+        self.guess = self.getUserInput()
+    
+    def evaluate_guess(self):
+        """Causes a new card to be drawn and displays it.
+        Updates the score and displays it.
+
+        Args:
+            self (Director): an instance of Director.
+        """
+        self.drawer.draw_new_card()
+        print("Next card was:", self.getCurrentCard())
+        self.update_points()
+        print("Your score is:", self.score)
 
     def getUserInput(self):
         userInput = input("Higher or Lower?: ")
@@ -36,7 +61,7 @@ class Director:
             return False
 
     def getCurrentCard(self):
-        Drawer.getCurrentCard
+        return self.drawer.current
     
     def update_points(self):
         if self.guess == True:
