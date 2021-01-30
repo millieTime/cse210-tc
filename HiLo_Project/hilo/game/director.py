@@ -19,6 +19,7 @@ class Director:
         self.score = 300
         self.drawer = Drawer()
         self.drawer.draw_new_card()
+        self.card_names = [None, 'Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -63,7 +64,7 @@ class Director:
                 return False
 
     def getCurrentCard(self):
-        return self.drawer.current
+        return self.card_names[self.drawer.current]
     
     def update_points(self):
         if self.guess == True:
