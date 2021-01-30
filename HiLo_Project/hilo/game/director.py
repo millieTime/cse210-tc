@@ -54,11 +54,13 @@ class Director:
         print("Your score is:", self.score)
 
     def getUserInput(self):
-        userInput = input("Higher or Lower?: ")
-        if (userInput == 'Higher' or userInput == 'higher'):
-            return True
-        elif (userInput == 'Lower' or userInput == 'lower'):
-            return False
+        leave_loop = False
+        while not leave_loop:   
+            userInput = input("Higher or Lower?: ")
+            if (userInput == 'Higher' or userInput == 'higher'):
+                return True
+            if (userInput == 'Lower' or userInput == 'lower'):
+                return False
 
     def getCurrentCard(self):
         return self.drawer.current
