@@ -6,7 +6,7 @@ class console:
     attributes: prompt(information we display on each line)
     """
 
-    def read(prompt):
+    def read_input(self,prompt):
         """
         args:
          self: instance of screen 
@@ -27,5 +27,3 @@ class console:
             give: desired print statement
         """
         print(give)
-guess = console.read("guess a letter")
-print(guess)
