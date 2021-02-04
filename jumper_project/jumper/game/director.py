@@ -1,5 +1,5 @@
 # This is the director class
-# from game.drawer import Drawer
+from game.wordhandler import WordHandler
 
 """
 Classes:
@@ -24,3 +24,8 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self.wordhandler = WordHandler()
+
+    def drawWord(self):
+        getWord = self.wordhandler.getWord()
+        print(getWord)
