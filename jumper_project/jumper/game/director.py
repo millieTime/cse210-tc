@@ -30,6 +30,11 @@ class Director:
         """
         self.parachute = Parachute
         self.keep_playing = True
+        self.wordhandler = WordHandler()
+
+    def drawWord(self):
+        getWord = self.wordhandler.getWord()
+        print(getWord)
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
