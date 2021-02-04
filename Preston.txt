@@ -1,6 +1,0 @@
-Preston's here!
-And I'm adding some information from my own personal Branch!
-
-K, so now I need to test myself and make sure I understand how to make a pr from the cl.
-
-And now I'm adding something else so I can delete a random branch in my repository.
