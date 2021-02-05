@@ -34,7 +34,7 @@ class WordHandler:
         return printed_word
 
     def wordFound(self):
-        if self.hidden.find("_"):
-            return True
+        if "_" in self.hidden:
+            return False
         else:
-            False
+            return True

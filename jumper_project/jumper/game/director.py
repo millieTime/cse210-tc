@@ -46,6 +46,8 @@ class Director:
         while self.keep_playing:
             self.get_inputs()
             self.do_outputs()
+        
+        self.game_over()
 
     def get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -54,12 +56,12 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        self.console.write(self.parachute.get_art())
         # print the dashed words
         userInput = self.console.read_input("Guess a letter [a-z]: ")
         while not self.wordhandler.canBeGuessed(userInput):
+            self.console.write("You already guessed that letter")
             userInput = self.console.read_input("Guess a letter [a-z]: ")
-        
-        self.console.write(self.wordhandler.word_display())
         if not self.wordhandler.checkLetter(userInput):
             self.parachute.guessed_wrong()
 
@@ -70,5 +72,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self.console.write(self.parachute.get_art())
-        self.keep_playing = self.parachute.get_incorrect() != 4
+        self.console.write(self.wordhandler.word_display())
+        self.keep_playing = not (self.parachute.get_incorrect() == 4 or self.wordhandler.wordFound())
+
+    def game_over(self):
+        
+        if self.parachute.get_incorrect() == 4:
+            self.console.write(self.parachute.get_art())
+            self.console.write("Aww, Game Over!")
+        else:
+            self.console.write("Nice job! You got it!")

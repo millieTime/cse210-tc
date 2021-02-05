@@ -19,6 +19,7 @@ class Console:
             user_input = input(prompt)
             if user_input.isalpha() and len(user_input) == 1:
                 return user_input.lower()
+            print("Try entering a single letter. . .")
 
     def write(self,give):
         """
