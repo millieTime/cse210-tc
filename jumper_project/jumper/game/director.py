@@ -1,6 +1,6 @@
 # This is the director class
 from game.parachute import Parachute
-from game.console import Console
+from game.Console import console
 from game.wordhandler import WordHandler
 
 """
@@ -38,7 +38,7 @@ class Director:
 
     def start_game(self):
         """Starts the game loop to control the sequence of play.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -54,11 +54,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #print the dashed words
-        #get the user's guess
-        #see if they're allowed to guess that
-        pass
-        
+        # print the dashed words
+        # get the user's guess
+        # see if they're allowed to guess that
+        userInput = input("Guess a letter [a-z]: ")
+        if self.wordhandler.guessedLetters:
+            self.wordhandler.checkLetter(userInput)
+
     def do_updates(self):
         """Updates the important game information for each round of play. In 
         this case, that means adding the letters to the word and updating
@@ -67,10 +69,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if False: #if the user guessed wrong
+        if False:  # if the user guessed wrong
             self.parachute.guessed_wrong()
-        #add the letters to the guessed word string
-        
+        # add the letters to the guessed word string
+
     def do_outputs(self):
         """Outputs the important game information for each round of play. In 
         this case, that means showing the parachuter.
@@ -78,5 +80,5 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #print parachute.get_art()
-        self.keep_playing = (self.parachut.get_incorrect != 4)
+        # print parachute.get_art()
+        self.keep_playing = (self.parachute.get_incorrect != 4)
