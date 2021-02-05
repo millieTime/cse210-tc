@@ -57,20 +57,13 @@ class Director:
         """
         # print the dashed words
         userInput = self.console.read_input("Guess a letter [a-z]: ")
-        if self.wordhandler.guessedLetters:
-            self.wordhandler.checkLetter(userInput)
-
-    def do_updates(self):
-        """Updates the important game information for each round of play. In 
-        this case, that means adding the letters to the word and updating
-        incorrect guesses.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        if False:  # if the user guessed wrong
+        while not self.wordhandler.canBeGuessed(userInput):
+            userInput = self.console.read_input("Guess a letter [a-z]: ")
+        if self.wordhandler.checkLetter():
+            # function that austin wrote in wordHandler
+            pass
+        else:
             self.parachute.guessed_wrong()
-        # add the letters to the guessed word string
 
     def do_outputs(self):
         """Outputs the important game information for each round of play. In 
