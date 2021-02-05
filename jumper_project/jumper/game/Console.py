@@ -1,4 +1,4 @@
-class console:
+class Console:
     """
     responsibility of this class is to take user input and print the programs reactions.
 
@@ -14,10 +14,10 @@ class console:
         Returns:
             returns user input as string
         """
-        resume = False
-        while not resume:
+        acceptable = False
+        while not acceptable:
             user_input = input(prompt)
-            if user_input.isalpha() == True:
+            if user_input.isalpha() and len(user_input) == 1:
                 return user_input.lower()
 
     def write(self,give):

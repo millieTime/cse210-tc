@@ -1,5 +1,7 @@
 # This is the director class
-# from game.drawer import Drawer
+from game.parachute import Parachute
+from game.Console import Console
+from game.wordhandler import WordHandler
 
 """
 Classes:
@@ -16,6 +18,8 @@ class Director:
     sequence of play.
 
     Attributes:
+        parachute (Parachute): an instance of the class Parachute.
+        keep_playing (boolean): Whether or not the game can continue.
     """
 
     def __init__(self):
@@ -24,3 +28,48 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self.parachute = Parachute()
+        self.console = Console()
+        self.keep_playing = True
+        self.wordhandler = WordHandler()
+
+    def drawWord(self):
+        getWord = self.wordhandler.getWord()
+        print(getWord)
+
+    def start_game(self):
+        """Starts the game loop to control the sequence of play.
+
+        Args:
+            self (Director): an instance of Director.
+        """
+        while self.keep_playing:
+            self.get_inputs()
+            self.do_outputs()
+
+    def get_inputs(self):
+        """Gets the inputs at the beginning of each round of play. In this case,
+        that means asking the user for a letter.
+
+        Args:
+            self (Director): An instance of Director.
+        """
+        # print the dashed words
+        userInput = self.console.read_input("Guess a letter [a-z]: ")
+        while not self.wordhandler.canBeGuessed(userInput):
+            userInput = self.console.read_input("Guess a letter [a-z]: ")
+        if self.wordhandler.checkLetter():
+            # function that austin wrote in wordHandler
+            pass
+        else:
+            self.parachute.guessed_wrong()
+
+    def do_outputs(self):
+        """Outputs the important game information for each round of play. In 
+        this case, that means showing the parachuter.
+
+        Args:
+            self (Director): An instance of Director.
+        """
+        self.console.write(self.parachute.get_art())
+        self.keep_playing = self.parachute.get_incorrect() != 4
