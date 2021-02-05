@@ -17,8 +17,6 @@ class WordHandler:
         return userInput in self.selectedWord
 
     def hasBeenGuessed(self, userInput):
-        print(userInput)
-        print(self.guessedLetters)
         if userInput not in self.guessedLetters:
             self.guessedLetters.append(userInput)
             return True
