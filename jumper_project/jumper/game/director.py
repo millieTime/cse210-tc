@@ -45,7 +45,6 @@ class Director:
         """
         while self.keep_playing:
             self.get_inputs()
-            self.do_updates()
             self.do_outputs()
 
     def get_inputs(self):
