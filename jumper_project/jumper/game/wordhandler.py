@@ -1,5 +1,5 @@
+import re
 import random
-
 class WordHandler:
 
     def __init__(self):
@@ -29,4 +29,4 @@ class WordHandler:
             index = spot.start()
             self.hidden[index] = self.guessedLetters[-1]
         printed_word = " ".join(self.hidden)
-        print(printed_word)
+        return printed_word

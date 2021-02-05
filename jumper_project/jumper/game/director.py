@@ -58,10 +58,9 @@ class Director:
         userInput = self.console.read_input("Guess a letter [a-z]: ")
         while not self.wordhandler.canBeGuessed(userInput):
             userInput = self.console.read_input("Guess a letter [a-z]: ")
-        if self.wordhandler.checkLetter():
-            # function that austin wrote in wordHandler
-            pass
-        else:
+        
+        self.console.write(self.wordhandler.word_display())
+        if not self.wordhandler.checkLetter(userInput):
             self.parachute.guessed_wrong()
 
     def do_outputs(self):
