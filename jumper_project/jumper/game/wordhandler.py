@@ -1,5 +1,7 @@
 import re
 import random
+
+
 class WordHandler:
 
     def __init__(self):
@@ -23,10 +25,16 @@ class WordHandler:
             return True
         else:
             return False
-          
+
     def word_display(self):
-        for spot in re.finditer(self.guessedLetters[-1],self.selectedWord):
+        for spot in re.finditer(self.guessedLetters[-1], self.selectedWord):
             index = spot.start()
             self.hidden[index] = self.guessedLetters[-1]
         printed_word = " ".join(self.hidden)
         return printed_word
+
+    def wordFound(self):
+        if self.hidden.find("_"):
+            return True
+        else:
+            False
