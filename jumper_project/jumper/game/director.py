@@ -1,15 +1,6 @@
-# This is the director class
 from game.parachute import Parachute
 from game.Console import Console
 from game.wordhandler import WordHandler
-
-"""
-Classes:
- - Director
- - Console (To print and receive inputs) // Austin
- - WordHandler/Finx // Matthew 
- - Parachute // Preston
-"""
 
 
 class Director:
@@ -20,6 +11,8 @@ class Director:
     Attributes:
         parachute (Parachute): an instance of the class Parachute.
         keep_playing (boolean): Whether or not the game can continue.
+        console (Console): an instance of the class Console.
+        wordhandler (WordHandler): an instance of the class WordHandler.
     """
 
     def __init__(self):
@@ -33,22 +26,13 @@ class Director:
         self.keep_playing = True
         self.wordhandler = WordHandler()
 
-    def drawWord(self):
-        """Gets the word from the WordHandler class
-
-        Args:
-            self (Director): an instance of Director.
-        """
-
-        getWord = self.wordhandler.getWord()
-        print(getWord)
-
     def start_game(self):
         """Starts the game loop to control the sequence of play.
 
         Args:
             self (Director): an instance of Director.
         """
+        self.do_outputs()
         while self.keep_playing:
             self.get_inputs()
             self.do_outputs()
@@ -62,30 +46,31 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self.console.write(self.parachute.get_art())
-        # print the dashed words
-        userInput = self.console.read_input("Guess a letter [a-z]: ")
+        userInput = self.console.read_letter("Guess a letter [a-z]: ")
         while not self.wordhandler.canBeGuessed(userInput):
             self.console.write("You already guessed that letter")
-            userInput = self.console.read_input("Guess a letter [a-z]: ")
-        self.console.write(self.wordhandler.word_display())
+            userInput = self.console.read_letter("Guess a letter [a-z]: ")
         if not self.wordhandler.checkLetter(userInput):
             self.parachute.guessed_wrong()
 
     def do_outputs(self):
         """Outputs the important game information for each round of play. In 
-        this case, that means showing the parachuter.
+        this case, that means showing the guessed letters and parachuter.
 
         Args:
             self (Director): An instance of Director.
         """
         self.console.write(self.wordhandler.word_display())
-        self.keep_playing = not (self.parachute.get_incorrect() == 4 or self.wordhandler.wordFound())
+        self.console.write(self.parachute.get_art())
+        self.keep_playing = not (self.parachute.is_dead() or self.wordhandler.wordFound())
 
     def game_over(self):
-        
-        if self.parachute.get_incorrect() == 4:
-            self.console.write(self.parachute.get_art())
+        """Outputs some friendly text depending on how the game ends
+
+        Args:
+            self (Director): An instance of Director.
+        """
+        if self.parachute.is_dead():
             self.console.write("Aww, Game Over!")
         else:
             self.console.write("Nice job! You got it!")

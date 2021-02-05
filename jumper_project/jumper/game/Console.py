@@ -1,15 +1,16 @@
 class Console:
     """
-    responsibility of this class is to take user input and print the programs reactions.
+    responsibility of this class is to take user input and print the program's reactions.
 
-    steriotype: interface
-    attributes: prompt(information we display on each line)
+    stereotype: interface
+    attributes: none
     """
 
-    def read_input(self,prompt):
-        """
+    def read_letter(self,prompt):
+        """Gets a single letter as input from the user
+
         args:
-         self: instance of screen 
+            self: instance of console
             prompt: the text to display to the user
         Returns:
             returns user input as string
@@ -22,9 +23,9 @@ class Console:
             print("Try entering a single letter. . .")
 
     def write(self,give):
-        """
+        """Prints to the screen
         args:
-            self: screen instance
+            self: instance of Console
             give: desired print statement
         """
         print(give)

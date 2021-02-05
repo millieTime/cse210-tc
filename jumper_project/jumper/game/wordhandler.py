@@ -1,18 +1,16 @@
 import re
 import random
 
-
 class WordHandler:
     """A code template to choose a word from a list of words everything we need from the word
-    ex) a character within a word, if that character has been guess, if that character is right or wrong
-    and if there is no more characters to be guessed, meaning the word is filled.
+    ex) a character within a word, if that character has been guessed, if that character is right or wrong
+    and if there are no more characters to be guessed, meaning the word is filled.
 
     Attributes:
-        words: a list of random, hard-coded, words
-        selectedWord: calling the getWord() method
-        guessedLetters: an array of already guessed letters within the round
-        word: get the length of the word
-        hidden: hide the letters within the word until those letters are guessed
+        words (List): a list of random, hard-coded, words.
+        selectedWord (String): the word for the user to guess.
+        guessedLetters (List): a list of already guessed letters.
+        hidden (List): a list of dashes to be replaced with correct letters.
     """
 
     def __init__(self):
@@ -25,9 +23,8 @@ class WordHandler:
         self.words = ['dictionary', 'basketball',
                       'robinhood', 'hippo', 'rhinoceros', 'friend', 'movie', 'genius', 'heartattack', 'mountain', 'doorknob']
         self.selectedWord = self.getWord()
-        self.guessedLetters = ['']
-        self.word = len(self.selectedWord)
-        self.hidden = ["_"] * self.word
+        self.guessedLetters = ['_']
+        self.hidden = ["_"] * len(self.selectedWord)
 
     def getWord(self):
         """Generates and picks a random word from the words list
@@ -44,7 +41,7 @@ class WordHandler:
 
         Args:
             self (WordHandler): an instance of WordHandler.
-            userInput: a parameter to take the userInput when the method is called.
+            userInput (String): the guessed letter.
         """
 
         return userInput in self.selectedWord
@@ -54,7 +51,7 @@ class WordHandler:
 
         Args:
             self (WordHandler): an instance of WordHandler.
-            userInput: a parameter to take the userInput when the method is called.
+            userInput (String): the guessed letter.
         """
 
         if userInput not in self.guessedLetters:
@@ -69,7 +66,6 @@ class WordHandler:
         Args:
             self (WordHandler): an instance of WordHandler.
         """
-
         for spot in re.finditer(self.guessedLetters[-1], self.selectedWord):
             index = spot.start()
             self.hidden[index] = self.guessedLetters[-1]
