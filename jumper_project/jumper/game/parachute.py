@@ -23,12 +23,3 @@ class Parachute:
     
     def get_incorrect(self):
         return self.incorrect
-
-test = Parachute()
-print(test.get_art())
-test.guessed_wrong()
-test.guessed_wrong()
-print(test.get_art())
-test.guessed_wrong()
-test.guessed_wrong()
-print(test.get_art())
