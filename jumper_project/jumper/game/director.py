@@ -34,6 +34,12 @@ class Director:
         self.wordhandler = WordHandler()
 
     def drawWord(self):
+        """Gets the word from the WordHandler class
+
+        Args:
+            self (Director): an instance of Director.
+        """
+
         getWord = self.wordhandler.getWord()
         print(getWord)
 
@@ -58,7 +64,7 @@ class Director:
         userInput = self.console.read_input("Guess a letter [a-z]: ")
         while not self.wordhandler.canBeGuessed(userInput):
             userInput = self.console.read_input("Guess a letter [a-z]: ")
-        
+
         self.console.write(self.wordhandler.word_display())
         if not self.wordhandler.checkLetter(userInput):
             self.parachute.guessed_wrong()
