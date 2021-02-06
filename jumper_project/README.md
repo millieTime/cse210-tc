@@ -37,3 +37,4 @@ root                    (project root folder)
 * TODO: Add your names and emails here
 * Austin Potter Pot19003@byui.edu
 * Preston Millward: mil18037@byui.edu
+* Matthew Rapp: rap16006@byui.edu
