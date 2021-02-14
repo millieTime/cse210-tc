@@ -1,14 +1,15 @@
 
-from game.mastermind import Mastermind
-from game.console import Console
-from game.guess import Guess
+from game.Mastermind import Mastermind
+from game.Console import Console
+from game.Guess import Guess
 from game.player import Player
-from game.roster import Roster
+from game.Roster import Roster
+
 
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
-    
+
     Stereotype:
         Controller
     Attributes:
@@ -20,7 +21,7 @@ class Director:
 
     def __init__(self):
         """The class constructor.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -28,10 +29,10 @@ class Director:
         self._console = Console()
         self._keep_playing = True
         self._roster = Roster()
-        
+
     def start_game(self):
         """Starts the game loop to control the sequence of play.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -43,7 +44,7 @@ class Director:
 
     def _prepare_game(self):
         """Prepares the game before it begins. In this case, that means getting the player names and adding them to the roster.
-        
+
         Args:
             self (Director): An instance of Director.
         """
@@ -52,7 +53,7 @@ class Director:
             player = Player(name)
             self._roster.add_player(player)
             self._mastermind.prepare(player)
-    
+
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the guess from the current player.
@@ -78,7 +79,7 @@ class Director:
         player = self._roster.get_current()
         guess = player.get_guess()
         self._mastermind.make_guess(player, guess)
- 
+
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
         this case, that means checking if there is a winner and changing turns.
