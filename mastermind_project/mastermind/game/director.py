@@ -82,7 +82,7 @@ class Director:
  
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
-        this case, that means checking if there are stones left and declaring the winner.
+        this case, that means checking if there is a winner and changing turns.
 
         Args:
             self (Director): An instance of Director.
@@ -93,6 +93,3 @@ class Director:
             print(f"\n{name} won!")
             self._keep_playing = False
         self._roster.next_player()
-
-     
-       

@@ -35,3 +35,6 @@ root                    (project root folder)
 ## Authors
 ---
 * # Preston Millward mil18037@byui.edu
+* # Matthew Rapp rap16006@byui.edu
+* # Austin Potter pot19003@byui.edu
+* # Jared Steadman steadmanj@byui.edu

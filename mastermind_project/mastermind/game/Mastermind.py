@@ -1,7 +1,15 @@
 import random
 
-
 class Mastermind:
+    """A code template for a code master. Its responsibility is to generate codes and create hints.
+
+    Stereotype: Information holder.
+    
+    Attributes:
+        _items (dictionary): a dictionary of lists, one per player, that keeps track of the code,
+                             the player's most recent guess, and the hint for that guess.
+    """
+
 
     def __init__(self):
         """Class constructor. Declares and initializes instance attributes.
@@ -14,10 +22,10 @@ class Mastermind:
         self._items = {}
 
     def prepare(self, player):
-        """Sets up the board with an entry for each player.
+        """Sets up the mastermind with an entry for each player.
 
         Args:
-            self (Board): an instance of Board.
+            self (Mastermind): an instance of Mastermind.
         """
         name = player.get_name()
         code = str(random.randint(1000, 10000))
@@ -26,12 +34,28 @@ class Mastermind:
         self._items[name] = [code, guess, hint]
 
     def make_guess(self, player, guess):
+        """Updates _items for the given player and guess. Makes a new hint.
+
+        Args:
+            self (Mastermind): an instance of Mastermind.
+            player (Player): the player whose hint and guess to update.
+            guess (Guess): the guess to make.
+        """
         items = self._items[player.get_name()]
         items[1] = guess.get_guess()
         items[2] = _create_hint(items[0], guess.get_guess)
         self._items[player.get_name()] = items
 
     def get_hint(self, player):
+        """ return the most recent hint for the given player.
+
+        Args:
+            self (Mastermind): an instance of Mastermind.
+            player (Player): the player whose hint to return.
+        
+        Returns:
+            the most recent hint for the given player.
+        """
         return self._items[player.get_name()][2]
 
 
@@ -40,7 +64,10 @@ class Mastermind:
         Converts the game data to its string representation and returns it to the caller
 
         Args:
-        - self: an isntance of Mastermind()
+        - self: an instance of Mastermind
+
+        Returns:
+            a string representation of the Mastermind object.
         """
         text = '\n-------------------------'
         text += '\n'
