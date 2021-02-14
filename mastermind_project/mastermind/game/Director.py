@@ -2,7 +2,7 @@
 from game.Mastermind import Mastermind
 from game.Console import Console
 from game.Guess import Guess
-from game.player import Player
+from game.Player import Player
 from game.Roster import Roster
 
 
