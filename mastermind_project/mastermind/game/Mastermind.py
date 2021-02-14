@@ -25,6 +25,16 @@ class Mastermind:
         hint = "****"
         self._items[name] = [code, guess, hint]
 
+    def make_guess(self, player, guess):
+        items = self._items[player.get_name()]
+        items[1] = guess.get_guess()
+        items[2] = _create_hint(items[0], guess.get_guess)
+        self._items[player.get_name()] = items
+
+    def get_hint(self, player):
+        return self._items[player.get_name()][2]
+
+
     def to_string(self):
         """
         Converts the game data to its string representation and returns it to the caller
