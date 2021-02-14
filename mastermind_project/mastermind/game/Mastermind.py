@@ -43,7 +43,7 @@ class Mastermind:
         """
         items = self._items[player.get_name()]
         items[1] = guess.get_guess()
-        items[2] = _create_hint(items[0], guess.get_guess)
+        items[2] = self._create_hint(items[0], guess.get_guess())
         self._items[player.get_name()] = items
 
     def get_hint(self, player):
@@ -99,3 +99,21 @@ class Mastermind:
             else:
                 hint += "*"
         return hint
+
+    def has_won(self, player):
+        """ checks if the given player has won
+
+        Args:
+            self (Mastermind): an instance of a mastermind
+            player (Player): The player for whom we are checking for a win.
+
+        Returns:
+            (boolean) True if the player has won, False otherwise.
+        """
+        hint = self._items[player.get_name()][2]
+        print(hint)
+        for symbol in hint:
+            if symbol != "x":
+                print("Failure:", symbol)
+                return False
+        return True

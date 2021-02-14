@@ -1,3 +1,4 @@
+
 from game.mastermind import Mastermind
 from game.console import Console
 from game.guess import Guess
@@ -10,7 +11,6 @@ class Director:
     
     Stereotype:
         Controller
-
     Attributes:
         mastermind (Mastermind): An instance of the class of objects known as Mastermind.
         console (Console): An instance of the class of objects known as Console.
@@ -47,15 +47,15 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        for n in range(2):
-            name = self._console.read(f"Enter a name for player {n + 1}: ")
+        for x in range(2):
+            name = self._console.read(f"Enter a name for player {x + 1}: ")
             player = Player(name)
             self._roster.add_player(player)
+            self._mastermind.prepare(player)
     
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the guess from the current player.
-
         Args:
             self (Director): An instance of Director.
         """
@@ -72,7 +72,6 @@ class Director:
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
         this case, that means updating the mastermind with the current guess.
-
         Args:
             self (Director): An instance of Director.
         """
@@ -83,11 +82,10 @@ class Director:
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
         this case, that means checking if there is a winner and changing turns.
-
         Args:
             self (Director): An instance of Director.
         """
-        if self._roster.get_current.has_won():
+        if self._mastermind.has_won(self._roster.get_current()):
             winner = self._roster.get_current()
             name = winner.get_name()
             print(f"\n{name} won!")
