@@ -6,7 +6,7 @@ class InputService:
     is to detect player keypresses and translate them into a point representing
     a direction (or velocity).
 
-    Stereotype: 
+    Stereotype:
         Service Provider
 
     Attributes:
@@ -33,7 +33,6 @@ class InputService:
         result = ""
         event = self._screen.get_key()
         if not event is None:
-            return event
             if event == 27:
                 sys.exit()
             elif event == 10:

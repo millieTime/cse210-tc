@@ -1,6 +1,8 @@
 from time import sleep
 from game import constants
 from game.score import Score
+from game.game_word import Game_word
+from game.user_input import User_input
 
 class Director:
     """A code template for a person who directs the game. The responsibility of 
@@ -14,7 +16,9 @@ class Director:
         keep_playing (boolean): Whether or not the game can continue.
         output_service (OutputService): The output mechanism.
         score (Score): The current score.
-        snake (Snake): The player or snake.
+        user_input (User_input): What the user inputs into the console
+        game_word (Game_word): Handle each word being used within the game
+        word_list (List): A list that contains the 5 words being used in the game
     """
 
     def __init__(self, input_service, output_service):
@@ -27,6 +31,9 @@ class Director:
         self._keep_playing = True
         self._output_service = output_service
         self._score = Score()
+        self._user_input = User_input()
+        self._game_word = Game_word()
+        self._word_list = []
         
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -36,30 +43,33 @@ class Director:
         """
         while self._keep_playing:
             self._get_inputs()
-            #self._do_updates()
-            #self._do_outputs()
+            self._do_updates()
+            self._do_outputs()
             sleep(constants.FRAME_LENGTH)
 
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
-        that means getting the desired direction and moving the snake.
+        that means getting the most recent typed letters and moving the words.
 
         Args:
             self (Director): An instance of Director.
         """
-        direction = self._input_service.get_letter()
-        print(direction)
-        #self._snake.move_head(direction)
+        
+        self._user_input.set_input_word(self._input_service.get_letter())
+        
+
+        pass
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
-        this case, that means checking for a collision and updating the score.
+        this case, that means checking if a word made it to the wall, and
+        updating the score.
 
         Args:
             self (Director): An instance of Director.
         """
-        self._handle_body_collision()
-        self._handle_food_collision()
+        self._check_word_position()
+        self._check_user_input()
         
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -70,36 +80,17 @@ class Director:
             self (Director): An instance of Director.
         """
         self._output_service.clear_screen()
-        self._output_service.draw_actor(self._food)
-        self._output_service.draw_actors(self._snake.get_all())
-        self._output_service.draw_actor(self._score)
+        # Later, we will write out the words in this spot
+        ## self._output_service.draw_actor(self._food)
+        ## self._output_service.draw_actors(self._snake.get_all())
+        ## self._output_service.draw_actor(self._score)
         self._output_service.flush_buffer()
 
-    def _handle_body_collision(self):
-        """Handles collisions between the snake's head and body. Stops the game 
-        if there is one.
+    def _check_word_position(self):
+        #go through the list of game words and see if any made it to the edge of the screen.
+        pass
 
-        Args:
-            self (Director): An instance of Director.
-        """
-        head = self._snake.get_head()
-        body = self._snake.get_body()
-        for segment in body:
-            if head.get_position().equals(segment.get_position()):
-                self._keep_playing = False
-                break
-
-    def _handle_food_collision(self):
-        """Handles collisions between the snake's head and the food. Grows the 
-        snake, updates the score and moves the food if there is one.
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        head = self._snake.get_head()
-        if head.get_position().equals(self._food.get_position()):
-            points = self._food.get_points()
-            for n in range(points):
-                self._snake.grow_tail()
-            self._score.add_points(points)
-            self._food.reset() 
+    def _check_user_input(self):
+        #this method is only called if the most recent input from the input_servic was a *
+        # in that case, check if the user's word matches anything in our word list
+        pass
