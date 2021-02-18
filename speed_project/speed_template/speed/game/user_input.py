@@ -46,7 +46,7 @@ class User_input(Actor):
         """
         return self._current_input
     
-    def _clear(self):
+    def clear(self):
         """ Defines the complete input in string form letter by letter
 
         Args:
