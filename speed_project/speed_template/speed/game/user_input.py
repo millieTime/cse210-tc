@@ -18,13 +18,12 @@ class User_input:
 
 
     def set_input_word(self,input_letter):
-        """ returns the complete input in string form
+        """ Defines the complete input in string form letter by letter
 
         Args:
             self (user_imput): an instance of user_imput
-        
-        Returns:
-            the user_imput as a string
+            _current_input: a current instance of the total input from the user
+
         """
         self._current_input += input_letter
 
@@ -37,6 +36,14 @@ class User_input:
         Returns:
             the previous_input as a string
         """
-        previous_input = self._current_input
+        return self._current_input
+
+    def _clear(self):
+        """ Defines the complete input in string form letter by letter
+
+        Args:
+            self (user_imput): an instance of user_imput
+            _current_input: a current instance of the total input from the user
+
+        """
         self._current_input = ""
-        return previous_input
