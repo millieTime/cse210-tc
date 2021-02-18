@@ -32,8 +32,9 @@ class Director:
         self._output_service = output_service
         self._score = Score()
         self._user_input = User_input()
-        self._game_word = Game_word()
         self._word_list = []
+        for _ in range(5):
+            self._word_list.append(Game_word())
         
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -54,11 +55,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        
         self._user_input.set_input_word(self._input_service.get_letter())
-        
-
-        pass
+        for word in self._word_list:
+            word.move_next()
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -80,17 +79,24 @@ class Director:
             self (Director): An instance of Director.
         """
         self._output_service.clear_screen()
-        # Later, we will write out the words in this spot
-        ## self._output_service.draw_actor(self._food)
-        ## self._output_service.draw_actors(self._snake.get_all())
-        ## self._output_service.draw_actor(self._score)
+        self._output_service.draw_actor(self._user_input)
+        self._output_service.draw_actors(self._word_list)
+        self._output_service.draw_actor(self._score)
         self._output_service.flush_buffer()
 
     def _check_word_position(self):
         #go through the list of game words and see if any made it to the edge of the screen.
-        pass
+        for word in self._word_list:
+            if word.get_position().get_x() > constants.MAX_X:
+                self._keep_playing = False
+                print("You Lose!")
 
     def _check_user_input(self):
-        #this method is only called if the most recent input from the input_servic was a *
-        # in that case, check if the user's word matches anything in our word list
-        pass
+        #check if the user's word matches anything in our word list
+        if self._user_input.get_input_word() and self._user_input.get_input_word()[-1] == "*":
+            for word in self._word_list:
+                if word.get_text() == self._user_input.get_input_word():
+                    self._score.add_points(word.get_points())
+                    word.reset()
+                    break
+            self._user_input.clear()
