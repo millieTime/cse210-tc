@@ -37,7 +37,7 @@ class OutputService:
         Args:
             self (OutputService): An instance of OutputService.
             actor (Actor): The actor to render.
-        """ 
+        """
         text = actor.get_text()
         position = actor.get_position()
         x = position.get_x()

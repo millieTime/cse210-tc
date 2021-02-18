@@ -1,8 +1,6 @@
 from time import sleep
 from game import constants
-from game.food import Food
 from game.score import Score
-from game.snake import Snake
 
 class Director:
     """A code template for a person who directs the game. The responsibility of 
@@ -12,7 +10,6 @@ class Director:
         Controller
 
     Attributes:
-        food (Food): The snake's target.
         input_service (InputService): The input mechanism.
         keep_playing (boolean): Whether or not the game can continue.
         output_service (OutputService): The output mechanism.
@@ -26,12 +23,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._food = Food()
         self._input_service = input_service
         self._keep_playing = True
         self._output_service = output_service
         self._score = Score()
-        self._snake = Snake()
         
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -41,8 +36,8 @@ class Director:
         """
         while self._keep_playing:
             self._get_inputs()
-            self._do_updates()
-            self._do_outputs()
+            #self._do_updates()
+            #self._do_outputs()
             sleep(constants.FRAME_LENGTH)
 
     def _get_inputs(self):
@@ -52,8 +47,9 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        direction = self._input_service.get_direction()
-        self._snake.move_head(direction)
+        direction = self._input_service.get_letter()
+        print(direction)
+        #self._snake.move_head(direction)
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
