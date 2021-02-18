@@ -41,7 +41,7 @@ class Game_word(Actor):
         self._word = random.choice(constants.LIBRARY)
         self._points = len(self._word)
         self.set_text(self._word)
-        x = random.randint(1, constants.MAX_X - 2)
+        x = random.randint(1,10)
         y = random.randint(1, constants.MAX_Y - 2)
         position = Point(x, y)
         self.set_position(position)
