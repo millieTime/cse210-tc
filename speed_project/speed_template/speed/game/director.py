@@ -87,7 +87,7 @@ class Director:
     def _check_word_position(self):
         #go through the list of game words and see if any made it to the edge of the screen.
         for word in self._word_list:
-            if word.get_position().get_x() >= constants.MAX_X - 5:
+            if word.get_position().get_x() + word.get_points() >= constants.MAX_X:
                 self._keep_playing = False
                 print("You Lose!")
 
