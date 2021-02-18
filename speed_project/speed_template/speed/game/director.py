@@ -90,6 +90,7 @@ class Director:
             if word.get_position().get_x() >= constants.MAX_X - 5:
                 self._keep_playing = False
                 print("You Lose!")
+                break
 
     def _check_user_input(self):
         #check if the user's word matches anything in our word list
