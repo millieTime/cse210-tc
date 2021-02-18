@@ -42,13 +42,15 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        loop_count = 0
         while self._keep_playing:
-            self._get_inputs()
+            self._get_inputs(loop_count == 0)
             self._do_updates()
             self._do_outputs()
+            loop_count = (loop_count + 1) % 5
             sleep(constants.FRAME_LENGTH)
 
-    def _get_inputs(self):
+    def _get_inputs(self, move_words):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the most recent typed letters and moving the words.
 
@@ -56,8 +58,9 @@ class Director:
             self (Director): An instance of Director.
         """
         self._user_input.set_input_word(self._input_service.get_letter())
-        for word in self._word_list:
-            word.move_next()
+        if (move_words):
+            for word in self._word_list:
+                word.move_next()
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
