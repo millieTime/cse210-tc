@@ -93,9 +93,10 @@ class Director:
 
     def _check_user_input(self):
         #check if the user's word matches anything in our word list
-        if self._user_input.get_input_word() and self._user_input.get_input_word()[-1] == "*":
+        user_word = self._user_input.get_input_word()
+        if user_word and user_word[-1] == "*":
             for word in self._word_list:
-                if word.get_text() == self._user_input.get_input_word():
+                if word.get_text() == user_word[:-1]:
                     self._score.add_points(word.get_points())
                     word.reset()
                     break

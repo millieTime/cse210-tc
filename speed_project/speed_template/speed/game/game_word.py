@@ -14,9 +14,9 @@ class Game_word(Actor):
             self(Actor): an instance of Actor
         '''
         super().__init__()
-        self._points = 0
+        velocity = Point(1, 0)
+        self.set_velocity(velocity)
         self.reset()
-        self.set_text(self._word)
 
     def get_points(self):
         '''
@@ -38,8 +38,9 @@ class Game_word(Actor):
         Args:
             self(Food): an instance of Food
         '''
-        self._points = 1
         self._word = random.choice(constants.LIBRARY)
+        self._points = len(self._word)
+        self.set_text(self._word)
         x = random.randint(1, constants.MAX_X - 2)
         y = random.randint(1, constants.MAX_Y - 2)
         position = Point(x, y)
