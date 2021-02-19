@@ -32,24 +32,21 @@ class Game_word(Actor):
 
     def reset(self, sector):
         '''
-        Resets the food, then moves to a random position within the game board
-        in the terminal
+        sets the words 
 
         Args:
-            self(Food): an instance of Food
+            self(_word): chooses a word that will spawn
+            self(_points): registers length of word for the boundry
+            self(set_text): for creation of words
+            self(set_position): 
         '''
         self._word = random.choice(constants.LIBRARY)
         self._points = len(self._word)
         self.set_text(self._word)
-<<<<<<< HEAD:speed_project/speed_template/speed/game/game_word.py
-        x = random.randint(1,10)
-        y = random.randint(1, constants.MAX_Y - 2)
-=======
         x = random.randint(1, 10)
         row_min = (constants.MAX_Y - 2) * sector // 5
         row_max = (constants.MAX_Y - 2) * (sector + 1) // 5 - 1
         y = random.randint(row_min, row_max)
->>>>>>> bc4bc6100133e69839abb8aa985bf9f19a3bd04b:speed_project/speed/game/game_word.py
         position = Point(x, y)
         self.set_position(position)
     
