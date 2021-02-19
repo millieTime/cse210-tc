@@ -5161,7 +5161,6 @@ lived
 liver
 liverpool
 lives
-livesex
 livestock
 living
 liz
@@ -7964,10 +7963,6 @@ seventh
 several
 severe
 sewing
-sexcam
-sexual
-sexuality
-sexually
 sf
 sg
 sh
@@ -9081,8 +9076,6 @@ transactions
 transcript
 transcription
 transcripts
-transexual
-transexuales
 transfer
 transferred
 transfers
@@ -9785,7 +9778,6 @@ workstation
 world
 worldcat
 worlds
-worldsex
 worldwide
 worm
 worn
