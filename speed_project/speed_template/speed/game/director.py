@@ -43,11 +43,12 @@ class Director:
             self (Director): an instance of Director.
         """
         loop_count = 0
+        self._speed = 10
         while self._keep_playing:
             self._get_inputs(loop_count == 0)
             self._do_updates()
             self._do_outputs()
-            loop_count = (loop_count + 1) % 5
+            loop_count = (loop_count + 1) % self._speed
             sleep(constants.FRAME_LENGTH)
 
     def _get_inputs(self, move_words):
@@ -72,6 +73,8 @@ class Director:
         """
         self._check_word_position()
         self._check_user_input()
+        self._speed = 10 - self._score.get_points() // 50
+
         
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -93,6 +96,7 @@ class Director:
             if word.get_position().get_x() + word.get_points() >= constants.MAX_X:
                 self._keep_playing = False
                 print("You Lose!")
+                print(self._score.get_points())
                 break
 
     def _check_user_input(self):
