@@ -34,7 +34,7 @@ class Director:
         self._user_input = User_input()
         self._word_list = []
         for _ in range(5):
-            self._word_list.append(Game_word())
+            self._word_list.append(Game_word(_))
         
     def start_game(self):
         """Starts the game loop to control the sequence of play.
@@ -99,9 +99,9 @@ class Director:
         #check if the user's word matches anything in our word list
         user_word = self._user_input.get_input_word()
         if user_word and user_word[-1] == "*":
-            for word in self._word_list:
+            for sector, word in enumerate(self._word_list):
                 if word.get_text() == user_word[:-1]:
                     self._score.add_points(word.get_points())
-                    word.reset()
+                    word.reset(sector)
                     break
             self._user_input.clear()
