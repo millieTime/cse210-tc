@@ -40,4 +40,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* # TODO: Add names and emails here
+Jared Steadman jaredes@byui.edu
