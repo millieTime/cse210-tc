@@ -46,7 +46,7 @@ def post_game():
     """Gets, displays, and updates the top 10 high scores."""
     scores = read_scores()
     if scores:
-        update_scores(scores)
+        scores = update_scores(scores)
         print_and_save(scores)
 
 def read_scores():
@@ -65,7 +65,7 @@ def read_scores():
         pass
     # If there aren't 11 items in the list (top 10, and most recent score),
     # then there's been a problem.
-    if len(scores) != 11:
+    if len(scores) < 11:
         print("An error occured when reading high-scores.txt.")
         print("Are you in the correct directory (game)? Is the file formatted correctly?")
         with open("high-scores.txt", "w") as outfile:
@@ -81,14 +81,14 @@ def update_scores(scores):
         scores (List): the top ten scores, and the user's score.
     """
     score = int(scores.pop()[0])
-    input("Game Over, Press Enter to Continue: ")
+    input("\n****\nGame Over, Press Enter to Continue: ")
     print("\nYour score: ", score)
     name = input("Enter your name: ").replace(" ", "_")
     rank = 10
     while rank > 0 and score > int(scores[rank - 1][1]):
         rank -= 1
     scores.insert(rank, [name, str(score)])
-    scores.pop()
+    return scores[:10]
 
 def print_and_save(scores):
     """Displays the top ten scores and writes them to the file.
@@ -108,4 +108,4 @@ response = input("***Is your directory set to the speed_project\\speed\\game fol
 if response == "y":
     run()
 else:
-    print("Please use cd to change your directory to the speed_project\\speed\\game folder.")
+    print("Please use 'cd' to change your directory to the speed_project\\speed\\game folder.")
