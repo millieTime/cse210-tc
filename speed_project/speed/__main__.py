@@ -22,7 +22,7 @@ def end_game():
         return
     score = int(scores.pop()[0])
     input("Game Over, Press Enter to Continue: ")
-    print("Your score: ", score)
+    print("\nYour score: ", score)
     name = input("Enter your name: ").replace(" ", "_")
     
     rank = 10
@@ -38,9 +38,9 @@ def end_game():
     with open("high-scores.txt", "w") as outfile:
         outfile.write("\n".join(scores))
 
-response = input("***Are you running this from the cse210-tc folder? (y/n): ")
+response = input("***Are you running this from the speed_project\\speed\\game folder? (y/n): ")
 if response == "y":
     Screen.wrapper(main)
     end_game()
 else:
-    print("Please use cd to change your directory to the cse210-tc folder.")
+    print("Please use cd to change your directory to the speed_project\\speed\\game folder.")
