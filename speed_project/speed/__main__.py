@@ -40,7 +40,7 @@ you type a word wrong? Press enter to
 clear it out. As you go, the game will
 speed up; try to get the next high score!
     ''')
-    input('press any key to continue')
+    input('press enter to continue')
 
 def post_game():
     """Gets, displays, and updates the top 10 high scores."""
@@ -57,9 +57,11 @@ def read_scores():
         list: the contents of the file in list format.
     """
     scores = []
+    backup = []
     try:
         with open("high-scores.txt", "r") as infile:
-            for line in infile.readlines():
+            backup = infile.readlines()
+            for line in backup:
                 scores.append(line.replace("\n", "").split(" "))
     except:
         pass
@@ -69,7 +71,7 @@ def read_scores():
         print("An error occured when reading high-scores.txt.")
         print("Are you in the correct directory (game)? Is the file formatted correctly?")
         with open("high-scores.txt", "w") as outfile:
-            outfile.write(scores[:10])
+            outfile.write("".join(backup))
         return
     return scores
 
