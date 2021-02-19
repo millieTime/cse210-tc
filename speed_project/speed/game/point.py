@@ -60,7 +60,6 @@ class Point:
     def get_y(self):
         """Gets the vertical distance.
         
-    
         Args:
             self (Point): An instance of Point.
             

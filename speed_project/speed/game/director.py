@@ -4,10 +4,11 @@ from game.score import Score
 from game.game_word import Game_word
 from game.user_input import User_input
 
+
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
-    
+
     Stereotype:
         Controller
 
@@ -23,7 +24,7 @@ class Director:
 
     def __init__(self, input_service, output_service):
         """The class constructor.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -34,21 +35,30 @@ class Director:
         self._user_input = User_input()
         self._word_list = []
         for _ in range(5):
-            self._word_list.append(Game_word())
-        
+            self._word_list.append(Game_word(_))
+
     def start_game(self):
         """Starts the game loop to control the sequence of play.
-        
+
         Args:
             self (Director): an instance of Director.
         """
+        loop_count = 0
+        self._speed = 10
         while self._keep_playing:
-            self._get_inputs()
+            self._get_inputs(loop_count == 0)
             self._do_updates()
             self._do_outputs()
+            loop_count = (loop_count + 1) % self._speed
             sleep(constants.FRAME_LENGTH)
+        try:
+            with open("high-scores.txt", "a") as score_file:
+                score_file.write("\n" + str(self._score.get_points()))
+        except Exception:
+            print(
+                "An error occured when reading high-scores.txt. Are you running from the 'speed' folder?")
 
-    def _get_inputs(self):
+    def _get_inputs(self, move_words):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the most recent typed letters and moving the words.
 
@@ -56,8 +66,9 @@ class Director:
             self (Director): An instance of Director.
         """
         self._user_input.set_input_word(self._input_service.get_letter())
-        for word in self._word_list:
-            word.move_next()
+        if (move_words):
+            for word in self._word_list:
+                word.move_next()
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -69,7 +80,8 @@ class Director:
         """
         self._check_word_position()
         self._check_user_input()
-        
+        self._speed = 10 - self._score.get_points() // 50
+
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
         this case, that means checking if there are stones left and declaring 
@@ -85,19 +97,30 @@ class Director:
         self._output_service.flush_buffer()
 
     def _check_word_position(self):
-        #go through the list of game words and see if any made it to the edge of the screen.
+        """Goes through the list of game words and see if any made it to the edge of the screen.
+        If the words hit the edge of the screen, then game crashes..... GAME OVER!
+
+        Args:
+            self (Director): An instance of Director.
+        """
         for word in self._word_list:
-            if word.get_position().get_x() >= constants.MAX_X - 5:
+            if word.get_position().get_x() + word.get_points() >= constants.MAX_X:
                 self._keep_playing = False
-                print("You Lose!")
+                break
 
     def _check_user_input(self):
-        #check if the user's word matches anything in our word list
+        """Checks if the user's word matches anything in our word list.
+        If it matches, then the user gets points added to their score, the word vinishes, 
+        and a new word replaces the guessed word.
+
+        Args:
+            self (Director): An instance of Director.
+        """
         user_word = self._user_input.get_input_word()
         if user_word and user_word[-1] == "*":
-            for word in self._word_list:
+            for sector, word in enumerate(self._word_list):
                 if word.get_text() == user_word[:-1]:
                     self._score.add_points(word.get_points())
-                    word.reset()
+                    word.reset(sector)
                     break
             self._user_input.clear()

@@ -2071,6 +2071,9 @@ cornell
 corner
 corners
 cornwall
+coroner
+corona
+coronavirus
 corp
 corporate
 corporation
@@ -2130,6 +2133,7 @@ coverage
 covered
 covering
 covers
+covid
 cow
 cowboy
 cp
@@ -2260,6 +2264,7 @@ danger
 dangerous
 daniel
 danish
+dank
 danny
 dans
 dare
@@ -2656,7 +2661,6 @@ doctrine
 document
 documentary
 documentation
-documentcreatetextnode
 documented
 documents
 dod
@@ -2664,6 +2668,8 @@ dodge
 doe
 does
 dog
+doge
+doggo
 dogs
 doing
 doll
@@ -3642,7 +3648,6 @@ fs
 ft
 ftp
 fu
-fucked
 fuel
 fuji
 fujitsu
@@ -4012,6 +4017,7 @@ happens
 happiness
 happy
 harassment
+harambe
 harbor
 harbour
 hard
@@ -5018,6 +5024,7 @@ lectures
 led
 lee
 leeds
+leerooyyjennkinns
 left
 leg
 legacy
@@ -5156,7 +5163,6 @@ lived
 liver
 liverpool
 lives
-livesex
 livestock
 living
 liz
@@ -6532,6 +6538,7 @@ philippines
 philips
 phillips
 philosophy
+philosoraptor
 phoenix
 phone
 phones
@@ -6589,7 +6596,6 @@ pipe
 pipeline
 pipes
 pirates
-pissing
 pit
 pitch
 pittsburgh
@@ -6667,6 +6673,8 @@ poem
 poems
 poet
 poetry
+pog
+pogchamp
 point
 pointed
 pointer
@@ -7033,6 +7041,7 @@ punch
 punishment
 punk
 pupils
+pupper
 puppy
 purchase
 purchased
@@ -7548,6 +7557,8 @@ richards
 richardson
 richmond
 rick
+rickroll
+rickrolled
 rico
 rid
 ride
@@ -7953,10 +7964,6 @@ seventh
 several
 severe
 sewing
-sexcam
-sexual
-sexuality
-sexually
 sf
 sg
 sh
@@ -8250,8 +8257,6 @@ spain
 spam
 span
 spanish
-spank
-spanking
 sparc
 spare
 spas
@@ -8327,6 +8332,7 @@ springer
 springfield
 springs
 sprint
+sputnik
 spy
 spyware
 sq
@@ -8370,8 +8376,10 @@ start
 started
 starter
 starting
+startrek
 starts
 startup
+starwars
 stat
 state
 stated
@@ -9068,8 +9076,6 @@ transactions
 transcript
 transcription
 transcripts
-transexual
-transexuales
 transfer
 transferred
 transfers
@@ -9145,6 +9151,7 @@ triple
 trips
 triumph
 trivia
+trololol
 troops
 tropical
 trouble
@@ -9155,6 +9162,7 @@ truck
 trucks
 true
 truly
+trump
 trunk
 trust
 trusted
@@ -9626,6 +9634,7 @@ wed
 wedding
 weddings
 wednesday
+weed
 week
 weekend
 weekends
@@ -9769,7 +9778,6 @@ workstation
 world
 worldcat
 worlds
-worldsex
 worldwide
 worm
 worn

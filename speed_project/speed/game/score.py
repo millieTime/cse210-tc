@@ -32,3 +32,16 @@ class Score(Actor):
         """
         self._points += points
         self.set_text(f"Score: {self._points}")
+
+    def get_points(self):
+        """Returns the total points
+
+        Args:
+            self (Score): an instance of Score.
+        
+        Returns:
+            (integer): the current number of points scored
+        """
+        return self._points
+
+    
