@@ -2260,6 +2260,7 @@ danger
 dangerous
 daniel
 danish
+dank
 danny
 dans
 dare
@@ -2664,6 +2665,8 @@ dodge
 doe
 does
 dog
+doge
+doggo
 dogs
 doing
 doll
@@ -4012,6 +4015,7 @@ happens
 happiness
 happy
 harassment
+harambe
 harbor
 harbour
 hard
@@ -5018,6 +5022,7 @@ lectures
 led
 lee
 leeds
+leerooyyjennkinns
 left
 leg
 legacy
@@ -6532,6 +6537,7 @@ philippines
 philips
 phillips
 philosophy
+philosoraptor
 phoenix
 phone
 phones
@@ -6667,6 +6673,8 @@ poem
 poems
 poet
 poetry
+pog
+pogchamp
 point
 pointed
 pointer
@@ -7033,6 +7041,7 @@ punch
 punishment
 punk
 pupils
+pupper
 puppy
 purchase
 purchased
@@ -7548,6 +7557,8 @@ richards
 richardson
 richmond
 rick
+rickroll
+rickrolled
 rico
 rid
 ride
@@ -8370,8 +8381,10 @@ start
 started
 starter
 starting
+startrek
 starts
 startup
+starwars
 stat
 state
 stated
@@ -9145,6 +9158,7 @@ triple
 trips
 triumph
 trivia
+trololol
 troops
 tropical
 trouble
@@ -9155,6 +9169,7 @@ truck
 trucks
 true
 truly
+trump
 trunk
 trust
 trusted
@@ -9626,6 +9641,7 @@ wed
 wedding
 weddings
 wednesday
+weed
 week
 weekend
 weekends
