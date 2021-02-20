@@ -1,6 +1,7 @@
 from game.director import Director
 from game.input_service import InputService
 from game.output_service import OutputService
+from game import constants
 from asciimatics.screen import Screen
 """ The main file controls the flow from intro to game to outro.
 It's not a class right now, but it definitely should be.
@@ -38,10 +39,9 @@ def pre_game():
 Type the words you see before they get
 to the edge of the screen! Hit enter
 after typing a word to send it back to
-the start and increase your score. Did
-you type a word wrong? Press enter to
-clear it out. As you go, the game will
-speed up; try to get the next high score!
+the start and increase your score. As
+you go, the game will speed up; try to
+get the next high score!
     ''')
     input('press enter to continue')
 
@@ -64,7 +64,7 @@ def read_scores():
     scores = []
     backup = []
     try:
-        with open("high-scores.txt", "r") as infile:
+        with open(constants.SCORESFILE, "r") as infile:
             backup = infile.readlines()
             for line in backup:
                 scores.append(line.replace("\n", "").split(" "))
@@ -74,8 +74,8 @@ def read_scores():
     # then there's been a problem.
     if len(scores) < 11:
         print("An error occured when reading high-scores.txt.")
-        print("Are you in the correct directory (game)? Is the file formatted correctly?")
-        with open("high-scores.txt", "w") as outfile:
+        print("Is the file formatted correctly?")
+        with open(constants.SCORESFILE, "w") as outfile:
             outfile.write("".join(backup))
         return
     return scores
@@ -110,13 +110,7 @@ def print_and_save(scores):
         item = " ".join(item)
         print("\t", item)
         scores[index] = item
-    with open("high-scores.txt", "w") as outfile:
+    with open(constants.SCORESFILE, "w") as outfile:
         outfile.write("\n".join(scores))
 
-
-response = input(
-    "***Is your directory set to the speed_project\\speed\\game folder? (y/n): ")
-if response == "y":
-    run()
-else:
-    print("Please use 'cd' to change your directory to the speed_project\\speed\\game folder.")
+run()

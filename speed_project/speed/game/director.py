@@ -52,11 +52,10 @@ class Director:
             loop_count = (loop_count + 1) % self._speed
             sleep(constants.FRAME_LENGTH)
         try:
-            with open("high-scores.txt", "a") as score_file:
+            with open(constants.SCORESFILE, "a") as score_file:
                 score_file.write("\n" + str(self._score.get_points()))
         except Exception:
-            print(
-                "An error occured when reading high-scores.txt. Are you running from the 'speed' folder?")
+            print("An error occured when reading high-scores.txt.")
 
     def _get_inputs(self, move_words):
         """Gets the inputs at the beginning of each round of play. In this case,
