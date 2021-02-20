@@ -6,3 +6,4 @@ FRAME_LENGTH = 1/20
 STARTING_WORDS = 5
 PATH = os.path.dirname(os.path.abspath(__file__))
 LIBRARY = open(PATH + "/words.txt").read().splitlines()
+SCORESFILE = PATH + "/high-scores.txt"
