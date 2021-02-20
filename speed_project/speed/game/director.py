@@ -124,3 +124,5 @@ class Director:
                     word.reset(sector)
                     break
             self._user_input.clear()
+        elif user_word and user_word[-1] == "<":
+            self._user_input.delete_last_char()

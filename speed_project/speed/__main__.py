@@ -1,18 +1,20 @@
 from game.director import Director
 from game.input_service import InputService
 from game.output_service import OutputService
-from asciimatics.screen import Screen 
+from asciimatics.screen import Screen
 """ The main file controls the flow from intro to game to outro.
 It's not a class right now, but it definitely should be.
 
 Stereotype: Controller
 """
 
+
 def run():
     """Controls the flow of the game."""
     pre_game()
     Screen.wrapper(main)
     post_game()
+
 
 def main(screen):
     """ sets up the interface with the screen, and starts the game.
@@ -24,6 +26,7 @@ def main(screen):
     output_service = OutputService(screen)
     director = Director(input_service, output_service)
     director.start_game()
+
 
 def pre_game():
     """Displays instructions"""
@@ -42,6 +45,7 @@ speed up; try to get the next high score!
     ''')
     input('press enter to continue')
 
+
 def post_game():
     """Gets, displays, and updates the top 10 high scores."""
     scores = read_scores()
@@ -49,10 +53,11 @@ def post_game():
         scores = update_scores(scores)
         print_and_save(scores)
 
+
 def read_scores():
     """Tries to read the high-scores file into a list.
     If something's wrong, it lets the user know.
-    
+
     Returns:
         list: the contents of the file in list format.
     """
@@ -75,6 +80,7 @@ def read_scores():
         return
     return scores
 
+
 def update_scores(scores):
     """Adds the user's score to the list in the correct spot.
     Removes the lowest score.
@@ -92,9 +98,10 @@ def update_scores(scores):
     scores.insert(rank, [name, str(score)])
     return scores[:10]
 
+
 def print_and_save(scores):
     """Displays the top ten scores and writes them to the file.
-    
+
     Args:
         scores (List): a list of the top ten scores.
     """
@@ -106,7 +113,9 @@ def print_and_save(scores):
     with open("high-scores.txt", "w") as outfile:
         outfile.write("\n".join(scores))
 
-response = input("***Is your directory set to the speed_project\\speed\\game folder? (y/n): ")
+
+response = input(
+    "***Is your directory set to the speed_project\\speed\\game folder? (y/n): ")
 if response == "y":
     run()
 else:
