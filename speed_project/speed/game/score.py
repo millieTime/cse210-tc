@@ -9,7 +9,7 @@ class Score(Actor):
         Information Holder
 
     Attributes: 
-        _points (integer): The number of points the food is worth.
+        _points (integer): The number of points the player has accrued.
     """
     def __init__(self):
         """The class constructor. Invokes the superclass constructor, initializes points to zero, sets the position and updates the text.

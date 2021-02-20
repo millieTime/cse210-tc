@@ -9,7 +9,7 @@ class User_input(Actor):
     Stereotype: Information holder.
 
     Attributes:
-        input_word (string): The completed word the user is typing
+        _current_input (string): The completed word the user is typing
     """
 
     def __init__(self):
@@ -55,7 +55,7 @@ class User_input(Actor):
         self.set_text("")
 
     def delete_last_char(self):
-        """ Deletes the last letter in the user inputted word, for mispells, etc.
+        """ Deletes the last letter in the user inputted word, and removes the left carrot.
 
         Args:
             self (user_imput): an instance of user_imput

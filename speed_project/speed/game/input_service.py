@@ -24,6 +24,7 @@ class InputService:
 
     def get_letter(self):
         """Gets the letter that was typed. If the enter key was pressed returns an asterisk.
+        If the back button was pressed, returns a left carrot.
 
         Args:
             self (InputService): An instance of InputService.
