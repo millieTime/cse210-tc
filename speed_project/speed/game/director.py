@@ -81,6 +81,8 @@ class Director:
         self._check_word_position()
         self._check_user_input()
         self._speed = 10 - self._score.get_points() // 50
+        if self._speed < 1:
+            self._speed = 1
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
