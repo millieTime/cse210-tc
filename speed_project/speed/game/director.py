@@ -13,13 +13,14 @@ class Director:
         Controller
 
     Attributes:
-        input_service (InputService): The input mechanism.
-        keep_playing (boolean): Whether or not the game can continue.
-        output_service (OutputService): The output mechanism.
-        score (Score): The current score.
-        user_input (User_input): What the user inputs into the console
-        game_word (Game_word): Handle each word being used within the game
-        word_list (List): A list that contains the 5 words being used in the game
+        _input_service (InputService): The input mechanism.
+        _keep_playing (boolean): Whether or not the game can continue.
+        _output_service (OutputService): The output mechanism.
+        _score (Score): The current score.
+        _user_input (User_input): What the user inputs into the console
+        _game_word (Game_word): Handle each word being used within the game
+        _word_list (List): A list that contains the 5 words being used in the game
+        _speed (integer): the words move once every <speed> screen refreshes
     """
 
     def __init__(self, input_service, output_service):
