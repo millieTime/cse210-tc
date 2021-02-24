@@ -15,7 +15,7 @@ class DrawActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         self._output_service.clear_screen()
-        self._output_service.draw_actors(cast["artifact"])
-        self._output_service.draw_actors(cast["robot"])
-        self._output_service.draw_actors(cast["marquee"])
+        self._output_service.draw_actors(cast["bricks"])
+        self._output_service.draw_actors(cast["paddle"])
+        self._output_service.draw_actors(cast["ball"])
         self._output_service.flush_buffer()

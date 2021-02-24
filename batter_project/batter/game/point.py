@@ -66,6 +66,16 @@ class Point:
             boolean: True if x = 0 and y = 0; false if otherwise.
         """
         return self._x == 0 and self._y == 0
+
+    def bounce_x(self):
+        self._x *= - 1
+        self._y = self._y
+        return Point(self._x, self._y)
+
+    def bounce_y(self):
+        self._y *= - 1
+        self._x = self._x
+        return Point(self._x, self._y)
         
     def reverse(self):
         """Gets a new Point that is the reverse of this one.

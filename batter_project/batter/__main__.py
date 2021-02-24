@@ -24,14 +24,14 @@ def main(screen):
     paddle.set_position(position)
     cast["paddle"] = [paddle]
 
-    cast["brick"] = []
+    cast["bricks"] = []
     for x in range(5, 75):
         for y in range(2, 6):
             position = Point(x, y)
             brick = Actor()
             brick.set_text("*")
             brick.set_position(position)
-            cast["brick"].append(brick)
+            cast["bricks"].append(brick)
 
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y / 2)
