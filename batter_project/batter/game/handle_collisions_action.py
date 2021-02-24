@@ -15,11 +15,20 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        marquee = cast["marquee"][0] # there's only one
-        robot = cast["robot"][0] # there's only one
-        artifacts = cast["artifact"]
-        marquee.set_text("")
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                description = artifact.get_description()
-                marquee.set_text(description) 
+        ball = cast["ball"][0]
+        bricks = cast["brick"]
+        # loop through the bricks to bounce the ball off of and delete the brick
+        for brick in bricks:
+            if brick.get_position().equals(ball.get_position()):
+                bricks.remove(brick)
+                ball.reverse()                
+
+        # check the paddle to see if the ball bounces off 
+        # check the walls
+        ball_velocity = ball.get_velocity()
+        bounce_velocity = ball.get_velocity().reverse()
+        if constants.MAX_X - 1 < ball.get_position.get_x < 1:
+            ball.set_velocity(Point(bounce_velocity.get_x(), ball_velocity.get_y())
+        elif ball.get_position.get_y < 1:
+            ball.set_velocity(Point(ball_velocity.get_x, bounce_velocity.get_y())
+        # check if the game is over (hits the ground)
