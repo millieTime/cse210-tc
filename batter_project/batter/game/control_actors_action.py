@@ -1,5 +1,6 @@
 from game import constants
 from game.action import Action
+from game.point import Point
 
 class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
@@ -28,4 +29,9 @@ class ControlActorsAction(Action):
         """
         direction = self._input_service.get_direction()
         paddle = cast["paddle"][0] # there's only one in the cast
-        paddle.set_velocity(direction)        
+        # Make sure the paddle is allowed to move.
+        if  ((paddle.get_position().get_x() >= 2 or direction.get_x() >= 0)
+                and (paddle.get_position().get_x() <= constants.MAX_X + len(paddle.get_text()) or direction.get_x() <= 0)):
+            paddle.set_velocity(direction)
+        else:
+            paddle.set_velocity(Point(0, 0))

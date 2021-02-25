@@ -22,14 +22,20 @@ class Director:
         """
         self._cast = cast
         self._script = script
+        self._game_is_over = False
         
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
-        while True:
+        while not self._game_is_over:
             self._cue_action("input")
             self._cue_action("update")
             self._cue_action("output")
             sleep(constants.FRAME_LENGTH)
+        if self._game_is_over == 1:
+            print('Today\'s forcast: 100 percent chance of winning!')
+        else:
+            print('Sorry, you lost! "Tis but a flesh wound!!"')
+
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
@@ -38,4 +44,6 @@ class Director:
             tag (string): The given tag.
         """ 
         for action in self._script[tag]:
-            action.execute(self._cast)
+            return_value = action.execute(self._cast)
+            if return_value:
+                self._game_is_over = return_value

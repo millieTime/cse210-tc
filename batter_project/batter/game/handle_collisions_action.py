@@ -18,23 +18,23 @@ class HandleCollisionsAction(Action):
         ball = cast["ball"][0]
         paddle = cast["paddle"][0]
         bricks = cast["bricks"]
-        if 1 > paddle.get_position().get_x() or constants.MAX_X - 1 < paddle.get_position().get_x():
-            paddle.set_velocity(paddle.get_velocity().bounce_x())
+
         # loop through the bricks to bounce the ball off of and delete the brick
         for brick in bricks:
             if brick.get_position().equals(ball.get_position()):
                 bricks.remove(brick)
                 ball.set_velocity(ball.get_velocity().bounce_y())
+        if not bricks:
+            return +1
 
         # check the paddle to see if the ball bounces off 
         # check the walls
         if ball.get_position().get_x() >= constants.MAX_X - 2 or ball.get_position().get_x() <= 2:
             ball.set_velocity(ball.get_velocity().bounce_x())
-        if ball.get_position().get_y() < 1:
+        if ball.get_position().get_y() <= 1:
             ball.set_velocity(ball.get_velocity().bounce_y())
         elif ball.get_position().get_y() == constants.MAX_Y - 2:
             if paddle.get_position().get_x() < ball.get_position().get_x() and ball.get_position().get_x() < paddle.get_position().get_x() + len(paddle.get_text()):
                 ball.set_velocity(ball.get_velocity().bounce_y())
             else:
-                #game over man!
-                pass
+                return -1
