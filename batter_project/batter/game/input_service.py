@@ -2,6 +2,7 @@ import sys
 from game.point import Point
 from asciimatics.event import KeyboardEvent
 
+
 class InputService:
     """Detects player input. The responsibility of the class of objects is to detect and communicate player keypresses.
 
@@ -17,11 +18,17 @@ class InputService:
         """The class constructor."""
         self._screen = screen
         self._keys = {}
-        self._keys[276] = Point(-3, 0) # <-
-        self._keys[275] = Point(3, 0) # ->
-        self._keys[97] = Point(-3, 0) # a
-        self._keys[100] = Point(3, 0) # d
-        
+        self._keys[276] = Point(-3, 0)  # <-
+        self._keys[275] = Point(3, 0)  # ->
+        self._keys[97] = Point(-3, 0)  # a
+        self._keys[100] = Point(3, 0)  # d
+
+        # for Macbook
+        self._keys[-203] = Point(-3, 0)  # <-
+        self._keys[-205] = Point(3, 0)  # ->
+        self._keys[0] = Point(-3, 0)  # a
+        self._keys[2] = Point(3, 0)  # d
+
     def get_direction(self):
         """Gets the selected direction for the given player.
 
