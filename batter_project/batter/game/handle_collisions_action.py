@@ -16,6 +16,9 @@ class HandleCollisionsAction(Action):
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
+        
+        Returns:
+            number: 1 if the user won, -1 if the user lost.
         """
         ball = cast["ball"][0]
         paddle = cast["paddle"][0]

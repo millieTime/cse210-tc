@@ -26,7 +26,11 @@ class Director:
         self._game_is_over = False
 
     def start_game(self):
-        """Starts the game loop to control the sequence of play."""
+        """Starts the game loop to control the sequence of play.
+        
+        Returns:
+            number: 1 if the user won, -1 if the user lost.
+        """
         while not self._game_is_over:
             self._cue_action("input")
             self._cue_action("update")

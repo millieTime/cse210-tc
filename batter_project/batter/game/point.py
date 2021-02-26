@@ -68,11 +68,21 @@ class Point:
         return self._x == 0 and self._y == 0
 
     def bounce_x(self):
+        """Gets a new point that is reflected over the x-axis
+
+        Returns:
+            Point: A new Point that is reflected.
+        """
         self._x *= - 1
         self._y = self._y
         return Point(self._x, self._y)
 
     def bounce_y(self):
+        """Gets a new point that is reflected over the y-axis
+
+        Returns:
+            Point: a new Point that is reflected.
+        """
         self._y *= - 1
         self._x = self._x
         return Point(self._x, self._y)

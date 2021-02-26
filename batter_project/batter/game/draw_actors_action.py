@@ -1,10 +1,6 @@
 from game.action import Action
 
 class DrawActorsAction(Action):
-    #script["output"] is me
-    #cast["artifact"] = artifacts. A list of artifacts.
-    #cast["robot"] = [robot]. The robot
-    #cast["marquee"] = [marquee]. The description
     def __init__(self, output_service):
         self._output_service = output_service
 
