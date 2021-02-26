@@ -70,7 +70,7 @@ def main(screen):
     else:
         print('Sorry, you lost! "Tis but a flesh wound!!"')
 
-    time.sleep(3)
+    # time.sleep(3)
 
 
 Screen.wrapper(main)
