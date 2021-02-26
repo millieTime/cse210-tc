@@ -86,7 +86,13 @@ class Point:
         self._x = -1
         self._y = self._y
         return Point(self._x, self._y)
-        
+
+    # This is for dynamic bounce or super imposible hard mode. 
+    # def bounce_dynic(self, ballpos):
+    #     self._x = (6 - ballpos) * -1
+    #     self._y = self._y
+    #     return Point(self._x, self._y)
+           
         
     def reverse(self):
         """Gets a new Point that is the reverse of this one.

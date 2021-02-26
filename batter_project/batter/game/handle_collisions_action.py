@@ -38,9 +38,12 @@ class HandleCollisionsAction(Action):
         elif ball.get_position().get_y() == constants.MAX_Y - 2:
             if paddle.get_position().get_x() < ball.get_position().get_x() and ball.get_position().get_x() < paddle.get_position().get_x() + len(paddle.get_text()):
                 if ball.get_position().get_x() < paddle.get_position().get_x() + (len(paddle.get_text())/2):
-                    ball.set_velocity(ball.get_velocity().bounce_left())
+                   ball.set_velocity(ball.get_velocity().bounce_left())
                 else:
-                    ball.set_velocity(ball.get_velocity().bounce_right())
+                   ball.set_velocity(ball.get_velocity().bounce_right())
+
+                # This is for dynamic bounce or super imposible hard mode. 
+                #ball.set_velocity(ball.get_velocity().bounce_dynic(ball.get_position().get_x() - paddle.get_position().get_x()))
                 ball.set_velocity(ball.get_velocity().bounce_y())
             else:
                 return -1
