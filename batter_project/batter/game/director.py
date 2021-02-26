@@ -32,7 +32,7 @@ class Director:
             self._cue_action("output")
             sleep(constants.FRAME_LENGTH)
         if self._game_is_over == 1:
-            print('Today\'s forcast: 100 percent chance of winning!')
+            print('Today\'s forcast: 100 %% chance of winning!')
         else:
             print('Sorry, you lost! "Tis but a flesh wound!!"')
 

@@ -31,7 +31,7 @@ class ControlActorsAction(Action):
         paddle = cast["paddle"][0] # there's only one in the cast
         # Make sure the paddle is allowed to move.
         if  ((paddle.get_position().get_x() >= 2 or direction.get_x() >= 0)
-                and (paddle.get_position().get_x() <= constants.MAX_X + len(paddle.get_text()) or direction.get_x() <= 0)):
+                and (paddle.get_position().get_x() + len(paddle.get_text()) <= constants.MAX_X or direction.get_x() <= 0)):
             paddle.set_velocity(direction)
         else:
             paddle.set_velocity(Point(0, 0))
