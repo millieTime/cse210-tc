@@ -1,10 +1,12 @@
 import random
 from game import constants
 from game.action import Action
+from game.point import Point
+
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
-    
+
     Stereotype:
         Controller
     """
@@ -27,14 +29,19 @@ class HandleCollisionsAction(Action):
         if not bricks:
             return +1
 
-        # check the paddle to see if the ball bounces off 
+        # check the paddle to see if the ball bounces off
         # check the walls
         if ball.get_position().get_x() >= constants.MAX_X - 2 or ball.get_position().get_x() <= 2:
             ball.set_velocity(ball.get_velocity().bounce_x())
         if ball.get_position().get_y() <= 1:
             ball.set_velocity(ball.get_velocity().bounce_y())
         elif ball.get_position().get_y() == constants.MAX_Y - 2:
-            if paddle.get_position().get_x() < ball.get_position().get_x() and ball.get_position().get_x() < paddle.get_position().get_x() + len(paddle.get_text()):
-                ball.set_velocity(ball.get_velocity().bounce_y())
-            else:
-                return -1
+            # if paddle.get_position().get_x() < ball.get_position().get_x() and ball.get_position().get_x() < paddle.get_position().get_x() + len(paddle.get_text()):
+            ball.set_velocity(ball.get_velocity().bounce_y())
+            # ball_position = ball.get_position()
+            # positon_list = [0, 1, 2, 3, 4, 76, 77, 78, 79, 80]
+            # if not ball_position.get_x() in positon_list:
+            #     ball.set_position(
+            #         Point(ball.get_position().get_x() - ball.get_velocity().get_x(), ball.get_position().get_y()))
+            # else:
+            #     return -1

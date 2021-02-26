@@ -10,6 +10,7 @@ from game.move_actors_action import MoveActorsAction
 from game.input_service import InputService
 from game.output_service import OutputService
 from asciimatics.screen import Screen
+import time
 
 
 def main(screen):
@@ -26,13 +27,16 @@ def main(screen):
     cast["paddle"] = [paddle]
 
     cast["bricks"] = []
-    for x in range(5, 75):
-        for y in range(2, 6):
-            position = Point(x, y)
-            brick = Actor()
-            brick.set_text("*")
-            brick.set_position(position)
-            cast["bricks"].append(brick)
+    counter = 0
+    for y in range(2, 6):
+        for x in range(5, 75):
+            counter += 1
+            if counter % 2 == y % 2:
+                position = Point(x, y)
+                brick = Actor()
+                brick.set_text("*")
+                brick.set_position(position)
+                cast["bricks"].append(brick)
 
     x = int(constants.MAX_X / 2)
     y = int(constants.MAX_Y / 2)
@@ -60,7 +64,13 @@ def main(screen):
 
     # start the game
     director = Director(cast, script)
-    director.start_game()
+    outcome_game = director.start_game()
+    if outcome_game == 1:
+        print('Today\'s forcast: 100 percent chance of winning!')
+    else:
+        print('Sorry, you lost! "Tis but a flesh wound!!"')
+
+    time.sleep(3)
 
 
 Screen.wrapper(main)
