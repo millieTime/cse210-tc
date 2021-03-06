@@ -70,7 +70,7 @@ input("\n press enter to begin entering preliminary information. . . ")
 bpm = float(input("What is the BPM of the song? (helps with auto-aligning input to beats) "))
 seconds_per_twelveth = 5 / bpm # 1/bpm * 60s/m * 1/12 (to catch triplets and 16ths)
 name = input("What is the name of the song? ")
-delay = float(input("How long before the first beat? (in ms) "))
+delay = float(input("How long before the first beat? (in seconds, with decimal) "))
 print("\nNow, we will build the level.")
 print("Start the song, and press keys to begin recording.")
 
