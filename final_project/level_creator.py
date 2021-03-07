@@ -1,7 +1,11 @@
 ###    REQUIRES PIP INSTALL KEYBOARD!!
 import keyboard
 import time
+import os
 
+#Next step: keyboard is able to record time stamps, which may make recording levels even more accurate than it currently is!
+
+PATH = os.path.dirname(os.path.abspath(__file__))
 class LevelCreator():
     """ Used to create a text file holding the beat information
     for a song. That can then be used to create a level for our game.
@@ -16,7 +20,7 @@ class LevelCreator():
 
     def __init__(self, twelveth, name, delay):
         self._twelveth = twelveth
-        self._name = name.replace(" ", "_") + ".txt"
+        self._name = PATH + "\\" + name.replace(" ", "_") + ".txt"
         self._delay = delay
         self._string = ""
         self._started = False
@@ -59,7 +63,7 @@ class LevelCreator():
 
 
 print(
-"""This program helps you build a level.
+"""\nThis program helps you build a level.
 When instructed, start playing the song, return to this terminal,
 and begin pressing Q, W, E, and R on the beats you want the arrows
 to strike. When you're done, press 's' to stop.
