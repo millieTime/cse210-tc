@@ -5,12 +5,13 @@ from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.move_actors_action import MoveActorsAction
-from game.arcade_input_service import ArcadeInputService
-from game.arcade_output_service import ArcadeOutputService
+from game.input import Input
+from game.output import Output
 
 from game.beat import Beat
 from game.beat_map import BeatMap
 from game.player import Player
+from game.game_screen import GameScreen
 
 from game.score_handler import ScoreHandler
 import arcade
@@ -26,19 +27,13 @@ def main():
 
     cast["beats"] = BeatMap.get_beats()
 
-    ### We'll need to figure out audio. These lines were copied in from another file
-        self.collision_sound = arcade.load_sound(PATH + "/sounds/Collision.wav")
-    arcade.play_sound(self.background_music)
-
-    ##############################
-    #Below this line is only copied from arcade_batter's main
-    ##############################
+    song = arcade.load_sound(constants.PATH + "/assets/Coming_For_You/Coming_For_You.wav")
 
     # create the script {key: tag, value: list}
     script = {}
 
-    input_service = ArcadeInputService()
-    output_service = ArcadeOutputService()
+    input_service = Input()
+    output_service = Output()
     
     control_actors_action = ControlActorsAction(input_service)
     move_actors_action = MoveActorsAction()
@@ -50,6 +45,6 @@ def main():
     script["output"] = [draw_actors_action]
 
     # start the game
-    batter = Batter(cast, script, input_service)
-    batter.setup()
-    arcade.run()
+    game_screen = GameScreen(song, cast, script, input_service)
+    game_screen.setup()
+    game_screen.run()
