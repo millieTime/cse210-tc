@@ -1,0 +1,1 @@
+# Tracks a score. Can be read, added to, and contain a multiplyer.
