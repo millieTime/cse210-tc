@@ -1,14 +1,21 @@
 import time
 import os
 
-PATH = os.path.dirname(os.path.abspath(__file__))
+PATH = os.path.dirname(os.path.abspath(__file__)) + "\\assets\\songs\\"
 
-file_name = input("Which file to open? ")
+print("Here are the known songs:")
+print(" ** ".join(os.listdir(PATH)))
+song = input("\nWhich would you like to use? ")
+PATH += song + "\\"
+print("\nHere are the known levels:")
+print(" ** ".join(os.listdir(PATH)))
+level = input("\nWhich would you like to open? ")
+file_name = PATH + level
 contents = []
 metrics = []
 delay = 0
 seconds_per_twelveth = 0
-with open(PATH + "\\" + file_name, "r") as infile:
+with open(file_name, "r") as infile:
     contents = infile.readlines()
     # First line contains song data.
     metrics = contents.pop(0).split(",")
@@ -33,7 +40,7 @@ with open(PATH + "\\" + file_name, "r") as infile:
     start_time = time.perf_counter()
     # keeps track of how many twelveths of a beat should have passed.
     counter = 0
-    for line in contents:
+    for line in contents[:-1]: # Last element is just a \n
         for char in line:
             counter+=1
             if not char == " ":
