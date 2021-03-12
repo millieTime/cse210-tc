@@ -11,7 +11,7 @@ from game.output import Output
 from game.beat import Beat
 from game.beat_map import BeatMap
 from game.player import Player
-from game.drop_bar import DropBar
+from game.drop_point import DropBar
 from game.game_screen import GameScreen
 
 from game.score_handler import ScoreHandler
@@ -29,9 +29,9 @@ def main():
     cast["beats"] = BeatMap.get_beats()
 
     keys = ['q', 'w', 'e', 'r']
-    cast['drop_bars'] = []
+    cast['drop_points'] = []
     for key in keys:
-        cast['drop_bars'].append(DropBar(key))
+        cast['drop_points'].append(DropBar(key))
 
     song = arcade.load_sound(constants.PATH + "/assets/Coming_For_You/Coming_For_You.wav")
 
