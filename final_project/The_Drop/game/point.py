@@ -77,19 +77,6 @@ class Point:
         y = self._y * -1
         return Point(x, y)
 
-    def bounce_horizontal(self):
-        x = self._x
-        y = self._y * -1
-
-        return Point(x, y)
-
-
-    def bounce_vertical(self):
-        x = self._x * -1
-        y = self._y
-
-        return Point(x, y)
-
     def scale(self, scale_amount):
         x = self._x * scale_amount
         y = self._y * scale_amount
