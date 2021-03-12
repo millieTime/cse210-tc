@@ -41,7 +41,8 @@ def main():
     draw_actors_action = DrawActorsAction(output_service)
     
     script["input"] = [control_actors_action]
-    script["update"] = [move_actors_action, handle_collisions_action]
+    script["move"] = [move_actors_action]
+    script["collisions"] [handle_collisions_action]
     script["output"] = [draw_actors_action]
 
     # start the game
