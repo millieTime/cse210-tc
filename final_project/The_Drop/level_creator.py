@@ -12,15 +12,17 @@ class LevelCreator():
 
     Attrs:
         _twelveth (float): how many seconds per 1/12 of a beat
-        _name (string): the name of the song
+        _folder (string): the location of the folder
+        _file (string): the location of the file
         _delay (float): how many seconds between starting the audio and the first beat
         _string (string): the representation of the level in string format. Will be printed to a file.
         _started (boolean): whether the creator has been started
     """
 
-    def __init__(self, twelveth, name, delay):
+    def __init__(self, name, level, delay, twelveth):
         self._twelveth = twelveth
-        self._name = PATH + "\\" + name.replace(" ", "_") + ".txt"
+        self._folder = PATH + "\\assets\\songs\\" + name.replace(" ", "_")
+        self._file = self._folder + f'\\{name.replace(" ", "_")}_{level.replace(" ", "_")}.txt'
         self._delay = delay
         self._string = ""
         self._started = False
@@ -50,7 +52,9 @@ class LevelCreator():
         """Cease monitoring keys, format _string, and write to a file."""
         keyboard.unhook_all()
         self.key_pressed("s")
-        with open(self._name, "w") as outfile:
+
+        os.makedirs(self._folder, exist_ok=True)
+        with open(self._file, "w") as outfile:
             final_str = f"{self._delay},{self._twelveth}"
             for index, char in enumerate(self._string):
                 # One beat per line, and we've split each beat into 12 parts.
@@ -60,7 +64,12 @@ class LevelCreator():
             outfile.write(final_str)
         print("File write complete.")
 
-
+def get_float(prompt):
+    response = input(prompt)
+    while not response.isdigit():
+        print("Invalid input.")
+        response = input(prompt)
+    return float(response)
 
 print(
 """\nThis program helps you build a level.
@@ -71,19 +80,20 @@ to strike. When you're done, press 's' to stop.
 You will need to find out how much time passes between the song starting and the first beat.
 That way the first beat of the game will align with the first beat of the song.""")
 input("\n press enter to begin entering preliminary information. . . ")
-bpm = float(input("What is the BPM of the song? (helps with auto-aligning input to beats) "))
+bpm = get_float("What is the BPM of the song? (helps with auto-aligning input to beats) ")
 seconds_per_twelveth = 5 / bpm # 1/bpm * 60s/m * 1/12 (to catch triplets and 16ths)
 name = input("What is the name of the song? ")
-delay = float(input("How long before the first beat? (in seconds, with decimal) "))
+level = input("What level will this be? (1, 2, drums, drums 2, etc) ")
+delay = get_float("How long before the first beat? (in seconds, with decimal) ")
 print("\nNow, we will build the level.")
 print("Start the song, and press keys to begin recording.")
 
-creator = LevelCreator(seconds_per_twelveth, name, delay)
-keyboard.on_press_key("q", lambda evt: creator.key_pressed(evt.name))
-keyboard.on_press_key("w", lambda evt: creator.key_pressed(evt.name))
-keyboard.on_press_key("e", lambda evt: creator.key_pressed(evt.name))
-keyboard.on_press_key("r", lambda evt: creator.key_pressed(evt.name))
+creator = LevelCreator(name, level, delay, seconds_per_twelveth)
+keyboard.on_press_key("q", lambda evt: creator.key_pressed(evt.name), True)
+keyboard.on_press_key("w", lambda evt: creator.key_pressed(evt.name), True)
+keyboard.on_press_key("e", lambda evt: creator.key_pressed(evt.name), True)
+keyboard.on_press_key("r", lambda evt: creator.key_pressed(evt.name), True)
 
-keyboard.wait('s')
+keyboard.wait('s', True)
 creator.stop()
-print("End")
+print(f"Your level file is in assets/songs/{name}")

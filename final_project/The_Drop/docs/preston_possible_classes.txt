@@ -1,0 +1,23 @@
+Actors:
+  Beat
+  Score (in case we want it to be more than just text)
+  DropBar
+
+Actions:
+  MoveActorsAction
+  CheckBeatAction
+  HandleGameOverAction
+  DrawActorsAction
+
+Screens:
+  WelcomeScreen
+  GameScreen
+  EndScreen
+
+Other:
+  BeatMap
+  Player
+  Library
+  OptionTree
+  TreeNode
+  ScoreHandler
