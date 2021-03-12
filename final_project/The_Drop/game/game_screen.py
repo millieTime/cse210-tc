@@ -23,9 +23,14 @@ class GameScreen(arcade.Window):
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
 
+    # Wanted this to be the function called when the game first started,
+    # Will need to figure out what the callback on start is.
+    """
     def run(self):
+        print("running")
         arcade.play_sound(self._song)
         super().run()
+        """
 
     def on_update(self, delta_time):
         # delta_time: the time between frames. used to calculate sprite exact speed.
@@ -45,7 +50,7 @@ class GameScreen(arcade.Window):
         self._input_service.remove_key(symbol, modifiers)
         self._cue_action("input")
 
-    def _cue_action(self, tag, *args):
+    def _cue_action(self, tag, delta_time = None):
         """Executes the actions with the given tag.
         
         Args:
@@ -53,7 +58,7 @@ class GameScreen(arcade.Window):
             *args (something): contains all the other arguments sent to this function.
         """ 
         for action in self._script[tag]:
-            # if the code breaks here, add an if statement that checks
-            # whether *args is None. If it is, then call action.execute
-            # without *args.
-            action.execute(self._cast, *args)
+            if (delta_time):
+                action.execute(self._cast, delta_time)
+            else:
+                action.execute(self._cast)

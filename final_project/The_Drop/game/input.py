@@ -20,15 +20,32 @@ class Input:
         """The class constructor."""
         self._keys_pressed = {}
         for key in watch_keys:
-            self.keys_pressed[key] = False
+            self._keys_pressed[key] = False
     
     def set_key(self, key, modifiers):
         #Ignoring modifies ar this point...
-        print(key)
+        if key == arcade.key.Q:
+            key = 'q'
+        elif key == arcade.key.W:
+            key = 'w'
+        elif key == arcade.key.E:
+            key = 'e'
+        elif key == arcade.key.R:
+            key = 'r'
+        
         if key in self._keys_pressed.keys():
             self._keys_pressed[key] = True
 
     def remove_key(self, key, modifiers):
+        if key == arcade.key.Q:
+            key = 'q'
+        elif key == arcade.key.W:
+            key = 'w'
+        elif key == arcade.key.E:
+            key = 'e'
+        elif key == arcade.key.R:
+            key = 'r'
+
         if key in self._keys_pressed.keys():
             self._keys_pressed[key] = False
 

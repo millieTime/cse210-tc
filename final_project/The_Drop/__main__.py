@@ -11,10 +11,11 @@ from game.output import Output
 from game.beat import Beat
 from game.beat_map import BeatMap
 from game.player import Player
-from game.drop_point import DropBar
+from game.drop_point import DropPoint
 from game.game_screen import GameScreen
 
-from game.score_handler import ScoreHandler
+# Add this back in when we're dealing with saving scores.
+#from game.score_handler import ScoreHandler
 import arcade
 
 
@@ -23,17 +24,17 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    beat_map = BeatMap("memory")
-    cast["beat_map"] = [beat_map]
+    song = arcade.load_sound(constants.DIRROOT.joinpath("assets/songs/Memory/memory.mp3"))
+    
+    beat_map = BeatMap()
+    beat_map.read_file(constants.DIRROOT.joinpath("assets/songs/Memory/memory.txt"))
 
-    cast["beats"] = BeatMap.get_beats()
+    cast["beats"] = beat_map.get_beats()
 
     keys = ['q', 'w', 'e', 'r']
     cast['drop_points'] = []
     for key in keys:
-        cast['drop_points'].append(DropBar(key))
-
-    song = arcade.load_sound(constants.PATH + "/assets/Coming_For_You/Coming_For_You.wav")
+        cast['drop_points'].append(DropPoint(key))
 
     # create the script {key: tag, value: list}
     script = {}
@@ -41,17 +42,21 @@ def main():
     input_service = Input(keys)
     output_service = Output()
     
-    control_actors_action = ControlActorsAction(input_service)
+    control_actors_action = ControlActorsAction(input_service, keys)
     move_actors_action = MoveActorsAction()
     handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
     
     script["input"] = [control_actors_action]
     script["move"] = [move_actors_action]
-    script["collisions"] [handle_collisions_action]
+    script["collisions"] = [handle_collisions_action]
     script["output"] = [draw_actors_action]
 
     # start the game
     game_screen = GameScreen(song, cast, script, input_service)
     game_screen.setup()
-    game_screen.run()
+    arcade.play_sound(song)
+    arcade.run()
+
+if __name__ == "__main__":
+    main()

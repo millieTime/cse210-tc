@@ -6,12 +6,12 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 # beat oject = (letterName/key, time when the beat hits)
 
 
-class Beat_Map:
+class BeatMap:
 
     def __init__(self):
         self._beatList = []
 
-    def getBeats(self):
+    def get_beats(self):
         return self._beatList
 
     def read_file(self, file):

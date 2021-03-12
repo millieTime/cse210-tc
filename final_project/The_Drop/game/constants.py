@@ -22,6 +22,6 @@ BEAT_X_4 = (MAX_X / 4 * 4) - 100
 DROP_POINT_Y = MAX_Y / 4
 DROP_POINT_WIDTH = MAX_X
 
-DROP_POINT_IMAGE = DIRROOT.joinpath("/assets/images/drop_point_activated.png")
-DROP_POINT_IMAGE2 = DIRROOT.joinpath("/assets/images/drop_point_deactivated.png")
-# BEAT_IMAGE
+DROP_POINT_IMAGE = DIRROOT.joinpath("assets/images/drop_point_activated.png")
+DROP_POINT_IMAGE_2 = DIRROOT.joinpath("assets/images/drop_point_deactivated.png")
+BEAT_IMAGE = DIRROOT.joinpath("assets/images/beat.png")
