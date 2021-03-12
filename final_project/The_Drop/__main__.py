@@ -38,7 +38,7 @@ def main():
     # create the script {key: tag, value: list}
     script = {}
 
-    input_service = Input()
+    input_service = Input(keys)
     output_service = Output()
     
     control_actors_action = ControlActorsAction(input_service)
