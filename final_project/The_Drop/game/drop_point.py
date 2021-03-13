@@ -6,7 +6,7 @@
 import arcade
 from game import constants
 
-class DropPoint(arcade.Sprite):
+class Drop_Point(arcade.Sprite):
 
     def __init__(self, key):
         # no image yet, but when we have one we'll send it here.

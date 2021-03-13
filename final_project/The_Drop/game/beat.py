@@ -7,7 +7,7 @@ import game.constants
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 
-class beat(arcade.Sprite):
+class Beat(arcade.Sprite):
 
     def __init__(self, beat, time):
         """Initialize the game
@@ -17,7 +17,7 @@ class beat(arcade.Sprite):
         self.constants = game.constants
 
         #this will only work for one player mode. 
-      """   if beat == 'q':
+        """   if beat == 'q':
             self.center_x = constants.BEAT_X_1
         if beat == 'w':
             self.w_center_x = constants.BEAT_X_2
@@ -47,7 +47,7 @@ class beat(arcade.Sprite):
 
             # Set its position to a random height and off screen right
             beat.x = constants.BEAT_X_1
-            beat.y = constants.MAX_Y + delta_time
+            beat.y = constants.MAX_Y + 10
 
             # Set its speed to a random speed heading left
             beat.velocity = bpm

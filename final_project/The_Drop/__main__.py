@@ -9,12 +9,12 @@ from game.input import Input
 from game.output import Output
 
 from game.beat import Beat
-from game.beat_map import BeatMap
+from game.beat_map import Beat_Map
 from game.player import Player
-from game.drop_point import DropBar
+from game.drop_point import Drop_Point
 from game.game_screen import GameScreen
 
-from game.score_handler import ScoreHandler
+#from game.score_handler import ScoreHandler
 import arcade
 
 
@@ -23,17 +23,17 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    beat_map = BeatMap("memory")
+    beat_map = Beat_Map()
     cast["beat_map"] = [beat_map]
 
-    cast["beats"] = BeatMap.get_beats()
+    cast["beats"] = beat_map.get_beats()
 
     keys = ['q', 'w', 'e', 'r']
     cast['drop_points'] = []
     for key in keys:
-        cast['drop_points'].append(DropBar(key))
+        cast['drop_points'].append(Drop_Point(key))
 
-    song = arcade.load_sound(constants.PATH + "/assets/Coming_For_You/Coming_For_You.wav")
+    song = arcade.load_sound("C:/Users/Jesat/Desktop/College/BYUI/Winter2021/CSE210/cse210-tc/final_project/The_Drop/assets/songs/Neo/neo.mp3")
 
     # create the script {key: tag, value: list}
     script = {}
@@ -48,10 +48,13 @@ def main():
     
     script["input"] = [control_actors_action]
     script["move"] = [move_actors_action]
-    script["collisions"] [handle_collisions_action]
+    #script["collisions"] [handle_collisions_action]
     script["output"] = [draw_actors_action]
 
     # start the game
     game_screen = GameScreen(song, cast, script, input_service)
     game_screen.setup()
     game_screen.run()
+
+
+main()
