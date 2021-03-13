@@ -27,14 +27,10 @@ class ControlActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        direction = self._input_service.get_direction().scale(constants.PADDLE_MOVE_SCALE)
-        paddle = cast["paddle"][0]  # there's only one in the cast
-        # paddle.change_y = direction.get_y()
-        if paddle.center_x >= constants.MAX_X - paddle.width/2:
-            paddle.center_x = constants.MAX_X - paddle.width/2 - 1
-            paddle.change_x = 0
-        elif paddle.center_x <= 0+paddle.width/2:
-            paddle.center_x = 1+paddle.width/2
-            paddle.change_x = 0
-        else:
-            paddle.change_x = direction.get_x()
+        # self._input_service is how we interact with the user. Whatever functions
+        # implemented there will be useable here.
+        # for key in self._input_service.pressed_keys():
+        #   cast['drop_points'][key].activate()
+        #for key in self._input_service.released_keys():
+        #   cast['drop_points'][key].deactivate()
+

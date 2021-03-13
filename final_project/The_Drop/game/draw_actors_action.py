@@ -30,15 +30,15 @@ class DrawActorsAction(Action):
         """
         self._output_service.clear_screen()
 
-        bricks = cast["bricks"]
+        beats = cast["beats"]
 
-        for brick in bricks:
-            self._output_service.draw_actor(brick)
+        for beat in beats:
+            self._output_service.draw_actor(beat)
 
-        for ball in cast["balls"]:
-            self._output_service.draw_actor(ball)
+        for drop_point in cast["drop_points"]:
+            self._output_service.draw_actor(drop_point)
 
-        paddle = cast["paddle"][0]  # there's only one
-        self._output_service.draw_actor(paddle)
+        # Maybe draw the score as well. Perhaps the main needs to create 
+        # a player and add it to the cast so we can print player.score.
 
         self._output_service.flush_buffer()

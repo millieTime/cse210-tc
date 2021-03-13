@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
 DIR = Path(__file__).resolve().parent
+#This is the path we're looking for
 DIRROOT = DIR.resolve().parent
-
 MAX_X = 800
 MAX_Y = 500
 
@@ -22,5 +22,6 @@ BEAT_X_4 = (MAX_X / 4 * 4) - 100
 DROP_POINT_Y = MAX_Y / 4
 DROP_POINT_WIDTH = MAX_X
 
-# DROP_POINT_IMAGE
+DROP_POINT_IMAGE = DIRROOT + "/assets/images/drop_point_activated.png"
+DROP_POINT_IMAGE2 = DIRROOT + "/assets/images/drop_point_deactivated.png"
 # BEAT_IMAGE

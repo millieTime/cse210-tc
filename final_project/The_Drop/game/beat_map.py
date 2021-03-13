@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Is given the name of a file, opens the file, reads the inputs from the file, and constructs a list of Beats from the inputs
-# When called upon, will return the list of Beats
-=======
 import os
 from game.beat import Beat
 
@@ -39,7 +35,7 @@ class Beat_Map:
                         self._beatList.append(a_beat)
 
 
-b = Beat_Map()
-b.read_file(os.path.basename(
-    '/Users/matthewrapp/Documents/GitHub/School/Winter2021/cse210/cse210-tc/final_project/Believer.txt'))
->>>>>>> 6ab0924535e16aa9517fefee3f439e70699efd91
+# b = Beat_Map()
+# b.read_file(os.path.basename(
+#     '/Users/matthewrapp/Documents/GitHub/School/Winter2021/cse210/cse210-tc/final_project/Believer.txt'))
+
