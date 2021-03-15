@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 DIR = Path(__file__).resolve().parent
 #This is the path we're looking for
-DIRROOT = DIR.resolve().parent
+DIRROOT = str(DIR.resolve().parent)
 MAX_X = 800
 MAX_Y = 500
 
