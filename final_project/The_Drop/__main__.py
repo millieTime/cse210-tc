@@ -18,12 +18,10 @@ from game.game_screen import GameScreen
 #from game.score_handler import ScoreHandler
 import arcade
 
-
 def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-
     song = arcade.load_sound(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
     
     beat_map = BeatMap()

@@ -33,6 +33,6 @@ class BeatMap:
                         self._beatList.append(a_beat)
 
 
-# b = Beat_Map()
-# b.read_file(os.path.basename(
-#     '/Users/matthewrapp/Documents/GitHub/School/Winter2021/cse210/cse210-tc/final_project/Believer.txt'))
+""" b = Beat_Map()
+b.read_file(os.path.basename(
+    '/Users/matthewrapp/Documents/GitHub/School/Winter2021/cse210/cse210-tc/final_project/Believer.txt')) """

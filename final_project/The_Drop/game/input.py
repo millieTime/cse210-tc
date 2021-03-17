@@ -13,7 +13,7 @@ class Input:
         Service Provider
 
     Attributes:
-        _keys (list): up, dn, lt, rt.
+        _keys_pressed (dictionary): keeps track of important keys and whether they are currently pressed.
     """
 
     def __init__(self, watch_keys):
