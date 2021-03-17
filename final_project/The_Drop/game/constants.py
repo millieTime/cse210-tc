@@ -12,13 +12,13 @@ BEAT_Y = MAX_Y
 # 1st section
 BEAT_X = {
     # 1st section
-    "q" : (SCREEN_WIDTH / 4 * 1),
+    "q" : (MAX_X / 4 * 1),
     # 2nd section
-    "w" : (SCREEN_WIDTH / 4 * 2), 
+    "w" : (MAX_X / 4 * 2), 
     # 3rd section
-    "e" : (SCREEN_WIDTH / 4 * 3), 
+    "e" : (MAX_X / 4 * 3), 
     # 4th section
-    "r" : (SCREEN_WIDTH / 4 * 4), 
+    "r" : (MAX_X / 4 * 4), 
 }
 
 # a little higher than the bottom of the screen
