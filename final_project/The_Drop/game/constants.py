@@ -4,7 +4,8 @@ DIR = Path(__file__).resolve().parent
 #This is the path we're looking for
 DIRROOT = str(DIR.resolve().parent)
 MAX_X = 800
-MAX_Y = 500
+MAX_Y = 
+SCALING = 2.0
 
 BEAT_SPEED = 2
 BEAT_Y = MAX_Y
