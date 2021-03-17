@@ -39,14 +39,3 @@ class Player:
 
     def __str__(self):
         return f'{self._player_name}, {self._score}'
-
-
-# p1 = Player('Matthew', 'q,w,e,r')
-# p1.add_points()
-# p1.add_points()
-# p1.add_points()
-# p1.add_points()
-# p1.subtract_points()
-# print(p1)
-# p1.reset_score()
-# print(p1)
