@@ -10,13 +10,16 @@ BEAT_SPEED = 2
 BEAT_Y = MAX_Y
 # split the x-axis into 4 sections, start left to right
 # 1st section
-BEAT_X_1 = (MAX_X / 4 * 1) - 100
-# 2nd section
-BEAT_X_2 = (MAX_X / 4 * 2) - 100
-# 3rd section
-BEAT_X_3 = (MAX_X / 4 * 3) - 100
-# 4th section
-BEAT_X_4 = (MAX_X / 4 * 4) - 100
+BEAT_X = {
+    # 1st section
+    "q" : (SCREEN_WIDTH / 4 * 1),
+    # 2nd section
+    "w" : (SCREEN_WIDTH / 4 * 2), 
+    # 3rd section
+    "e" : (SCREEN_WIDTH / 4 * 3), 
+    # 4th section
+    "r" : (SCREEN_WIDTH / 4 * 4), 
+}
 
 # a little higher than the bottom of the screen
 DROP_POINT_Y = MAX_Y / 4
