@@ -1,6 +1,7 @@
 import random
 from game import constants
 from game.action import Action
+from game.score import Score
 
 
 class HandleCollisionsAction(Action):
@@ -26,17 +27,15 @@ class HandleCollisionsAction(Action):
 
         drop_points = cast["drop_points"]
         beat = cast["beat"]
+        score = Score()
 
         for drop_point in drop_points:
             if drop_point.get_position().equals(beat.get_position()):
                 beat.kill()
-                # add points, not really sure how to do that from here
+                score.add_points()
                 return
             else:
-                # subtract points, not really sure how to do taht from here
-                # return
-
-                # Just here for reference.
+                score.subtract_points()
                 return
 
     def _handle_beat_collision(self, beat, drop_points):
