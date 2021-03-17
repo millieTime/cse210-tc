@@ -1,7 +1,7 @@
 Actors:
   Beat
   Score (in case we want it to be more than just text)
-  DropBar
+  DropPoint
 
 Actions:
   MoveActorsAction

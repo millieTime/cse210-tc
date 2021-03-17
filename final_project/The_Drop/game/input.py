@@ -1,45 +1,74 @@
-import sys
+# Might be really similar to the _input_service. idk. It needs to be able to
+# get keyboard inputs from the user when the game is running, and later when
+# we do level selection we'll probably want the user to be able to click on
+# the levels.
 from game.point import Point
+
 import arcade
 
-
-class input:
+class Input:
     """Detects player input. The responsibility of the class of objects is to detect and communicate player keypresses.
 
     Stereotype: 
         Service Provider
 
     Attributes:
-        _screen (Screen): An Asciimatics screen.
-        _keys (list): Points for up, dn, lt, rt.
+        _keys_pressed (dictionary): keeps track of important keys and whether they are currently pressed.
     """
 
-    def __init__(self, screen):
+    def __init__(self, watch_keys):
         """The class constructor."""
+        self._keys_pressed = {}
+        for key in watch_keys:
+            self._keys_pressed[key] = False
+    
+    def set_key(self, key, modifiers):
+        #Ignoring modifies ar this point...
+        if key == arcade.key.Q:
+            key = 'q'
+        elif key == arcade.key.W:
+            key = 'w'
+        elif key == arcade.key.E:
+            key = 'e'
+        elif key == arcade.key.R:
+            key = 'r'
         
-        
-    def get_input(self):
-        """Gets the selected direction for the given player.
+        if key in self._keys_pressed.keys():
+            self._keys_pressed[key] = True
+
+    def remove_key(self, key, modifiers):
+        if key == arcade.key.Q:
+            key = 'q'
+        elif key == arcade.key.W:
+            key = 'w'
+        elif key == arcade.key.E:
+            key = 'e'
+        elif key == arcade.key.R:
+            key = 'r'
+
+        if key in self._keys_pressed.keys():
+            self._keys_pressed[key] = False
+
+    def pressed_keys(self):
+        """Gets the currently pressed keys.
 
         Returns:
-            Point: The selected direction.
+            List: all the keys currently pressed.
         """
-        beat
-        if (
-            symbol == arcade.key.Q
-        ):
-            beat =  "q"
+        key_list = []
+        for key in self._keys_pressed.keys():
+            if self._keys_pressed[key]:
+                key_list.append(key)
+        return key_list
+        
+    def released_keys(self):
+        """Gets the not-pressed keys.
 
-        if (
-            symbol == arcade.key.J
-            or symbol == arcade.key.L
-            or symbol == arcade.key.LEFT
-            or symbol == arcade.key.RIGHT
-        ):
-            self.player.change_x = 0
-        return beat
-=======
-# Might be really similar to the _input_service. idk. It needs to be able to
-# get keyboard inputs from the user when the game is running, and later when
-# we do level selection we'll probably want the user to be able to click on
-# the levels.
+        Returns:
+            List: all the keys not currently pressed.
+        """
+        key_list = []
+        for key in self._keys_pressed.keys():
+            if not self._keys_pressed[key]:
+                key_list.append(key)
+        return key_list

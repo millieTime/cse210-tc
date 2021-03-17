@@ -1,12 +1,10 @@
 import os
 from game.beat import Beat
 
-PATH = os.path.dirname(os.path.abspath(__file__))
-
 # beat oject = (letterName/key, time when the beat hits)
 
 
-class Beat_Map:
+class BeatMap:
 
     def __init__(self):
         self._beatList = []
@@ -18,18 +16,18 @@ class Beat_Map:
         # file_name = os.path.basename(file)
         with open(file, "r") as f:
             imported_file = f.readlines()
-            contents = imported_file.pop(0).split('\n')
+            contents = imported_file.pop(0)
             # First line contains song data.
-            metrics = contents.pop(0).split(",")
+            metrics = contents.split(",")
             first_beat = float(metrics[0])
             time_between_beats = float(metrics[1])
 
             for index in range(len(imported_file)):
-                measure = imported_file[index]
+                measure = imported_file[index].split(",")
                 for spot, char in enumerate(measure):
                     if (char == "q" or char == "w" or char == "e" or char == "r"):
                         time_in_measure = time_between_beats * 12
-                        beat_timing = time_between_beats * \
+                        beat_timing = first_beat + time_between_beats * \
                             spot + (time_in_measure * index)
                         a_beat = Beat(char, beat_timing)
                         self._beatList.append(a_beat)
