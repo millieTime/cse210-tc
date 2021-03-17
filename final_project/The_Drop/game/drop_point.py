@@ -2,11 +2,10 @@
 # If activated, we can check if it's colliding with
 # any of the beats, and then award points and remove
 # them. If not, the player loses points.
-
 import arcade
 from game import constants
 
-class Drop_Point(arcade.Sprite):
+class DropPoint(arcade.Sprite):
 
     def __init__(self, key):
         # no image yet, but when we have one we'll send it here.
@@ -17,14 +16,7 @@ class Drop_Point(arcade.Sprite):
         self._activated = False
         # Don't know what they are in constants, so we'll update
         # this when that's merged.
-        if key == 'q':
-            self.center_x = constants.BEAT_X_1
-        elif key == 'w':
-            self.center_x = constants.BEAT_X_2
-        elif key == 'e':
-            self.center_x = constants.BEAT_X_2
-        elif key == 'r':
-            self.center_x = constants.BEAT_X_3
+        self.center_x = constants.BEAT_X[key]
         self.center_y = constants.DROP_POINT_Y
 
     def activate(self):

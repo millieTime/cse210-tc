@@ -1,8 +1,4 @@
 # Tracks a score. Can be read, added to, and contain a multiplyer.
-
-import os
-
-
 class Score:
 
     def __init__(self):

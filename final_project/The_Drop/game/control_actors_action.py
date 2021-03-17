@@ -13,13 +13,14 @@ class ControlActorsAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def __init__(self, input_service):
+    def __init__(self, input_service, keys):
         """The class constructor.
 
         Args:
             input_service (InputService): An instance of InputService.
         """
         self._input_service = input_service
+        self._keys = keys
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -29,8 +30,8 @@ class ControlActorsAction(Action):
         """
         # self._input_service is how we interact with the user. Whatever functions
         # implemented there will be useable here.
-        # for key in self._input_service.pressed_keys():
-        #   cast['drop_points'][key].activate()
-        #for key in self._input_service.released_keys():
-        #   cast['drop_points'][key].deactivate()
+        for key in self._input_service.pressed_keys():
+           cast['drop_points'][self._keys.index(key)].activate()
+        for key in self._input_service.released_keys():
+           cast['drop_points'][self._keys.index(key)].deactivate()
 
