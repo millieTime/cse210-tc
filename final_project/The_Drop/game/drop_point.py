@@ -9,7 +9,7 @@ class DropPoint(arcade.Sprite):
 
     def __init__(self, key):
         # no image yet, but when we have one we'll send it here.
-        super().__init__(constants.DROP_POINT_IMAGE)
+        super().__init__(constants.DROP_POINT_IMAGE, scale=constants.BEAT_SCALE)
         # Uncomment the following line when we have images.
         self.append_texture(arcade.load_texture(constants.DROP_POINT_IMAGE_2))
         self._key = key
