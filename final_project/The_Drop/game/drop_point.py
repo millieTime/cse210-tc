@@ -22,9 +22,9 @@ class DropPoint(arcade.Sprite):
         elif key == 'w':
             self.center_x = constants.BEAT_X_2
         elif key == 'e':
-            self.center_x = constants.BEAT_X_2
-        elif key == 'r':
             self.center_x = constants.BEAT_X_3
+        elif key == 'r':
+            self.center_x = constants.BEAT_X_4
         self.center_y = constants.DROP_POINT_Y
 
     def activate(self):

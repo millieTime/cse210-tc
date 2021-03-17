@@ -6,8 +6,26 @@ from game import constants
 
 class Beat(arcade.Sprite):
 
-    def __init__(self, key, time):
-        super().__init__(constants.BEAT_IMAGE)
-        self._key = key
-        self._time = time
-        self.change_y = 1
+    def __init__(self, beat, time):
+        """Initialize the game
+        """
+        super().__init__(constants.DIRROOT + "/images/beat.png")
+
+        #this will only work for one player mode. 
+        if beat == 'q':
+            self.center_x = constants.BEAT_X_1
+        if beat == 'w':
+            self.w_center_x = constants.BEAT_X_2
+        if beat == 'e':
+            self.e_center_x = constants.BEAT_X_3 
+        if beat =='r':
+            self.r_center_x = constants.BEAT_X_4
+        
+        self.starting_y = constants.DROP_POINT_Y + (time * constants.BEAT_SPEED)
+        self.velocity = constants.BEAT_SPEED
+
+    def hit(self):
+        pass
+
+    def kill(self):
+        pass

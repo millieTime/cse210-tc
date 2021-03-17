@@ -1,8 +1,6 @@
 import os
 from game.beat import Beat
 
-PATH = os.path.dirname(os.path.abspath(__file__))
-
 # beat oject = (letterName/key, time when the beat hits)
 
 
