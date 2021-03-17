@@ -3,7 +3,7 @@
 # keys they are supposed to press.
 
 import os
-from score import Score
+from game.score import Score
 
 
 class Player:
