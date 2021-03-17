@@ -24,10 +24,10 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    song = arcade.load_sound(constants.DIRROOT + "/assets/songs/Memory/memory.mp3")
+    song = arcade.load_sound(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
     
     beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT + "/assets/songs/Memory/memory.txt")
+    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.txt")
 
     cast["beats"] = beat_map.get_beats()
 
