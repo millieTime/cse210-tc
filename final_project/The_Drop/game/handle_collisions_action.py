@@ -16,28 +16,42 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        #Yeah, this whole thing needs done.
+
+        # Yeah, this whole thing needs done.
         # for drop_point in cast["drop_points"]:
         #     if drop_point intersects with a beat:
         #         remove the beat, add some points
         #     if it didn't intersect with any:
         #         subtract some points
-        return
-        
-    # Just here for reference.
-    def _handle_brick_collision(self, ball, bricks):
-        brick_to_remove = None
 
-        for brick in bricks:
+        drop_points = cast["drop_points"]
+        beat = cast["beat"]
+
+        for drop_point in drop_points:
+            if drop_point.get_position().equals(beat.get_position()):
+                beat.kill()
+                # add points, not really sure how to do that from here
+                return
+            else:
+                # subtract points, not really sure how to do taht from here
+                # return
+
+                # Just here for reference.
+                return
+
+    def _handle_beat_collision(self, beat, drop_points):
+        actor_to_remove = None
+
+        for point in drop_points:
             # This makes use of the `Sprite` functionality
-            if ball.collides_with_sprite(brick):
-                ball.bounce_horizontal()
-                brick_to_remove = brick
+            if beat.collides_with_sprite(point):
+                beat.kill()
+                actor_to_remove = beat
 
-        if brick_to_remove != None:
-            bricks.remove(brick_to_remove)
+        if actor_to_remove != None:
+            drop_points.remove(actor_to_remove)
 
-    #could be super useful for if the beats were missed.
+    # could be super useful for if the beats were missed.
     def _is_off_screen(self, beat):
         # If the beat gets off the screen, it was missed.
         # We'll need to subtract some points, but not here.
