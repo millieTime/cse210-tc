@@ -31,7 +31,6 @@ class DrawActorsAction(Action):
         self._output_service.clear_screen()
 
         beats = cast["beats"]
-
         for beat in beats:
             self._output_service.draw_actor(beat)
 

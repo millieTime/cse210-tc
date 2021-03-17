@@ -9,20 +9,25 @@ class Beat(arcade.Sprite):
     def __init__(self, beat, time):
         """Initialize the game
         """
-        super().__init__(constants.DIRROOT + "/images/beat.png")
-
-        #this will only work for one player mode. 
+        x = 0
+        img = ""
         if beat == 'q':
-            self.center_x = constants.BEAT_X_1
-        if beat == 'w':
-            self.w_center_x = constants.BEAT_X_2
-        if beat == 'e':
-            self.e_center_x = constants.BEAT_X_3 
-        if beat =='r':
-            self.r_center_x = constants.BEAT_X_4
-        
-        self.starting_y = constants.DROP_POINT_Y + (time * constants.BEAT_SPEED)
-        self.velocity = constants.BEAT_SPEED
+            x = constants.BEAT_X_1
+            img = constants.Q_IMAGE
+        elif beat == 'w':
+            x = constants.BEAT_X_2
+            img = constants.W_IMAGE
+        elif beat == 'e':
+            x = constants.BEAT_X_3 
+            img = constants.E_IMAGE
+        elif beat =='r':
+            x = constants.BEAT_X_4
+            img = constants.R_IMAGE
+
+        super().__init__(img, scale=constants.BEAT_SCALE)
+        self.center_x = x
+        self.center_y = constants.DROP_POINT_Y - (time * constants.BEAT_SPEED) + self.height
+        self.change_y = constants.BEAT_SPEED
 
     def hit(self):
         pass

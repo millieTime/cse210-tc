@@ -23,15 +23,6 @@ class GameScreen(arcade.Window):
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
 
-    # Wanted this to be the function called when the game first started,
-    # Will need to figure out what the callback on start is.
-    """
-    def run(self):
-        print("running")
-        arcade.play_sound(self._song)
-        super().run()
-        """
-
     def on_update(self, delta_time):
         # delta_time: the time between frames. used to calculate sprite exact speed.
         self._cue_action("move", delta_time)
@@ -55,7 +46,7 @@ class GameScreen(arcade.Window):
         
         Args:
             tag (string): The given tag.
-            *args (something): contains all the other arguments sent to this function.
+            delta_time (number): how long it has been since on_draw was last called.
         """ 
         for action in self._script[tag]:
             if (delta_time):
