@@ -13,6 +13,7 @@ from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
 from game.game_screen import GameScreen
+from game.menu_view import MenuView
 
 # Add this back in when we're dealing with saving scores.
 #from game.score_handler import ScoreHandler
@@ -25,7 +26,6 @@ def main():
     cast = {}
     song = arcade.Sound(
         constants.DIRROOT + "/assets/songs/Mayday/Mayday.mp3")
-    
 
     beat_map = BeatMap()
     beat_map.read_file(constants.DIRROOT + "/assets/songs/Mayday/Mayday_1.txt")
@@ -57,8 +57,12 @@ def main():
     script["output"] = [draw_actors_action]
 
     # start the game
-    game_screen = GameScreen(song, cast, script, input_service)
-    game_screen.setup()
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
+                           "Different Views Minimal Example")
+    menu_view = MenuView()
+    window.show_view(menu_view)
+    # game_screen = GameScreen(song, cast, script, input_service)
+    # game_screen.setup()
     arcade.run()
 
 
