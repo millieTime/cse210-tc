@@ -38,7 +38,9 @@ class DrawActorsAction(Action):
         for beat in beats:
             self._output_service.draw_actor(beat)
 
-
+        players = cast["player"]
+        for player in players:
+            self._output_service.draw_actor(player)
         # Maybe draw the score as well. Perhaps the main needs to create 
         # a player and add it to the cast so we can print player.score.
 

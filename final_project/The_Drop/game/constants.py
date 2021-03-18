@@ -7,6 +7,7 @@ MAX_X = 900
 MAX_Y = 700
 
 BEAT_SPEED = -200
+BEAT_POINTS = 5
 BEAT_SCALE = .75
 BEAT_Y = MAX_Y
 # split the x-axis into 4 sections, start left to right
@@ -26,6 +27,12 @@ BEAT_IMAGES = {
     "w" : DIRROOT + "/assets/images/beat_w.png",
     "e" : DIRROOT + "/assets/images/beat_e.png",
     "r" : DIRROOT + "/assets/images/beat_r.png"
+}
+BEAT_IMAGES2 = {
+    "q" : DIRROOT + "/assets/images/beat_q_dead.png",
+    "w" : DIRROOT + "/assets/images/beat_w_dead.png",
+    "e" : DIRROOT + "/assets/images/beat_e_dead.png",
+    "r" : DIRROOT + "/assets/images/beat_r_dead.png"
 }
 # a little higher than the bottom of the screen
 DROP_POINT_Y = MAX_Y / 4

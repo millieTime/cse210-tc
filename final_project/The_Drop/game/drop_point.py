@@ -1,9 +1,10 @@
-# represents a section of the bottom drop point. 
+# represents a section of the bottom drop point.
 # If activated, we can check if it's colliding with
 # any of the beats, and then award points and remove
 # them. If not, the player loses points.
 import arcade
 from game import constants
+
 
 class DropPoint(arcade.Sprite):
 
@@ -25,6 +26,9 @@ class DropPoint(arcade.Sprite):
         self.set_texture(1)
 
     def deactivate(self):
-        self.activated = False
+        self._activated = False
         # change the appearance
         self.set_texture(0)
+
+    def active(self):
+        return self._activated
