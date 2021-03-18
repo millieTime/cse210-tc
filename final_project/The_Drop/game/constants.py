@@ -37,9 +37,8 @@ BEAT_IMAGES2 = {
 # a little higher than the bottom of the screen
 DROP_POINT_Y = MAX_Y / 4
 DROP_POINT_WIDTH = MAX_X
-DROP_POINT_IMAGE = DIRROOT+"/assets/images/drop_point_activated.png"
-DROP_POINT_IMAGE_2 = DIRROOT+"/assets/images/drop_point_deactivated.png"
-
+DROP_POINT_IMAGE = DIRROOT+"/assets/images/beat_blank_trans.png"
+DROP_POINT_IMAGE_2 = DIRROOT+"/assets/images/beat_blank_active.png"
 
 
 

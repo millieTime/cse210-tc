@@ -31,8 +31,6 @@ class DrawActorsAction(Action):
         self._output_service.clear_screen()
 
         
-        for drop_point in cast["drop_points"]:
-            self._output_service.draw_actor(drop_point)
 
         beats = cast["beats"]
         for beat in beats:
@@ -41,7 +39,8 @@ class DrawActorsAction(Action):
         players = cast["player"]
         for player in players:
             self._output_service.draw_actor(player)
-        # Maybe draw the score as well. Perhaps the main needs to create 
-        # a player and add it to the cast so we can print player.score.
+            
+        for drop_point in cast["drop_points"]:
+            self._output_service.draw_actor(drop_point)
 
         self._output_service.flush_buffer()
