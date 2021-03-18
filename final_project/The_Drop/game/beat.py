@@ -10,10 +10,14 @@ class Beat(arcade.Sprite):
         """Initialize the game
         """
         super().__init__(constants.BEAT_IMAGES[beat], scale=constants.BEAT_SCALE)
+        self.append_texture(arcade.load_texture(constants.BEAT_IMAGES2[beat]))
         self.center_x = constants.BEAT_X[beat]
         self.center_y = constants.DROP_POINT_Y - (time * constants.BEAT_SPEED) + self.height
         self.change_y = constants.BEAT_SPEED
+        self._point_value = constants.BEAT_POINTS
 
-    def kill(self):
-        # Do something when the brick dies
-        pass
+    def kill_and_points(self):
+        # change appearance, and set points to zero.
+        self.set_texture(1)
+        points, self._point_value = self._point_value, 0
+        return points

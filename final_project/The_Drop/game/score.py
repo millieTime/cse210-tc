@@ -4,11 +4,11 @@ class Score:
     def __init__(self):
         self._score = 0
 
-    def add_points(self):
-        self._score += 5
+    def add_points(self, points):
+        self._score += points
 
-    def subtract_points(self):
-        self._score -= 5
+    def subtract_points(self, points):
+        self._score -= points
 
     def reset_score(self):
         self._score = 0

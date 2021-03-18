@@ -18,14 +18,17 @@ from game.game_screen import GameScreen
 #from game.score_handler import ScoreHandler
 import arcade
 
+
 def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-    song = arcade.load_sound(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
+    song = arcade.Sound(
+        constants.DIRROOT + "/assets/songs/Mayday/Mayday.mp3")
     
+
     beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.txt")
+    beat_map.read_file(constants.DIRROOT + "/assets/songs/Mayday/Mayday_1.txt")
 
     cast["beats"] = beat_map.get_beats()
 
@@ -34,17 +37,20 @@ def main():
     for key in keys:
         cast['drop_points'].append(DropPoint(key))
 
+    player = Player('Random', keys)
+    cast['player'] = [player]
+
     # create the script {key: tag, value: list}
     script = {}
 
     input_service = Input(keys)
     output_service = Output()
-    
+
     control_actors_action = ControlActorsAction(input_service, keys)
     move_actors_action = MoveActorsAction()
     handle_collisions_action = HandleCollisionsAction()
     draw_actors_action = DrawActorsAction(output_service)
-    
+
     script["input"] = [control_actors_action]
     script["move"] = [move_actors_action]
     script["collisions"] = [handle_collisions_action]
@@ -53,8 +59,8 @@ def main():
     # start the game
     game_screen = GameScreen(song, cast, script, input_service)
     game_screen.setup()
-    arcade.play_sound(song)
     arcade.run()
+
 
 if __name__ == "__main__":
     main()
