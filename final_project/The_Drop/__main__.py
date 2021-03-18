@@ -23,12 +23,12 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-    song = arcade.load_sound(
-        constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
+    song = arcade.Sound(
+        constants.DIRROOT + "/assets/songs/Mayday/Mayday.mp3")
+    
 
     beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT +
-                       "/assets/songs/Coming_For_You/Coming_For_You.txt")
+    beat_map.read_file(constants.DIRROOT + "/assets/songs/Mayday/Mayday_1.txt")
 
     cast["beats"] = beat_map.get_beats()
 
@@ -59,7 +59,6 @@ def main():
     # start the game
     game_screen = GameScreen(song, cast, script, input_service)
     game_screen.setup()
-    arcade.play_sound(song)
     arcade.run()
 
 

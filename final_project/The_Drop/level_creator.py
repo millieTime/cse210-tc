@@ -65,10 +65,16 @@ class LevelCreator():
         print("File write complete.")
 
 def get_float(prompt):
-    response = input(prompt)
-    while not response.isdigit():
-        print("Invalid input.")
+    float_response = -1
+    accepted = False
+    while not accepted:
         response = input(prompt)
+        try:
+            print(response)
+            response = float(response)
+            accepted = True
+        except:
+            print("Invalid input.")
     return float(response)
 
 print(
