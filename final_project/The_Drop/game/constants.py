@@ -34,6 +34,9 @@ BEAT_IMAGES2 = {
     "e" : DIRROOT + "/assets/images/beat_e_dead.png",
     "r" : DIRROOT + "/assets/images/beat_r_dead.png"
 }
+
+BEAT_IMAGES_DEAD = DIRROOT + "/assets/images/beat_dead_trans.png"
+
 # a little higher than the bottom of the screen
 DROP_POINT_Y = MAX_Y / 4
 DROP_POINT_WIDTH = MAX_X
