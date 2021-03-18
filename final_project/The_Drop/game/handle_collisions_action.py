@@ -26,29 +26,30 @@ class HandleCollisionsAction(Action):
         #         subtract some points
 
         drop_points = cast["drop_points"]
-        beat = cast["beat"]
-        score = Score()
+        beats = cast["beats"]
+        player = cast["player"]
 
         for drop_point in drop_points:
-            if drop_point.get_position().equals(beat.get_position()):
-                beat.kill()
-                score.add_points()
-                return
-            else:
-                score.subtract_points()
-                return
+            if drop_point.active():
+                self._handle_beat_collision(beats, drop_point, player)
 
-    def _handle_beat_collision(self, beat, drop_points):
-        actor_to_remove = None
+    def _handle_beat_collision(self, beats, drop_point, player):
+        beat_to_remove = []
+        has_collided = False
 
-        for point in drop_points:
+        for beat in beats:
             # This makes use of the `Sprite` functionality
-            if beat.collides_with_sprite(point):
+            if beat.collides_with_sprite(drop_point):
+                has_collided = True
                 beat.kill()
-                actor_to_remove = beat
+                player.add_points()
+                beat_to_remove.append(beat)
 
-        if actor_to_remove != None:
-            drop_points.remove(actor_to_remove)
+        if not has_collided:
+            player.subtract_points()
+
+        for beat in beat_to_remove:
+            beats.remove(beat)
 
     # could be super useful for if the beats were missed.
     def _is_off_screen(self, beat):
