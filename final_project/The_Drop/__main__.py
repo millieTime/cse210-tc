@@ -31,7 +31,8 @@ def main():
     beat_map.read_file(constants.DIRROOT + "/assets/songs/Mayday/Mayday_1.txt")
 
     cast["beats"] = beat_map.get_beats()
-
+    cast["beats"].reverse()
+    
     keys = ['q', 'w', 'e', 'r']
     cast['drop_points'] = []
     for key in keys:

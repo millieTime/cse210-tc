@@ -10,6 +10,7 @@ class Beat(arcade.Sprite):
         """Initialize the game
         """
         super().__init__(constants.BEAT_IMAGES[beat], scale=constants.BEAT_SCALE)
+        self._key = beat
         self.append_texture(arcade.load_texture(constants.BEAT_IMAGES2[beat]))
         self.center_x = constants.BEAT_X[beat]
         self.center_y = constants.DROP_POINT_Y - (time * constants.BEAT_SPEED) + self.height
@@ -21,3 +22,6 @@ class Beat(arcade.Sprite):
         self.set_texture(1)
         points, self._point_value = self._point_value, 0
         return points
+
+    def get_key(self):
+        return self._key
