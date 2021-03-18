@@ -38,7 +38,7 @@ def main():
         cast['drop_points'].append(DropPoint(key))
 
     player = Player('Random', keys)
-    cast['player'] = player
+    cast['player'] = [player]
 
     # create the script {key: tag, value: list}
     script = {}

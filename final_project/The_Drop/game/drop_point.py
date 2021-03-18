@@ -26,7 +26,7 @@ class DropPoint(arcade.Sprite):
         self.set_texture(1)
 
     def deactivate(self):
-        self.activated = False
+        self._activated = False
         # change the appearance
         self.set_texture(0)
 
