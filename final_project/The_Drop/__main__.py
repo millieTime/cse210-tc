@@ -24,13 +24,14 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
     song = arcade.Sound(
-        constants.DIRROOT + "/assets/songs/Mayday/Mayday.mp3")
+        constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
     
 
     beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT + "/assets/songs/Mayday/Mayday_1.txt")
+    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.txt")
 
     cast["beats"] = beat_map.get_beats()
+    cast["beats"].reverse()
 
     keys = ['q', 'w', 'e', 'r']
     cast['drop_points'] = []

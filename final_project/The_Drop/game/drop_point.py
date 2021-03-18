@@ -32,3 +32,6 @@ class DropPoint(arcade.Sprite):
 
     def active(self):
         return self._activated
+
+    def get_key(self):
+        return self._key
