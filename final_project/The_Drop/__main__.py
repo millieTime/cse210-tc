@@ -28,7 +28,7 @@ def main():
     
 
     beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.txt")
+    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You_2.txt")
 
     cast["beats"] = beat_map.get_beats()
     cast["beats"].reverse()
