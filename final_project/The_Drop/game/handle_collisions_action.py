@@ -19,7 +19,9 @@ class HandleCollisionsAction(Action):
         """
 
         drop_points = cast["drop_points"]
+
         beats = cast["beats"]
+
         player = cast["player"][0]
 
         # Check if there are beats that need to be removed.
@@ -44,8 +46,8 @@ class HandleCollisionsAction(Action):
         has_collided = False
 
         for beat in beats:
-            # This makes use of the `Sprite` functionality
-            if beat.collides_with_sprite(drop_point):
+            #if     they're in the same column,       and       they're close to overlapping
+            if beat.get_key() == drop_point.get_key() and abs(beat.bottom - drop_point.bottom) < 30:
                 has_collided = True
                 # Can't double-score points because the beat's points get set to
                 # zero after being scored =)
@@ -53,7 +55,7 @@ class HandleCollisionsAction(Action):
                 player.add_points(points)
         # if the drop_point was hit at the wrong time,
         if not has_collided:
-            player.subtract_points()
+            player.subtract_points(2)
             
 
     # could be super useful for if the beats were missed.
