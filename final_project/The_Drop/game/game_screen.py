@@ -23,11 +23,11 @@ class GameScreen(arcade.Window):
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
         # returns a pyglet media player object that we can use to control what happens when the song ends!
-        self._player = self._song.play()
+        self._media_player = self._song.play()
         def on_eos():
             arcade.close_window()
 
-        self._player.push_handlers(on_eos)
+        self._media_player.push_handlers(on_eos)
 
     def on_update(self, delta_time):
         # delta_time: the time between frames. used to calculate sprite exact speed.

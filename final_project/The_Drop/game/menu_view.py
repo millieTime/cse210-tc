@@ -1,5 +1,6 @@
 import arcade
 from game import constants
+from game.library import Library
 
 
 class MenuView(arcade.View):
@@ -14,7 +15,10 @@ class MenuView(arcade.View):
         '''
             display the songs, the songs will have a difficulty level next to it
         '''
+        music_library = Library()
+
         arcade.start_render()
+
         arcade.draw_text("Menu Screen", constants.MAX_X/2, constants.MAX_Y/2 + 200,
                          arcade.color.WHITE, font_size=30, anchor_x="center")
         arcade.draw_text("What Level?", constants.MAX_X/2, constants.MAX_Y/2 + 125,
@@ -41,3 +45,17 @@ class MenuView(arcade.View):
         game_view = GameView()
         game_view.setup()
         self.window.show_view(game_view)
+
+    '''
+    on_mouse_release(x: float, y: float, button: int, modifiers: int)[source]
+        Override this function to add mouse button functionality.
+
+        Parameters
+        x (float) –
+
+        y (float) –
+
+        button (int) –
+
+        modifiers (int) – Bitwise ‘and’ of all modifiers (shift, ctrl, num lock) pressed during this event. See Modifiers.
+    '''

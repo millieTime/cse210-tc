@@ -8,7 +8,11 @@ print(" ** ".join(os.listdir(PATH)))
 song = input("\nWhich would you like to use? ")
 PATH += song + "\\"
 print("\nHere are the known levels:")
-print(" ** ".join(os.listdir(PATH)))
+file_list = os.listdir(PATH)
+for file in file_list:
+    if file[-3:-1] != "txt":
+        file_list.remove(file)
+print(" ** ".join(file_list))
 level = input("\nWhich would you like to open? ")
 file_name = PATH + level
 contents = []
