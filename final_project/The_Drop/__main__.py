@@ -13,6 +13,7 @@ from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
 from game.game_screen import GameScreen
+from game.library import Library
 
 # Add this back in when we're dealing with saving scores.
 #from game.score_handler import ScoreHandler
@@ -21,15 +22,30 @@ import arcade
 
 def main():
 
+    # Figure out which song we're playing.
+    lib = Library()
+    names = lib.get_song_names()
+    print("Song names: ")
+    print(names)
+    song = ""
+    while not song in names:
+        song = input("Which song to play? ")
+    song_info = lib.get_song(song)
+    levels = song_info.get_level_names()
+    print("levels: ")
+    print(levels)
+    level = 0
+    while not level in levels:
+        level = input("Which level to play? ")
+    level = levels.index(level)
+    
+    # read song files.
+    song = arcade.Sound(song_info.get_song())
+    beat_map = BeatMap()
+    beat_map.read_file(song_info.get_level_file(level))
+
     # create the cast {key: tag, value: list}
     cast = {}
-    song = arcade.Sound(
-        constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You.wav")
-    
-
-    beat_map = BeatMap()
-    beat_map.read_file(constants.DIRROOT + "/assets/songs/Coming_For_You/Coming_For_You_2.txt")
-
     cast["beats"] = beat_map.get_beats()
     cast["beats"].reverse()
 

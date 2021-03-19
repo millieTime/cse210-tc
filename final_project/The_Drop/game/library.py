@@ -17,10 +17,8 @@
 #    bpm
 #    albumImage
 # etc.
-#from game import constants
-#from game.game_song import GameSong
-import constants
-from game_song import GameSong
+from game import constants
+from game.game_song import GameSong
 import os
 
 class Library():
@@ -68,7 +66,7 @@ class Library():
 
     def get_song(self, key):
         return self._song_dict[key]
-
+"""
 lib = Library()
 print(lib.get_song_names())
 selection = input("which song? ")
@@ -79,3 +77,4 @@ print(song.get_art())
 print(song.get_level_names())
 print(song.get_level_files())
 print(song.get_level_file(0))
+"""
