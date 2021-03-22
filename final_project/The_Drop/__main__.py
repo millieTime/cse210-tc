@@ -52,8 +52,6 @@ def main():
                            "Different Views Minimal Example")
     menu_view = MenuView(window)
     window.show_view(menu_view)
-    # game_screen = GameScreen(song, cast, script, input_service)
-    # game_screen.setup()
     arcade.run()
 
 
