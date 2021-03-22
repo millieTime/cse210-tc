@@ -84,17 +84,3 @@ class MenuView(arcade.View):
                          arcade.color.WHITE, font_size=30, anchor_x="center")
         arcade.draw_text("Song Names", constants.MAX_X/2, constants.MAX_Y/2 + 170,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
-
-    '''
-    on_mouse_release(x: float, y: float, button: int, modifiers: int)[source]
-        Override this function to add mouse button functionality.
-
-        Parameters
-        x (float) –
-
-        y (float) –
-
-        button (int) –
-
-        modifiers (int) – Bitwise ‘and’ of all modifiers (shift, ctrl, num lock) pressed during this event. See Modifiers.
-    '''
