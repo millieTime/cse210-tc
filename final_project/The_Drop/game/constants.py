@@ -6,6 +6,7 @@ DIRROOT = str(DIR.resolve().parent)
 MAX_X = 900
 MAX_Y = 700
 
+COUNTDOWN = 3
 BEAT_SPEED = -200
 BEAT_POINTS = 5
 BEAT_SCALE = .75

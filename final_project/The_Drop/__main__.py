@@ -42,7 +42,7 @@ def main():
     # read song files.
     song = arcade.Sound(song_info.get_song())
     beat_map = BeatMap()
-    beat_map.read_file(song_info.get_level_file(level))
+    beat_map.read_file(song_info.get_level_file(level), constants.COUNTDOWN)
 
     # create the cast {key: tag, value: list}
     cast = {}
