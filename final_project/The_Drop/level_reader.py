@@ -4,13 +4,17 @@ import os
 PATH = os.path.dirname(os.path.abspath(__file__)) + "\\assets\\songs\\"
 
 print("Here are the known songs:")
-print(" ** ".join(os.listdir(PATH)))
+folder_list = os.listdir(PATH)
+for folder in folder_list:
+    if folder == ".DS_Store":
+        folder_list.remove(folder)
+print(" ** ".join(folder_list))
 song = input("\nWhich would you like to use? ")
 PATH += song + "\\"
 print("\nHere are the known levels:")
 file_list = os.listdir(PATH)
 for file in file_list:
-    if file[-3:-1] != "txt":
+    if file[-3:] != "txt":
         file_list.remove(file)
 print(" ** ".join(file_list))
 level = input("\nWhich would you like to open? ")
