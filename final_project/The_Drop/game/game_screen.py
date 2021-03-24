@@ -25,11 +25,10 @@ class GameScreen(arcade.View):
         """Initialize the game
         """
         super().__init__()
+        self._song_object = song
 
         beat_map = BeatMap()
-        beat_map.read_file(
-            constants.DIRROOT +
-            "/assets/songs/Neo/neo_1.txt")
+        beat_map.read_file(self._song_object.get_level_file(0))
 
         # create the cast {key: tag, value: list}
         cast = {}
@@ -60,10 +59,13 @@ class GameScreen(arcade.View):
         script["collisions"] = [handle_collisions_action]
         script["output"] = [draw_actors_action]
 
-        self._song = song
+        self._song = arcade.Sound(self._song_object.get_song(), streaming=True)
         self._cast = cast
         self._script = script
         self._input_service = input_service
+
+    def on_show(self):
+        self.setup()
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
@@ -87,7 +89,6 @@ class GameScreen(arcade.View):
         # Adds a key to the list of keys currently pressed
         self._input_service.set_key(symbol, modifiers)
         self._cue_action("input")
-        print('IS CLICKED!')
 
     def on_key_release(self, symbol, modifiers):
         # Removes a key from the list of keys currently pressed

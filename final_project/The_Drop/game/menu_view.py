@@ -27,8 +27,8 @@ class MyFlatButton(arcade.gui.UIFlatButton):
     To capture a button click, subclass the button and override on_click.
     """
 
-    def __init__(self, song, display, window, uimanager, center_x, center_y, width, height=20):
-        super().__init__(display, center_x, center_y, width, height)
+    def __init__(self, song, window, uimanager, center_x, center_y, width, height=20):
+        super().__init__(song, center_x, center_y, width, height)
         self.ui_manager = uimanager
         self._window = window
         self._song = song
@@ -36,8 +36,9 @@ class MyFlatButton(arcade.gui.UIFlatButton):
 
     def on_click(self):
         """ Called when user lets off button """
+        song_obj = self._menu_view._lib.get_song(self._song)
         self.ui_manager.purge_ui_elements()
-        game_screen = GameScreen(self._song)
+        game_screen = GameScreen(song_obj)
         self._menu_view.window.show_view(game_screen)
 
 
@@ -48,22 +49,21 @@ class MenuView(arcade.View):
         super().__init__()
         self.ui_manager = UIManager()
         self._window = window
+        self._lib = Library()
 
     def on_show(self):
         """ Called when switching to this view"""
 
         arcade.set_background_color(arcade.color.BLACK)
-        lib = Library()
-        self._names = lib.get_song_names()
+        # self._lib = Library()
+        self._names = self._lib.get_song_names()
         self.setup()
 
     def setup(self):
         self.ui_manager.purge_ui_elements()
         counter = 125
-        id = 0
         for songName in self._names:
             button = MyFlatButton(
-                'FlatButton',
                 songName,
                 self._window,
                 self.ui_manager,
