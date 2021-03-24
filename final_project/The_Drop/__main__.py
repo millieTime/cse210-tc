@@ -14,6 +14,7 @@ from game.player import Player
 from game.drop_point import DropPoint
 from game.game_screen import GameScreen
 from game.library import Library
+from game.menu_view import MenuView
 
 # Add this back in when we're dealing with saving scores.
 #from game.score_handler import ScoreHandler
@@ -21,6 +22,7 @@ import arcade
 
 
 def main():
+
 
     # Figure out which song we're playing.
     lib = Library()
@@ -41,6 +43,7 @@ def main():
     
     # read song files.
     song = arcade.Sound(song_info.get_song())
+   
     beat_map = BeatMap()
     beat_map.read_file(song_info.get_level_file(level), constants.COUNTDOWN)
 
@@ -74,8 +77,12 @@ def main():
     script["output"] = [draw_actors_action]
 
     # start the game
-    game_screen = GameScreen(song, cast, script, input_service)
-    game_screen.setup()
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
+                           "Different Views Minimal Example")
+    menu_view = MenuView()
+    window.show_view(menu_view)
+    # game_screen = GameScreen(song, cast, script, input_service)
+    # game_screen.setup()
     arcade.run()
 
 
