@@ -77,12 +77,12 @@ def main():
     script["output"] = [draw_actors_action]
 
     # start the game
-    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
-                           "Different Views Minimal Example")
-    menu_view = MenuView()
-    window.show_view(menu_view)
-    # game_screen = GameScreen(song, cast, script, input_service)
-    # game_screen.setup()
+    #window = arcade.Window(constants.MAX_X, constants.MAX_Y,
+    #                       "Different Views Minimal Example")
+    #menu_view = MenuView()
+    #window.show_view(menu_view)
+    game_screen = GameScreen(song, cast, script, input_service)
+    game_screen.setup()
     arcade.run()
 
 
