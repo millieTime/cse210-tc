@@ -12,6 +12,7 @@ from game.beat import Beat
 from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
+from game.countdown import Countdown
 from game.game_screen import GameScreen
 from game.library import Library
 from game.menu_view import MenuView
@@ -60,6 +61,7 @@ def main():
     player = Player('Random', keys)
     cast['player'] = [player]
 
+    cast['countdown'] = [Countdown()]
     # create the script {key: tag, value: list}
     script = {}
 

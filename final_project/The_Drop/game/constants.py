@@ -6,7 +6,6 @@ DIRROOT = str(DIR.resolve().parent)
 MAX_X = 900
 MAX_Y = 700
 
-COUNTDOWN = 3
 BEAT_SPEED = -200
 BEAT_POINTS = 5
 BEAT_SCALE = .75
@@ -45,4 +44,7 @@ DROP_POINT_IMAGE = DIRROOT+"/assets/images/beat_blank_trans.png"
 DROP_POINT_IMAGE_2 = DIRROOT+"/assets/images/beat_blank_active.png"
 
 
-
+COUNTDOWN = 3
+CDIMAGE_1 = DIRROOT+"/assets/images/countdown_1.jpg"
+CDIMAGE_2 = DIRROOT+"/assets/images/countdown_2.jpg"
+CDIMAGE_3 = DIRROOT+"/assets/images/countdown_3.jpg"
