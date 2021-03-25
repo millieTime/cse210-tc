@@ -50,7 +50,7 @@ def main():
     # start the game
     window = arcade.Window(constants.MAX_X, constants.MAX_Y,
                            "Different Views Minimal Example")
-    menu_view = MenuView(window)
+    menu_view = MenuView()
     window.show_view(menu_view)
     arcade.run()
 

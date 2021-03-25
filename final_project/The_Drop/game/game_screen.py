@@ -28,7 +28,7 @@ class GameScreen(arcade.View):
         self._song_object = song
 
         beat_map = BeatMap()
-        beat_map.read_file(self._song_object.get_level_file(0))
+        beat_map.read_file(self._song_object.get_level_file(1))
 
         # create the cast {key: tag, value: list}
         cast = {}
