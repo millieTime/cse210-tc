@@ -12,7 +12,7 @@ class BeatMap:
     def get_beats(self):
         return self._beatList
 
-    def read_file(self, file):
+    def read_file(self, file, countdown):
         # file_name = os.path.basename(file)
         with open(file, "r") as f:
             imported_file = f.readlines()
@@ -28,7 +28,7 @@ class BeatMap:
                     if (char == "q" or char == "w" or char == "e" or char == "r"):
                         time_in_measure = time_between_beats * 12
                         beat_timing = first_beat + time_between_beats * \
-                            spot + (time_in_measure * index)
+                            spot + (time_in_measure * index)+countdown
                         a_beat = Beat(char, beat_timing)
                         self._beatList.append(a_beat)
 
