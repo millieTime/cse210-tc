@@ -3,6 +3,7 @@ from game import constants
 from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
+from game.countdown import Countdown
 from game.input import Input
 from game.output import Output
 from game.control_actors_action import ControlActorsAction
@@ -23,10 +24,9 @@ class GameScreen(arcade.View):
         """Initialize the game
         """
         super().__init__()
-        self._song_object = song
 
         beat_map = BeatMap()
-        beat_map.read_file(self._song_object.get_level_file(0))
+        beat_map.read_file(song.get_level_file(0), constants.COUNTDOWN)
 
         # create the cast {key: tag, value: list}
         cast = {}
@@ -40,7 +40,9 @@ class GameScreen(arcade.View):
 
         player = Player('Random', keys)
         cast['player'] = [player]
-
+        
+        countdown = Countdown(arcade.Sound(song.get_song()))
+        cast['countdown'] = [countdown]
         # create the script {key: tag, value: list}
         script = {}
         
@@ -56,8 +58,6 @@ class GameScreen(arcade.View):
         script["move"] = [move_actors_action]
         script["collisions"] = [handle_collisions_action]
         script["output"] = [draw_actors_action]
-
-        self._song = arcade.Sound(self._song_object.get_song(), streaming=True)
 
         self._cast = cast
         self._script = script

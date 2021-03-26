@@ -6,10 +6,11 @@ class Countdown(arcade.Sprite):
     # Won't have pictures so much as it will have text that starts big and gets small.
     def __init__(self, song):
         #song: a song that arcade can play
-        # add 3, 2, 1 images
-        super().__init__(constants.CDIMAGE_3)
-        self.append_texture(arcade.load_texture(constants.CDIMAGE_2))
-        self.append_texture(arcade.load_texture(constants.CDIMAGE_1))
+        # add number images
+        super().__init__()
+        for image in constants.CDIMAGES:
+            self.append_texture(arcade.load_texture(image))
+        self.set_texture(constants.COUNTDOWN - 1)
         self._stage = -1
         self._time = 0
         self.change_x = 1
@@ -17,6 +18,12 @@ class Countdown(arcade.Sprite):
         self.center_y = constants.MAX_Y / 2
 
         self._song = song
+        self._media_player = self._song.play()
+        self._song.stop(self._media_player)
+        self._media_player.seek(0)
+        def on_player_eos():
+            arcade.close_window()
+        self._media_player.on_player_eos = on_player_eos
     
     @property
     def center_x(self):
@@ -24,10 +31,11 @@ class Countdown(arcade.Sprite):
 	
     @center_x.setter
     def center_x(self, new_x):
+        #pass
         self.increment_timer(new_x - constants.MAX_X / 2)
 
     def draw(self):
-        if self._stage < 3:
+        if self._stage < constants.COUNTDOWN:
             super().draw()
     
     def increment_timer(self, elapsed):
@@ -35,19 +43,11 @@ class Countdown(arcade.Sprite):
         if self._time // 1 > self._stage:
             # 1 whole second has elapsed.
             self._stage = int(self._time // 1)
-            # If this is the very first call, ignore elapsed time.
-            # It couses audio sync issues.
-            if self._stage == 0:
-                self._time = 0
-            # 2-3rd? change image.
-            elif self._stage < 3:
+            # Change image to next number.
+            if self._stage < constants.COUNTDOWN:
                 self.set_texture(self._stage)
-            # 4th? Start the music and lets go!
-            elif self._stage == 3:
-                # returns a pyglet media player object that we can use to control what happens when the song ends!
-                self._media_player = self._song.play()
-                def on_eos():
-                    arcade.close_window()
-                self._media_player.push_handlers(on_eos)
+            # Start the music and lets go!
+            elif self._stage == constants.COUNTDOWN:
+                self._media_player.play()
         
 
