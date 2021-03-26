@@ -1,4 +1,4 @@
-import random
+import random, time
 from game import constants
 from game.point import Point
 from game.control_actors_action import ControlActorsAction
@@ -61,7 +61,7 @@ def main():
     player = Player('Random', keys)
     cast['player'] = [player]
 
-    cast['countdown'] = [Countdown()]
+    cast['countdown'] = [Countdown(song)]
     # create the script {key: tag, value: list}
     script = {}
 
@@ -83,9 +83,10 @@ def main():
     #                       "Different Views Minimal Example")
     #menu_view = MenuView()
     #window.show_view(menu_view)
-    game_screen = GameScreen(song, cast, script, input_service)
+    game_screen = GameScreen(cast, script, input_service)
     game_screen.setup()
     arcade.run()
+    
 
 
 if __name__ == "__main__":

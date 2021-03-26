@@ -5,29 +5,21 @@ class GameScreen(arcade.Window):
     """A lot like the arcade_batter's batter class. Inherits from arcade.window and runs the game.
 
     Attrs:
-        song: a song that arcade can play
         cast: dictionary of sprites to display on screen
         script: dictionary of actions to execute
         input_service: the thing that lets us know what the user is doing.
     """
-    def __init__(self, song, cast, script, input_service):
+    def __init__(self, cast, script, input_service):
         """Initialize the game
         """
         super().__init__(constants.MAX_X, constants.MAX_Y, "The Drop")
 
-        self._song = song
         self._cast = cast
         self._script = script
         self._input_service = input_service
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
-        # returns a pyglet media player object that we can use to control what happens when the song ends!
-        self._media_player = self._song.play()
-        def on_eos():
-            arcade.close_window()
-
-        self._media_player.push_handlers(on_eos)
 
     def on_update(self, delta_time):
         # delta_time: the time between frames. used to calculate sprite exact speed.
