@@ -24,67 +24,35 @@ import arcade
 
 def main():
 
-
     # Figure out which song we're playing.
-    lib = Library()
-    names = lib.get_song_names()
-    print("Song names: ")
-    print(names)
-    song = ""
-    while not song in names:
-        song = input("Which song to play? ")
-    song_info = lib.get_song(song)
-    levels = song_info.get_level_names()
-    print("levels: ")
-    print(levels)
-    level = 0
-    while not level in levels:
-        level = input("Which level to play? ")
-    level = levels.index(level)
-    
+    # lib = Library()
+    # names = lib.get_song_names()
+    # print("Song names: ")
+    # print(names)
+    # song = ""
+    # while not song in names:
+    #     song = input("Which song to play? ")
+    # song_info = lib.get_song(song)
+    # levels = song_info.get_level_names()
+    # print("levels: ")
+    # print(levels)
+    # level = 0
+    # while not level in levels:
+    #     level = input("Which level to play? ")
+    # level = levels.index(level)
+
+    # return song_info from Menu_view
+
     # read song files.
-    song = arcade.Sound(song_info.get_song())
-   
-    beat_map = BeatMap()
-    beat_map.read_file(song_info.get_level_file(level), constants.COUNTDOWN)
-
-    # create the cast {key: tag, value: list}
-    cast = {}
-    cast["beats"] = beat_map.get_beats()
-    cast["beats"].reverse()
-
-    keys = ['q', 'w', 'e', 'r']
-    cast['drop_points'] = []
-    for key in keys:
-        cast['drop_points'].append(DropPoint(key))
-
-    player = Player('Random', keys)
-    cast['player'] = [player]
-
-    cast['countdown'] = [Countdown(song)]
-    # create the script {key: tag, value: list}
-    script = {}
-
-    input_service = Input(keys)
-    output_service = Output()
-
-    control_actors_action = ControlActorsAction(input_service, keys)
-    move_actors_action = MoveActorsAction()
-    handle_collisions_action = HandleCollisionsAction()
-    draw_actors_action = DrawActorsAction(output_service)
-
-    script["input"] = [control_actors_action]
-    script["move"] = [move_actors_action]
-    script["collisions"] = [handle_collisions_action]
-    script["output"] = [draw_actors_action]
+    # song = arcade.Sound(song_info.get_song())
+    # song = arcade.load_sound(constants.DIRROOT +
+    #                          "/assets/songs/Neo/neo.mp3")
 
     # start the game
-    #window = arcade.Window(constants.MAX_X, constants.MAX_Y,
-    #                       "Different Views Minimal Example")
-    #menu_view = MenuView()
-    #window.show_view(menu_view)
-    game_screen = GameScreen(cast, script, input_service)
-    game_screen.setup()
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
+                           "The Drop")
+    menu_view = MenuView()
+    window.show_view(menu_view)
     arcade.run()
     
 

@@ -1,7 +1,7 @@
 # Keeps track of the songs and levels available. Will have a collection of all the information
 # on songs we have.
 
-#Collection:
+# Collection:
 #  song:
 #    bpm
 #    albumImage
@@ -21,6 +21,7 @@ from game import constants
 from game.game_song import GameSong
 import os
 
+
 class Library():
 
     def __init__(self):
@@ -28,18 +29,18 @@ class Library():
         Populates self._song_dict with GameSong objects.
         """
         # Get the directory for the songs
-        PATH = constants.DIRROOT + "\\assets\\songs\\"
+        PATH = constants.DIRROOT + "/assets/songs/"
         self._song_dict = {}
         # Go through each folder in the songs folder
         for song in os.listdir(PATH):
             if song == ".DS_Store":
-                #yeah, that's not a song folder.
+                # yeah, that's not a song folder.
                 continue
-            song_path = PATH + song + "\\"
+            song_path = PATH + song + "/"
             self._parse_folder(song_path)
 
     def _parse_folder(self, folder_path):
-            # Get all the files in the song's folder
+        # Get all the files in the song's folder
         file_list = os.listdir(folder_path)
         song_file = ""
         album_art = ""
@@ -66,6 +67,8 @@ class Library():
 
     def get_song(self, key):
         return self._song_dict[key]
+
+
 """
 lib = Library()
 print(lib.get_song_names())
