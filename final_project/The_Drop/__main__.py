@@ -49,8 +49,7 @@ def main():
     #                          "/assets/songs/Neo/neo.mp3")
 
     # start the game
-    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
-                           "The Drop")
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y,"The Drop")
     menu_view = MenuView()
     window.show_view(menu_view)
     arcade.run()
