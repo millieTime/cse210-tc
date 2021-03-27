@@ -45,7 +45,8 @@ class Output:
             actors (list): The actors to render.
         """ 
         for actor in actors:
-            self.draw_actor(actor)
+            if actor:
+                self.draw_actor(actor)
     
     def flush_buffer(self):
         """Renders the screen.""" 

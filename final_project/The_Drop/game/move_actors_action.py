@@ -28,7 +28,7 @@ class MoveActorsAction(Action):
 
                 # If zeros are falsey, might be able to replace this with
                 # if not(actorx and actory)
-                if not (actor.change_y == 0 and actor.change_x == 0):
+                if actor.change_y or actor.change_x:
                     self._move_actor(actor, delta_time)
 
     def _move_actor(self, actor, delta_time):

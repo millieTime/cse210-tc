@@ -1,4 +1,4 @@
-import random
+import random, time
 from game import constants
 from game.point import Point
 from game.control_actors_action import ControlActorsAction
@@ -12,6 +12,7 @@ from game.beat import Beat
 from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
+from game.countdown import Countdown
 from game.game_screen import GameScreen
 from game.library import Library
 from game.menu_view import MenuView
@@ -48,11 +49,11 @@ def main():
     #                          "/assets/songs/Neo/neo.mp3")
 
     # start the game
-    window = arcade.Window(constants.MAX_X, constants.MAX_Y,
-                           "Different Views Minimal Example")
+    window = arcade.Window(constants.MAX_X, constants.MAX_Y,"The Drop")
     menu_view = MenuView()
     window.show_view(menu_view)
     arcade.run()
+    
 
 
 if __name__ == "__main__":

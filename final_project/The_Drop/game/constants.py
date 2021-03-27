@@ -44,4 +44,5 @@ DROP_POINT_IMAGE = DIRROOT+"/assets/images/beat_blank_trans.png"
 DROP_POINT_IMAGE_2 = DIRROOT+"/assets/images/beat_blank_active.png"
 
 
-
+COUNTDOWN = 5
+CDIMAGES = [f"{DIRROOT}/assets/images/countdown_{x}.jpg" for x in range(5, 0, -1)]

@@ -26,19 +26,18 @@ class MyFlatButton(arcade.gui.UIFlatButton):
     """
     To capture a button click, subclass the button and override on_click.
     """
-
     def __init__(self, song, view, uimanager, center_x, center_y, width, height=20):
         super().__init__(song, center_x, center_y, width, height)
         self.ui_manager = uimanager
         self._song = song
-        self._menu_view = view
+        self._view = view
 
     def on_click(self):
         """ Called when user lets off button """
-        song_obj = self._menu_view._lib.get_song(self._song)
+        song_obj = self._view._lib.get_song(self._song)
         self.ui_manager.purge_ui_elements()
         game_screen = GameScreen(song_obj)
-        self._menu_view.window.show_view(game_screen)
+        self._view.window.show_view(game_screen)
 
 
 class MenuView(arcade.View):

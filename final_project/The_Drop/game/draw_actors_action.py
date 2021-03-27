@@ -34,14 +34,15 @@ class DrawActorsAction(Action):
 
         beats = cast["beats"]
         beats = beats[-30:]
-        for beat in beats:
-            self._output_service.draw_actor(beat)
+        self._output_service.draw_actors(beats)
 
         players = cast["player"]
-        for player in players:
-            self._output_service.draw_actor(player)
+        self._output_service.draw_actors(players)
             
-        for drop_point in cast["drop_points"]:
-            self._output_service.draw_actor(drop_point)
+        drop_points = cast["drop_points"]
+        self._output_service.draw_actors(drop_points)
+
+        countdowns = cast["countdown"]
+        self._output_service.draw_actors(countdowns)
 
         self._output_service.flush_buffer()
