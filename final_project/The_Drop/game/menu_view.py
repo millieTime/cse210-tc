@@ -80,6 +80,7 @@ class MenuView(arcade.View):
             display the songs, the songs will have a difficulty level next to it
         '''
         arcade.start_render()
+        arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
         arcade.draw_text("Menu Screen", constants.MAX_X/2, constants.MAX_Y/2 + 200,
                          arcade.color.WHITE, font_size=30, anchor_x="center")
         arcade.draw_text("Song Names", constants.MAX_X/2, constants.MAX_Y/2 + 170,
