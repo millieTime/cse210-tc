@@ -33,7 +33,7 @@ class DrawActorsAction(Action):
         
 
         beats = cast["beats"]
-        beats = beats[-30:]
+        beats = beats[-35:]
         self._output_service.draw_actors(beats)
 
         players = cast["player"]

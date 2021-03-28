@@ -13,7 +13,7 @@ class Player(arcade.Sprite):
         self._score = Score()
 
     def draw(self):
-        arcade.draw_text(text=str(self), start_x=50, start_y=50, color=arcade.color.ALLOY_ORANGE, font_size=20)
+        arcade.draw_text(text=str(self), start_x=750, start_y=25, color=arcade.color.ALLOY_ORANGE, font_size=20)
 
     def set_player_name(self, name):
         self._player_name = name
