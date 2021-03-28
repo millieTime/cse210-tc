@@ -43,5 +43,9 @@ DROP_POINT_WIDTH = MAX_X
 DROP_POINT_IMAGE = DIRROOT+"/assets/images/beat_blank_trans.png"
 DROP_POINT_IMAGE_2 = DIRROOT+"/assets/images/beat_blank_active.png"
 
+MAIN_MENU_IMAGE = DIRROOT + "/assets/images/menu_background.jpg"
+SCORE_BACKGROUND = DIRROOT + "/assets/images/bar.jpg"
 
 
+COUNTDOWN = 5
+CDIMAGES = [f"{DIRROOT}/assets/images/countdown_{x}.jpg" for x in range(5, 0, -1)]
