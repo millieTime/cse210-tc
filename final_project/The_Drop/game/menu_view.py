@@ -10,7 +10,7 @@ class MyFlatButton(arcade.gui.UIFlatButton):
     To capture a button click, subclass the button and override on_click.
     """
 
-    def __init__(self, song, input_box, view, uimanager, center_x, center_y, width, height=20):
+    def __init__(self, song, input_box, view, uimanager, center_x, center_y, width=250, height=30):
         super().__init__(song, center_x, center_y, width, height)
         self.ui_manager = uimanager
         self._view = view
@@ -52,7 +52,7 @@ class MenuView(arcade.View):
         self._ui_input_box.cursor_index = len(self._ui_input_box.text)
         self.ui_manager.add_ui_element(self._ui_input_box)
 
-        counter = 125
+        counter = 175
         for songName in self._names:
             button = MyFlatButton(
                 songName,
@@ -61,10 +61,10 @@ class MenuView(arcade.View):
                 self.ui_manager,
                 center_x=constants.MAX_X/2,
                 center_y=constants.MAX_Y/2 - counter,
-                width=250,
+                height=40
             )
             self.ui_manager.add_ui_element(button)
-            counter -= 25
+            counter -= 50
 
     def on_draw(self):
         """ Draw the menu """
@@ -74,8 +74,10 @@ class MenuView(arcade.View):
 
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
-        arcade.draw_text("Menu Screen", constants.MAX_X/2, constants.MAX_Y/2 + 200,
-                         arcade.color.WHITE, font_size=30, anchor_x="center")
+        arcade.draw_text("The", constants.MAX_X/2, constants.MAX_Y/2 + 250, 
+                         arcade.color.WHITE, font_size=40, font_name='impact', anchor_x="right",anchor_y='top')
+        arcade.draw_text("Drop", constants.MAX_X/2, constants.MAX_Y/2 + 250,
+                         arcade.color.WHITE, font_size=70, font_name='impact', anchor_x="left",anchor_y='top')
         arcade.draw_text("Song Names", constants.MAX_X/2, constants.MAX_Y/2 - 25,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
         arcade.draw_text("Input Your Name", constants.MAX_X/2, constants.MAX_Y/2 + 125,

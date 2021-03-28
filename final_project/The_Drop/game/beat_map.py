@@ -1,4 +1,5 @@
-import os
+#import os
+from game import constants
 from game.beat import Beat
 
 # beat oject = (letterName/key, time when the beat hits)
@@ -11,6 +12,10 @@ class BeatMap:
 
     def get_beats(self):
         return self._beatList
+
+    def get_max_score(self):
+        # (max_score - player_score ) / 2 = hit percentage.
+        return len(self._beatList) * constants.BEAT_POINTS
 
     def read_file(self, file, countdown):
         # file_name = os.path.basename(file)

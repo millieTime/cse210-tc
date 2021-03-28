@@ -3,7 +3,7 @@ from game import constants
 from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
-from game.countdown import Countdown
+from game.synchronizer import Synchronizer
 from game.input import Input
 from game.output import Output
 from game.control_actors_action import ControlActorsAction
@@ -42,8 +42,8 @@ class GameScreen(arcade.View):
         player = Player(player_name, keys)
         cast['player'] = [player]
         
-        countdown = Countdown(arcade.Sound(song.get_song()))
-        cast['countdown'] = [countdown]
+        synchronizer = Synchronizer(arcade.Sound(song.get_song()))
+        cast['synchronizer'] = [synchronizer]
         # create the script {key: tag, value: list}
         script = {}
         

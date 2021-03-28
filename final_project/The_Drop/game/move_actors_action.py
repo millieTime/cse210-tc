@@ -20,7 +20,7 @@ class MoveActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        if cast["countdown"][0].is_synchronized():
+        if cast["synchronizer"][0].is_synchronized():
             for group in cast.values():
                 for actor in group:
                     # It would be nice to add something to a base Actor class
@@ -32,7 +32,7 @@ class MoveActorsAction(Action):
                     if actor.change_y or actor.change_x:
                         self._move_actor(actor, delta_time)
         else:
-            cast["countdown"][0].synchronize()
+            cast["synchronizer"][0].synchronize()
 
     def _move_actor(self, actor, delta_time):
         """Moves the given actor to its next position according to its 

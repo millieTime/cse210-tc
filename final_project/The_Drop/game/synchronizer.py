@@ -1,7 +1,7 @@
 import arcade
 from game import constants
 
-class Countdown(arcade.Sprite):
+class Synchronizer(arcade.Sprite):
 
     # Helps sync the player, the music, and the game.
 
@@ -58,5 +58,3 @@ class Countdown(arcade.Sprite):
 
     def synchronize(self):
         self._synchronized = True
-        
-

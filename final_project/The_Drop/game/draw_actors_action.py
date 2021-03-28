@@ -42,7 +42,7 @@ class DrawActorsAction(Action):
         drop_points = cast["drop_points"]
         self._output_service.draw_actors(drop_points)
 
-        countdowns = cast["countdown"]
-        self._output_service.draw_actors(countdowns)
+        synchronizers = cast["synchronizer"]
+        self._output_service.draw_actors(synchronizers)
 
         self._output_service.flush_buffer()

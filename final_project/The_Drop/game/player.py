@@ -2,6 +2,7 @@
 # multiplayer. Should know the player's score (likely a Score object), which
 # keys they are supposed to press.
 from game.score import Score
+from game import constants
 import arcade
 
 class Player(arcade.Sprite):
@@ -11,9 +12,10 @@ class Player(arcade.Sprite):
         self._player_name = player_name
         self._keys = keys
         self._score = Score()
+        self._right = constants.MAX_X - 20
 
     def draw(self):
-        arcade.draw_text(text=str(self), start_x=750, start_y=25, color=arcade.color.ALLOY_ORANGE, font_size=20)
+        arcade.draw_text(text=str(self), start_x=self._right, start_y=25, color=arcade.color.ALLOY_ORANGE, font_size=20, anchor_x='right')
 
     def set_player_name(self, name):
         self._player_name = name
