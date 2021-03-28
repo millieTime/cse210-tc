@@ -20,7 +20,8 @@ class GameScreen(arcade.View):
         script: dictionary of actions to execute
         input_service: the thing that lets us know what the user is doing.
     """
-    def __init__(self, song):
+    
+    def __init__(self, song, player_name):
         """Initialize the game
         """
         super().__init__()
@@ -38,7 +39,7 @@ class GameScreen(arcade.View):
         for key in keys:
             cast['drop_points'].append(DropPoint(key))
 
-        player = Player('Random', keys)
+        player = Player(player_name, keys)
         cast['player'] = [player]
         
         countdown = Countdown(arcade.Sound(song.get_song()))

@@ -9,17 +9,19 @@ class MyFlatButton(arcade.gui.UIFlatButton):
     """
     To capture a button click, subclass the button and override on_click.
     """
-    def __init__(self, song, view, uimanager, center_x, center_y, width, height=20):
+
+    def __init__(self, song, input_box, view, uimanager, center_x, center_y, width, height=20):
         super().__init__(song, center_x, center_y, width, height)
         self.ui_manager = uimanager
-        self._song = song
         self._view = view
+        self._song = song
+        self._input_box = input_box
 
     def on_click(self):
         """ Called when user lets off button """
         song_obj = self._view._lib.get_song(self._song)
         self.ui_manager.purge_ui_elements()
-        game_screen = GameScreen(song_obj)
+        game_screen = GameScreen(song_obj, self._input_box.text)
         self._view.window.show_view(game_screen)
 
 
@@ -40,14 +42,25 @@ class MenuView(arcade.View):
 
     def setup(self):
         self.ui_manager.purge_ui_elements()
+
+        self._ui_input_box = arcade.gui.UIInputBox(
+            center_x=constants.MAX_X/2,
+            center_y=constants.MAX_Y/2 + 100,
+            width=300
+        )
+        self._ui_input_box.text = ''
+        self._ui_input_box.cursor_index = len(self._ui_input_box.text)
+        self.ui_manager.add_ui_element(self._ui_input_box)
+
         counter = 125
         for songName in self._names:
             button = MyFlatButton(
                 songName,
+                self._ui_input_box,
                 self,
                 self.ui_manager,
                 center_x=constants.MAX_X/2,
-                center_y=constants.MAX_Y/2 + counter,
+                center_y=constants.MAX_Y/2 - counter,
                 width=250,
             )
             self.ui_manager.add_ui_element(button)
@@ -58,9 +71,12 @@ class MenuView(arcade.View):
         '''
             display the songs, the songs will have a difficulty level next to it
         '''
+
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
         arcade.draw_text("Menu Screen", constants.MAX_X/2, constants.MAX_Y/2 + 200,
                          arcade.color.WHITE, font_size=30, anchor_x="center")
-        arcade.draw_text("Song Names", constants.MAX_X/2, constants.MAX_Y/2 + 170,
+        arcade.draw_text("Song Names", constants.MAX_X/2, constants.MAX_Y/2 - 25,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
+        arcade.draw_text("Input Your Name", constants.MAX_X/2, constants.MAX_Y/2 + 125,
+                         arcade.color.WHITE, font_size=16, anchor_x="center")
