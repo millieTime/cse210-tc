@@ -20,16 +20,19 @@ class MoveActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        for group in cast.values():
-            for actor in group:
-                # It would be nice to add something to a base Actor class
-                # to detect is_zero()...
-                # if not actor.get_velocity().is_zero():
+        if cast["countdown"][0].is_synchronized():
+            for group in cast.values():
+                for actor in group:
+                    # It would be nice to add something to a base Actor class
+                    # to detect is_zero()...
+                    # if not actor.get_velocity().is_zero():
 
-                # If zeros are falsey, might be able to replace this with
-                # if not(actorx and actory)
-                if not (actor.change_y == 0 and actor.change_x == 0):
-                    self._move_actor(actor, delta_time)
+                    # If zeros are falsey, might be able to replace this with
+                    # if not(actorx and actory)
+                    if actor.change_y or actor.change_x:
+                        self._move_actor(actor, delta_time)
+        else:
+            cast["countdown"][0].synchronize()
 
     def _move_actor(self, actor, delta_time):
         """Moves the given actor to its next position according to its 

@@ -47,4 +47,5 @@ MAIN_MENU_IMAGE = DIRROOT + "/assets/images/menu_background.jpg"
 SCORE_BACKGROUND = DIRROOT + "/assets/images/bar.jpg"
 
 
-
+COUNTDOWN = 5
+CDIMAGES = [f"{DIRROOT}/assets/images/countdown_{x}.jpg" for x in range(5, 0, -1)]

@@ -3,6 +3,7 @@ from game import constants
 from game.beat_map import BeatMap
 from game.player import Player
 from game.drop_point import DropPoint
+from game.countdown import Countdown
 from game.input import Input
 from game.output import Output
 from game.control_actors_action import ControlActorsAction
@@ -15,20 +16,17 @@ class GameScreen(arcade.View):
     """A lot like the arcade_batter's batter class. Inherits from arcade.window and runs the game.
 
     Attrs:
-        song: a song that arcade can play
         cast: dictionary of sprites to display on screen
         script: dictionary of actions to execute
         input_service: the thing that lets us know what the user is doing.
     """
-
     def __init__(self, song):
         """Initialize the game
         """
         super().__init__()
-        self._song_object = song
 
         beat_map = BeatMap()
-        beat_map.read_file(self._song_object.get_level_file(0))
+        beat_map.read_file(song.get_level_file(0), constants.COUNTDOWN)
 
         # create the cast {key: tag, value: list}
         cast = {}
@@ -42,10 +40,12 @@ class GameScreen(arcade.View):
 
         player = Player('Random', keys)
         cast['player'] = [player]
-
+        
+        countdown = Countdown(arcade.Sound(song.get_song()))
+        cast['countdown'] = [countdown]
         # create the script {key: tag, value: list}
         script = {}
-
+        
         input_service = Input(keys)
         output_service = Output()
 
@@ -59,7 +59,6 @@ class GameScreen(arcade.View):
         script["collisions"] = [handle_collisions_action]
         script["output"] = [draw_actors_action]
 
-        self._song = arcade.Sound(self._song_object.get_song(), streaming=True)
         self._cast = cast
         self._script = script
         self._input_service = input_service
@@ -69,13 +68,6 @@ class GameScreen(arcade.View):
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
-        # returns a pyglet media player object that we can use to control what happens when the song ends!
-        self._media_player = self._song.play()
-
-        def on_eos():
-            arcade.close_window()
-
-        self._media_player.push_handlers(on_eos)
 
     def on_update(self, delta_time):
         # delta_time: the time between frames. used to calculate sprite exact speed.
