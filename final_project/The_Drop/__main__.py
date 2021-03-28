@@ -24,30 +24,6 @@ import arcade
 
 def main():
 
-    # Figure out which song we're playing.
-    # lib = Library()
-    # names = lib.get_song_names()
-    # print("Song names: ")
-    # print(names)
-    # song = ""
-    # while not song in names:
-    #     song = input("Which song to play? ")
-    # song_info = lib.get_song(song)
-    # levels = song_info.get_level_names()
-    # print("levels: ")
-    # print(levels)
-    # level = 0
-    # while not level in levels:
-    #     level = input("Which level to play? ")
-    # level = levels.index(level)
-
-    # return song_info from Menu_view
-
-    # read song files.
-    # song = arcade.Sound(song_info.get_song())
-    # song = arcade.load_sound(constants.DIRROOT +
-    #                          "/assets/songs/Neo/neo.mp3")
-
     # start the game
     window = arcade.Window(constants.MAX_X, constants.MAX_Y,"The Drop")
     menu_view = MenuView()
