@@ -8,7 +8,7 @@ from game import constants
 
 class DropPoint(arcade.Sprite):
 
-    def __init__(self, key):
+    def __init__(self, key, c_y = constants.DROP_POINT_Y):
         # no image yet, but when we have one we'll send it here.
         super().__init__(constants.DROP_POINT_IMAGE, scale=constants.BEAT_SCALE)
         # Uncomment the following line when we have images.
@@ -18,7 +18,7 @@ class DropPoint(arcade.Sprite):
         # Don't know what they are in constants, so we'll update
         # this when that's merged.
         self.center_x = constants.BEAT_X[key]
-        self.center_y = constants.DROP_POINT_Y
+        self.center_y = c_y
 
     def activate(self):
         self._activated = True
