@@ -20,18 +20,19 @@ class HandleCollisionsAction(Action):
 
         drop_points = cast["drop_points"]
 
-        beats = cast["beats"]
+        all_beats = cast["beats"]
+        relevant_beats = all_beats[-20:]
 
         player = cast["player"][0]
 
         # Check if there are beats that need to be removed.
-        for beat in beats:
+        for beat in relevant_beats:
             if self._is_off_screen(beat):
                 # will be zero if the beat has been scored. Otherwise,
                 # the player needs to lose some points!
                 points = beat.kill_and_points()
                 player.subtract_points(points)
-                beats.remove(beat)
+                all_beats.remove(beat)
 
         # Next, go through the drop_points and see whether they're scoring
         # or losing points.
@@ -39,20 +40,24 @@ class HandleCollisionsAction(Action):
             # if the key is pressed,
             if drop_point.active():
                 # check for collisions.
-                self._handle_beat_collision(beats, drop_point, player)
+                #reverse so it checks the lowest beats first
+                self._handle_beat_collision(relevant_beats, drop_point, player)
 
     def _handle_beat_collision(self, beats, drop_point, player):
         #Whether the drop_point has hit a beat.
         has_collided = False
 
-        for beat in beats:
+        for index in range(len(beats) -1, -1, -1):
+            beat = beats[index]
             #if     they're in the same column,       and       they're close to overlapping
             if beat.get_key() == drop_point.get_key() and abs(beat.bottom - drop_point.bottom) < 30:
                 has_collided = True
                 # Can't double-score points because the beat's points get set to
                 # zero after being scored =)
-                points = beat.kill_and_points()
+                points = beats[index].kill_and_points()
                 player.add_points(points)
+                # only allowed to score one beat at a time.
+                break
         # if the drop_point was hit at the wrong time,
         if not has_collided:
             player.subtract_points(2)
