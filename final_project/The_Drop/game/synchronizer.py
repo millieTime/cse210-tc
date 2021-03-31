@@ -1,12 +1,13 @@
 import arcade
 from game import constants
+from game.game_over_screen import GameOverScreen
 
 class Synchronizer(arcade.Sprite):
 
     # Helps sync the player, the music, and the game.
 
     # want this to show 3, 2, 1, so I'll need to override update and increment some timer to keep track of the number here.
-    def __init__(self, song):
+    def __init__(self, song, window, player):
         #song: a song that arcade can play
         # add number images
         super().__init__()
@@ -25,7 +26,8 @@ class Synchronizer(arcade.Sprite):
         self._song.stop(self._media_player)
         self._media_player.seek(0)
         def on_player_eos():
-            arcade.close_window()
+            window.game_over_screen = GameOverScreen(player)
+            window.show_view(window.game_over_screen)
         self._media_player.on_player_eos = on_player_eos
     
     @property
