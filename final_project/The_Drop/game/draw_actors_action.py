@@ -29,7 +29,7 @@ class DrawActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         self._output_service.clear_screen()
-
+        arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.GAME_BACKGROUND))
         
 
         beats = cast["beats"]
