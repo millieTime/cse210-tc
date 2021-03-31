@@ -57,6 +57,8 @@ class InstructionView(arcade.View):
 
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
+        arcade.draw_rectangle_filled(constants.MAX_X/2, constants.MAX_Y /2 - 50,
+                                    constants.MAX_X - 50, 530, arcade.color.EERIE_BLACK)
         arcade.draw_text("The", constants.MAX_X/2, constants.MAX_Y/2 + 325, 
                          arcade.color.WHITE, font_size=40, font_name='impact', anchor_x="right",anchor_y='top')
         arcade.draw_text("Drop", constants.MAX_X/2, constants.MAX_Y/2 + 325,
@@ -68,13 +70,10 @@ class InstructionView(arcade.View):
         counter = 200
         for line in self._instruction_text:
             if line:
-                arcade.draw_rectangle_filled(constants.MAX_X/2, constants.MAX_Y /2 + counter - 2,
-                                            constants.MAX_X - 50, 26, arcade.color.EERIE_BLACK)
-                if line != " ":
                     arcade.draw_text(
                         line,
                         60, constants.MAX_Y / 2 + counter,
-                        arcade.color.REDWOOD, font_size=16,
+                        arcade.color.CYBER_YELLOW, font_size=16,
                         #width = constants.MAX_X - 100,
                         anchor_x= 'left', anchor_y="center"
                     )

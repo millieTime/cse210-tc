@@ -79,5 +79,5 @@ class MenuView(arcade.View):
                          arcade.color.WHITE, font_size=70, font_name='impact', anchor_x="left",anchor_y='top')
         arcade.draw_text("Input Your Name", constants.MAX_X/2, constants.MAX_Y/2 + 125,
                          arcade.color.WHITE, font_size=16, anchor_x="center")
-        arcade.draw_text("--Song Names--", constants.MAX_X/2, constants.MAX_Y/2 + 25,
+        arcade.draw_text("--What's Droppin?--", constants.MAX_X/2, constants.MAX_Y/2 + 35,
                          arcade.color.WHITE, font_size=20, anchor_x="center")

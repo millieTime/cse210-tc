@@ -7,11 +7,11 @@ import arcade
 
 class Player(arcade.Sprite):
 
-    def __init__(self, player_name, keys):
+    def __init__(self, player_name, keys, max_score):
         super().__init__()
         self._player_name = player_name
         self._keys = keys
-        self._score = Score()
+        self._score = Score(max_score)
         self._right = constants.MAX_X - 20
 
     def draw(self):
@@ -37,6 +37,9 @@ class Player(arcade.Sprite):
 
     def get_player_keys(self):
         return self._keys
+
+    def get_accuracy(self):
+        return self._score.get_accuracy()
 
     def reset_score(self):
         self._score.reset_score()

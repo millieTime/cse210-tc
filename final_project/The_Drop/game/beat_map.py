@@ -14,7 +14,6 @@ class BeatMap:
         return self._beatList
 
     def get_max_score(self):
-        # (max_score - player_score ) / 2 = hit percentage.
         return len(self._beatList) * constants.BEAT_POINTS
 
     def read_file(self, file, countdown):
