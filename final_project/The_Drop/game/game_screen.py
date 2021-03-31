@@ -42,7 +42,7 @@ class GameScreen(arcade.View):
         player = Player(player_name, keys)
         cast['player'] = [player]
         
-        synchronizer = Synchronizer(arcade.Sound(song.get_song()))
+        synchronizer = Synchronizer(arcade.Sound(song.get_song()), self.window, player)
         cast['synchronizer'] = [synchronizer]
         # create the script {key: tag, value: list}
         script = {}

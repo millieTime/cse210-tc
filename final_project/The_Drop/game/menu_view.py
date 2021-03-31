@@ -6,18 +6,6 @@ from game.change_view_button import ChangeViewButton
 import arcade.gui
 from arcade.gui import UIManager
 
-class ChangeViewsButton(arcade.gui.UIFlatButton):
-    """
-    To capture a button click, subclass the button and override on_click.
-    """
-
-    def __init__(self, song, input_box, view, uimanager, center_x, center_y, width=250, height=40):
-        super().__init__(song, center_x, center_y, width, height)
-        self._ui_manager = uimanager
-        self._view = view
-        self._song = song
-        self._input_box = input_box
-
 def _prep_game(self):
     """ for when the user clicks a button. """
     song_obj = self._view._lib.get_song(self._song)
