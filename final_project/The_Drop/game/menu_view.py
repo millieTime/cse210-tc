@@ -85,7 +85,7 @@ class MenuView(arcade.View):
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
         arcade.draw_rectangle_filled(constants.MAX_X / 2, constants.MAX_Y / 2 + 38, 175, 35, arcade.color.EERIE_BLACK)
-        arcade.draw_text("The", constants.MAX_X/2, constants.MAX_Y/2 + 250, 
+        arcade.draw_text("The", constants.MAX_X/2, constants.MAX_Y/2 + 250,
                          arcade.color.WHITE, font_size=40, font_name='impact', anchor_x="right",anchor_y='top')
         arcade.draw_text("Drop", constants.MAX_X/2, constants.MAX_Y/2 + 250,
                          arcade.color.WHITE, font_size=70, font_name='impact', anchor_x="left",anchor_y='top')
