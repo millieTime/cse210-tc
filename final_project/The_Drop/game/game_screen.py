@@ -39,7 +39,7 @@ class GameScreen(arcade.View):
         for key in keys:
             cast['drop_points'].append(DropPoint(key))
 
-        player = Player(player_name, keys)
+        player = Player(player_name, keys, beat_map.get_max_score())
         cast['player'] = [player]
         
         synchronizer = Synchronizer(arcade.Sound(song.get_song()), self.window, player)

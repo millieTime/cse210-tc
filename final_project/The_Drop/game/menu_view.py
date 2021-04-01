@@ -6,10 +6,11 @@ from game.change_view_button import ChangeViewButton
 import arcade.gui
 from arcade.gui import UIManager
 
-def _prep_game(self):
+def _prep_game(button):
     """ for when the user clicks a button. """
-    song_obj = self._view._lib.get_song(self._song)
-    self._view.window.game_screen = GameScreen(song_obj, self._input_box.text)
+    button._view._save_name(button)
+    song_obj = button._view._lib.get_song(button._song)
+    button._view.window.game_screen = GameScreen(song_obj, button._input_box.text)
 
 class MenuView(arcade.View):
     """ Class that manages the 'menu' view. """
@@ -18,6 +19,7 @@ class MenuView(arcade.View):
         super().__init__()
         self._ui_manager = UIManager()
         self._lib = Library()
+        self._name = ""
 
     def on_show(self):
         """ Called when switching to this view"""
@@ -34,7 +36,7 @@ class MenuView(arcade.View):
             center_y=constants.MAX_Y/2 + 100,
             width=300
         )
-        self._ui_input_box.text = ''
+        self._ui_input_box.text = self._name
         self._ui_input_box.cursor_index = len(self._ui_input_box.text)
         self._ui_manager.add_ui_element(self._ui_input_box)
 
@@ -62,7 +64,11 @@ class MenuView(arcade.View):
             200,
             50
         )
+        instruction_button.set_prep_function(self._save_name)
         self._ui_manager.add_ui_element(instruction_button)
+
+    def _save_name(self, button):
+        self._name = self._ui_input_box.text
 
     def on_draw(self):
         """ Draw the menu """
@@ -79,5 +85,5 @@ class MenuView(arcade.View):
                          arcade.color.WHITE, font_size=70, font_name='impact', anchor_x="left",anchor_y='top')
         arcade.draw_text("Input Your Name", constants.MAX_X/2, constants.MAX_Y/2 + 125,
                          arcade.color.WHITE, font_size=16, anchor_x="center")
-        arcade.draw_text("--Song Names--", constants.MAX_X/2, constants.MAX_Y/2 + 25,
+        arcade.draw_text("--What's Droppin?--", constants.MAX_X/2, constants.MAX_Y/2 + 35,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
