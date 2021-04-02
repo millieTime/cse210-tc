@@ -12,7 +12,7 @@ class GameSong:
         return self._base_path + self._audio
 
     def get_song_name(self):
-        # we have an audio, so take remove underscares and extension.
+        # we have an audio, so remove underscores and extension.
         return self._audio[:-4].replace("_", " ")
 
     def get_art(self):

@@ -33,11 +33,9 @@ class Library():
         self._song_dict = {}
         # Go through each folder in the songs folder
         for song in os.listdir(PATH):
-            if song == ".DS_Store":
-                # yeah, that's not a song folder.
-                continue
-            song_path = PATH + song + "/"
-            self._parse_folder(song_path)
+            if song != ".DS_Store":
+                song_path = PATH + song + "/"
+                self._parse_folder(song_path)
 
     def _parse_folder(self, folder_path):
         # Get all the files in the song's folder
