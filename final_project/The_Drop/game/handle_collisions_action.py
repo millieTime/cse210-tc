@@ -28,10 +28,7 @@ class HandleCollisionsAction(Action):
         # Check if there are beats that need to be removed.
         for beat in relevant_beats:
             if self._is_off_screen(beat):
-                # will be zero if the beat has been scored. Otherwise,
-                # the player needs to lose some points!
-                points = beat.kill_and_points()
-                player.subtract_points(points)
+                beat.kill_and_points()
                 all_beats.remove(beat)
 
         # Next, go through the drop_points and see whether they're scoring

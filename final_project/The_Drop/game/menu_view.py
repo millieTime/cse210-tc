@@ -65,7 +65,7 @@ class MenuView(arcade.View):
             self,
             "instructions",
             center_x = constants.MAX_X - 220,
-            center_y = 25,
+            center_y = constants.MAX_Y - 25,
             width = 200,
             height = 50,
             color = instruction_color
