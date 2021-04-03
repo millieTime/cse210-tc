@@ -1,16 +1,19 @@
 import arcade.gui
+from arcade.gui.ui_style import UIStyle
 
 class ChangeViewButton(arcade.gui.UIFlatButton):
     """
     To capture a button click, subclass the button and override on_click.
     """
 
-    def __init__(self, display, current_view, next_view, center_x, center_y, width=250, height=40):
+    def __init__(self, display, current_view, next_view, center_x, center_y, width=250, height=40, color=arcade.color.BLACK):
         """ display is the text for the button to show,
             current_view is a reference to the view creating this button,
             next_view is a string denoting which view this button should display next.
         """
+        #style = UIStyle({})
         super().__init__(display, center_x, center_y, width, height)
+        self.set_style_attrs(bg_color = color)
         self._view = current_view
         self._next_view = next_view
         self._has_prep = False

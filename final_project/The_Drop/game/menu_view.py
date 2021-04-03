@@ -20,6 +20,7 @@ class MenuView(arcade.View):
         self._ui_manager = UIManager()
         self._lib = Library()
         self._name = ""
+        self._seen_instructions = False
 
     def on_show(self):
         """ Called when switching to this view"""
@@ -48,6 +49,7 @@ class MenuView(arcade.View):
                 "game",
                 center_x=constants.MAX_X/2,
                 center_y=constants.MAX_Y/2 + counter,
+                width=325
             )
             button._song = songName
             button._input_box = self._ui_input_box
@@ -55,17 +57,25 @@ class MenuView(arcade.View):
             self._ui_manager.add_ui_element(button)
             counter -= 50
 
+        instruction_color = arcade.color.BLACK
+        if not self._seen_instructions:
+            instruction_color = arcade.color.CYBER_YELLOW
         instruction_button = ChangeViewButton(
             "Instructions",
             self,
             "instructions",
-            constants.MAX_X - 220,
-            25,
-            200,
-            50
+            center_x = constants.MAX_X - 220,
+            center_y = 25,
+            width = 200,
+            height = 50,
+            color = instruction_color
         )
-        instruction_button.set_prep_function(self._save_name)
+        instruction_button.set_prep_function(self._click_instructions)
         self._ui_manager.add_ui_element(instruction_button)
+
+    def _click_instructions(self, button):
+        self._seen_instructions = True
+        self._save_name(button)
 
     def _save_name(self, button):
         self._name = self._ui_input_box.text

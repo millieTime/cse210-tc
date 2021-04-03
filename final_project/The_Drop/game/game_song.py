@@ -1,4 +1,4 @@
-
+from game import constants
 class GameSong:
 
     def __init__(self, folder_path = "", song_file = "", level_list = [], album_art = ""):
@@ -6,14 +6,17 @@ class GameSong:
         self._audio = song_file
         self._level_list = level_list
         self._art = album_art
+        self._difficulty = ""
+        with open(self._base_path + self._level_list[0], 'r') as level_file:
+            self._difficulty = int(level_file.readline().split(',')[2])
 
 
     def get_song(self):
         return self._base_path + self._audio
 
     def get_song_name(self):
-        # we have an audio, so remove underscores and extension.
-        return self._audio[:-4].replace("_", " ")
+        # we have an audio, so remove underscores and extension and add difficulty.
+        return f'{self._audio[:-4].replace("_", " ")} ({constants.DIFFICULTY_NAMES[self._difficulty]})'
 
     def get_art(self):
         if not self._art:
@@ -38,4 +41,6 @@ class GameSong:
             file_list.append(self.get_level_file(index))
         return file_list
 
+    def get_difficulty(self):
+        return self._difficulty
     

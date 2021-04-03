@@ -3,6 +3,14 @@ from pathlib import Path
 DIR = Path(__file__).resolve().parent
 #This is the path we're looking for
 DIRROOT = str(DIR.resolve().parent)
+
+DIFFICULTY_NAMES = [
+    'Intro',
+    'Easy',
+    'Normal',
+    'Hard'
+]
+
 MAX_X = 900
 MAX_Y = 700
 

@@ -19,11 +19,12 @@ class LevelCreator():
         _started (boolean): whether the creator has been started
     """
 
-    def __init__(self, name, level, delay, twelveth):
+    def __init__(self, name, level, difficulty, delay, twelveth):
         self._twelveth = twelveth
         self._folder = PATH + "\\assets\\songs\\" + name.replace(" ", "_")
         self._file = self._folder + f'\\{name.replace(" ", "_")}_{level.replace(" ", "_")}.txt'
         self._delay = delay
+        self._difficulty = difficulty
         self._string = ""
         self._started = False
 
@@ -55,7 +56,7 @@ class LevelCreator():
 
         os.makedirs(self._folder, exist_ok=True)
         with open(self._file, "w") as outfile:
-            final_str = f"{self._delay},{self._twelveth}"
+            final_str = f"{self._delay},{self._twelveth},{self._difficulty}"
             for index, char in enumerate(self._string):
                 # One beat per line, and we've split each beat into 12 parts.
                 if index % 12 == 0:
@@ -90,11 +91,12 @@ bpm = get_float("What is the BPM of the song? (helps with auto-aligning input to
 seconds_per_twelveth = 5 / bpm # 1/bpm * 60s/m * 1/12 (to catch triplets and 16ths)
 name = input("What is the name of the song? ")
 level = input("What level will this be? (1, 2, drums, drums 2, etc) ")
+difficulty = input("What is the difficulty? (0-3) ")
 delay = get_float("How long before the first beat? (in seconds, with decimal) ")
 print("\nNow, we will build the level.")
 print("Start the song, and press keys to begin recording.")
 
-creator = LevelCreator(name, level, delay, seconds_per_twelveth)
+creator = LevelCreator(name, level, difficulty, delay, seconds_per_twelveth)
 keyboard.on_press_key("q", lambda evt: creator.key_pressed(evt.name), True)
 keyboard.on_press_key("w", lambda evt: creator.key_pressed(evt.name), True)
 keyboard.on_press_key("e", lambda evt: creator.key_pressed(evt.name), True)
