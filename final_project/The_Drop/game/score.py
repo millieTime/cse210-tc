@@ -20,7 +20,10 @@ class Score:
     
     def get_accuracy(self):
         # (max_score + player_score ) / (max_score * 2) = hit ratio
-        return self._score / self._max_score
+        accuracy = self._score / self._max_score
+        if accuracy > 0:
+            return accuracy
+        return 0
 
     def __str__(self):
         return f'{self._score}'
