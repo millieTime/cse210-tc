@@ -41,7 +41,23 @@ class MenuView(arcade.View):
         self._ui_input_box.cursor_index = len(self._ui_input_box.text)
         self._ui_manager.add_ui_element(self._ui_input_box)
 
-        counter = 0
+        instruction_color = arcade.color.BLACK
+        if not self._seen_instructions:
+            instruction_color = arcade.color.CYBER_YELLOW
+        instruction_button = ChangeViewButton(
+            "Instructions",
+            self,
+            "instructions",
+            center_x = constants.MAX_X/2,
+            center_y = constants.MAX_Y/2 + 35,
+            width = 200,
+            height = 50,
+            color = instruction_color
+        )
+        instruction_button.set_prep_function(self._click_instructions)
+        self._ui_manager.add_ui_element(instruction_button)
+
+        counter = -100
         for songName in self._names:
             button = ChangeViewButton(
                 songName,
@@ -56,22 +72,6 @@ class MenuView(arcade.View):
             button.set_prep_function(_prep_game)
             self._ui_manager.add_ui_element(button)
             counter -= 50
-
-        instruction_color = arcade.color.BLACK
-        if not self._seen_instructions:
-            instruction_color = arcade.color.CYBER_YELLOW
-        instruction_button = ChangeViewButton(
-            "Instructions",
-            self,
-            "instructions",
-            center_x = constants.MAX_X - 220,
-            center_y = constants.MAX_Y - 25,
-            width = 200,
-            height = 50,
-            color = instruction_color
-        )
-        instruction_button.set_prep_function(self._click_instructions)
-        self._ui_manager.add_ui_element(instruction_button)
 
     def _click_instructions(self, button):
         self._seen_instructions = True
@@ -88,12 +88,12 @@ class MenuView(arcade.View):
 
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0,constants.MAX_X,constants.MAX_Y,arcade.load_texture(constants.MAIN_MENU_IMAGE))
-        arcade.draw_rectangle_filled(constants.MAX_X / 2, constants.MAX_Y / 2 + 38, 175, 35, arcade.color.EERIE_BLACK)
+        arcade.draw_rectangle_filled(constants.MAX_X / 2, constants.MAX_Y / 2 - 35, 190, 35, arcade.color.EERIE_BLACK)
         arcade.draw_text("The", constants.MAX_X/2, constants.MAX_Y/2 + 250,
                          arcade.color.WHITE, font_size=40, font_name='impact', anchor_x="right",anchor_y='top')
         arcade.draw_text("Drop", constants.MAX_X/2, constants.MAX_Y/2 + 250,
                          arcade.color.WHITE, font_size=70, font_name='impact', anchor_x="left",anchor_y='top')
         arcade.draw_text("Input Your Name", constants.MAX_X/2, constants.MAX_Y/2 + 125,
                          arcade.color.WHITE, font_size=16, anchor_x="center")
-        arcade.draw_text("--What's Droppin?--", constants.MAX_X/2, constants.MAX_Y/2 + 35,
+        arcade.draw_text("--What's Droppin?--", constants.MAX_X/2, constants.MAX_Y/2 -50,
                          arcade.color.WHITE, font_size=20, anchor_x="center")
