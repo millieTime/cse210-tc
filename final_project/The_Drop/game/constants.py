@@ -1,4 +1,5 @@
 import os
+import arcade.color as c
 from pathlib import Path
 DIR = Path(__file__).resolve().parent
 #This is the path we're looking for
@@ -41,6 +42,13 @@ BEAT_IMAGES2 = {
     "w" : DIRROOT + "/assets/images/beat_w_dead.png",
     "e" : DIRROOT + "/assets/images/beat_e_dead.png",
     "r" : DIRROOT + "/assets/images/beat_r_dead.png"
+}
+
+HIGHLIGHT_COLORS = {
+    "q": c.GREEN,
+    "w": c.BLUE,
+    "e": c.RED,
+    "r": c.YELLOW
 }
 
 BEAT_IMAGES_DEAD = DIRROOT + "/assets/images/beat_dead_trans.png"
