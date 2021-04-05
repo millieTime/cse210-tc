@@ -31,6 +31,7 @@ When they reach the Drop Points, press Q, W, E, or R to earn points. (go ahead, 
 
 
 
+If the beats come close enough together, you can hold down your key for a legato effect.
 Be careful though, if you get too proud and press a key when there's no Beat to activate,
 you'll appear presumptious and lose points. And if you grow careless and miss a Beat,
 your claim to the title of Beat Master will seem less credible. And you'll lose points.
