@@ -39,7 +39,7 @@ class GameOverScreen(arcade.View):
             self._player_rating = "Beat Novice"
         elif self._player_accuracy > .7:
             self._player_rating = "Beat Tryhard"
-        elif self._player_accuracy >= 0:
+        elif self._player_accuracy > 0:
             self._player_rating = "beat dropout"
         else:
             self._player_rating = ">>>The Anti-Beat<<<"
