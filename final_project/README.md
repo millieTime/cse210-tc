@@ -1,6 +1,9 @@
 # **Final Project Plan**
 • _&#39; The Drop &#39;_
 
+Demo video:
+https://youtu.be/Ff41_BBOL_o
+
 - What program are we going to create? Use your brainstorming from the solo checkpoint to answer this question together.
   - We are going to create a program, like &#39;Guitar Hero&#39;, where the user must press keys, to a song, at a certain time. If they hit the right key at the right time, they get points, if they don&#39;t, they lose points.
 - What technologies will we use? The answer to this question is mostly already decided. Just take a minute to remind yourselves of the language, libraries and anything else you plan on using.
