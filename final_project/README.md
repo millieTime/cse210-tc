@@ -2,7 +2,9 @@
 • _&#39; The Drop &#39;_
 
 Demo video:
-https://youtu.be/Ff41_BBOL_o
+
+https://user-images.githubusercontent.com/63935317/148466867-92eb899a-428b-4b9a-8318-084db7c9e5e8.mp4
+
 
 - What program are we going to create? Use your brainstorming from the solo checkpoint to answer this question together.
   - We are going to create a program, like &#39;Guitar Hero&#39;, where the user must press keys, to a song, at a certain time. If they hit the right key at the right time, they get points, if they don&#39;t, they lose points.
